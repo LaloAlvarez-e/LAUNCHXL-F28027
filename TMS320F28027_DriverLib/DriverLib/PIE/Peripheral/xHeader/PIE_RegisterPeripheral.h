@@ -36,13 +36,13 @@
  ************************************ 1 CTRL *********************************************
  ******************************************************************************************/
 #define PIE_CTRL_R   (*(volatile uint16_t*) (PIE_BASE + PIE_CTRL_OFFSET))
-#define PUE_CTRL     ((PIE_CTRL_t*) (PIE_BASE + PIE_CTRL_OFFSET))
+#define PIE_CTRL     ((PIE_CTRL_t*) (PIE_BASE + PIE_CTRL_OFFSET))
 
 /******************************************************************************************
  ************************************ 2 ACK *********************************************
  ******************************************************************************************/
 #define PIE_ACK_R   (*(volatile uint16_t*) (PIE_BASE + PIE_ACK_OFFSET))
-#define PUE_ACK     ((PIE_ACK_t*) (PIE_BASE + PIE_ACK_OFFSET))
+#define PIE_ACK     ((PIE_ACK_t*) (PIE_BASE + PIE_ACK_OFFSET))
 
 
 

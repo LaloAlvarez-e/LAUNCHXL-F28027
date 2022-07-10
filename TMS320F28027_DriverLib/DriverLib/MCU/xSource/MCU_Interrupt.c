@@ -10,10 +10,9 @@
 uint16_t MCU__u16EnaGlobalInterrupt_Debug_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  INTM,DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -21,10 +20,9 @@ uint16_t MCU__u16EnaGlobalInterrupt_Debug_RAM(void)
 uint16_t MCU__u16DisGlobalInterrupt_Debug_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  INTM,DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -32,10 +30,9 @@ uint16_t MCU__u16DisGlobalInterrupt_Debug_RAM(void)
 uint16_t MCU__u16EnaGlobalInterrupt_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  INTM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -43,10 +40,9 @@ uint16_t MCU__u16EnaGlobalInterrupt_RAM(void)
 uint16_t MCU__u16DisGlobalInterrupt_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  INTM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -55,10 +51,9 @@ uint16_t MCU__u16DisGlobalInterrupt_RAM(void)
 uint16_t MCU__u16EnaGlobalDebug_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -66,10 +61,9 @@ uint16_t MCU__u16EnaGlobalDebug_RAM(void)
 uint16_t MCU__u16DisGlobalDebug_RAM(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -142,7 +136,7 @@ uint16_t MCU__u16DisAllInterrupt_RAM(void)
 {
     __asm volatile(
            " MOV  AL, IER \n"
-           " AND   IER, #0 \n"
+           " AND  IER, #0 \n"
            " LRETR \n");
      return (0U);
 }
@@ -410,10 +404,9 @@ void MCU__vForceInterruptTrap_RAM(MCU_nINT_VECTOR enInterruptArg)
 uint16_t MCU__u16EnaGlobalInterrupt_Debug(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  INTM,DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -421,10 +414,9 @@ uint16_t MCU__u16EnaGlobalInterrupt_Debug(void)
 uint16_t MCU__u16DisGlobalInterrupt_Debug(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  INTM,DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -432,10 +424,9 @@ uint16_t MCU__u16DisGlobalInterrupt_Debug(void)
 uint16_t MCU__u16EnaGlobalInterrupt(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  INTM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -443,10 +434,9 @@ uint16_t MCU__u16EnaGlobalInterrupt(void)
 uint16_t MCU__u16DisGlobalInterrupt(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  INTM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -455,10 +445,9 @@ uint16_t MCU__u16DisGlobalInterrupt(void)
 uint16_t MCU__u16EnaGlobalDebug(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " CLRC  DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }
@@ -466,10 +455,9 @@ uint16_t MCU__u16EnaGlobalDebug(void)
 uint16_t MCU__u16DisGlobalDebug(void)
 {
     __asm volatile(
-           " PUSH  DP:ST1 \n"
+           " PUSH  ST1 \n"
            " SETC  DBGM \n"
-           " MOV   AL,*-SP[2] \n"
-           " SUBB  SP, #2 \n"
+           " POP   AL \n"
            " LRETR \n");
     return (0U);
 }

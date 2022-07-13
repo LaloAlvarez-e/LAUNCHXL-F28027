@@ -39,7 +39,11 @@ void MAIN_vStartup(void)
     uint16_t *pui16SrcRamCode = (uint16_t*) 0UL;
     uint16_t *pui16DestRamCode = (uint16_t*) 0UL;
     MCU__vSetC28xMode();
+    MCU__vEnaWriteProtectedRegisters();
+    /*Enable ADC clock*/
     MCU__vDeviceCalibration();
+    /*Disable ADC clock*/
+    MCU__vDisWriteProtectedRegisters();
     /**/
     /* Copy the ramcode segment initializers from flash to SRAM.*/
     /**/

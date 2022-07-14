@@ -1,0 +1,228 @@
+/**
+ *
+ * @file PIE_RegisterDefines_GROUP10.h
+ * @copyright
+ * @verbatim InDeviceMex 2021 @endverbatim
+ *
+ * @par Responsibility
+ * @verbatim InDeviceMex Developers @endverbatim
+ *
+ * @version
+ * @verbatim 1.0 @endverbatim
+ *
+ * @date
+ * @verbatim 13 jul. 2022 @endverbatim
+ *
+ * @author
+ * @verbatim InDeviceMex @endverbatim
+ *
+ * @par Change History
+ * @verbatim
+ * Date           Author     Version     Description
+ * 13 jul. 2022     InDeviceMex    1.0         initial Version@endverbatim
+ */
+
+#ifndef DRIVERLIB_PIE_PERIPHERAL_REGISTERDEFINES_XHEADER_PIE_REGISTERDEFINES_GROUP10_H_
+#define DRIVERLIB_PIE_PERIPHERAL_REGISTERDEFINES_XHEADER_PIE_REGISTERDEFINES_GROUP10_H_
+
+#include "DriverLib/MCU/xHeader/MCU_Variables.h"
+
+/******************************************************************************************
+ ************************************ 1 PIEIER *********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC1_BIT ((uint16_t) 0U)
+
+#define PIE_GROUP10_IER_ADC1_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC1_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC1_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC1_MASK (PIE_GROUP10_IER_ADC1_MASK<< PIE_GROUP10_IER_R_ADC1_BIT)
+#define PIE_GROUP10_IER_R_ADC1_DIS (PIE_GROUP10_IER_ADC1_DIS << PIE_GROUP10_IER_R_ADC1_BIT)
+#define PIE_GROUP10_IER_R_ADC1_ENA (PIE_GROUP10_IER_ADC1_ENA << PIE_GROUP10_IER_R_ADC1_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC2_BIT ((uint16_t) 1U)
+
+#define PIE_GROUP10_IER_ADC2_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC2_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC2_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC2_MASK (PIE_GROUP10_IER_ADC2_MASK<< PIE_GROUP10_IER_R_ADC2_BIT)
+#define PIE_GROUP10_IER_R_ADC2_DIS (PIE_GROUP10_IER_ADC2_DIS << PIE_GROUP10_IER_R_ADC2_BIT)
+#define PIE_GROUP10_IER_R_ADC2_ENA (PIE_GROUP10_IER_ADC2_ENA << PIE_GROUP10_IER_R_ADC2_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC3_BIT ((uint16_t) 2U)
+
+#define PIE_GROUP10_IER_ADC3_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC3_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC3_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC3_MASK (PIE_GROUP10_IER_ADC3_MASK<< PIE_GROUP10_IER_R_ADC3_BIT)
+#define PIE_GROUP10_IER_R_ADC3_DIS (PIE_GROUP10_IER_ADC3_DIS << PIE_GROUP10_IER_R_ADC3_BIT)
+#define PIE_GROUP10_IER_R_ADC3_ENA (PIE_GROUP10_IER_ADC3_ENA << PIE_GROUP10_IER_R_ADC3_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC4_BIT ((uint16_t) 3U)
+
+#define PIE_GROUP10_IER_ADC4_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC4_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC4_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC4_MASK (PIE_GROUP10_IER_ADC4_MASK<< PIE_GROUP10_IER_R_ADC4_BIT)
+#define PIE_GROUP10_IER_R_ADC4_DIS (PIE_GROUP10_IER_ADC4_DIS << PIE_GROUP10_IER_R_ADC4_BIT)
+#define PIE_GROUP10_IER_R_ADC4_ENA (PIE_GROUP10_IER_ADC4_ENA << PIE_GROUP10_IER_R_ADC4_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC5_BIT ((uint16_t) 4U)
+
+#define PIE_GROUP10_IER_ADC5_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC5_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC5_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC5_MASK (PIE_GROUP10_IER_ADC5_MASK<< PIE_GROUP10_IER_R_ADC5_BIT)
+#define PIE_GROUP10_IER_R_ADC5_DIS (PIE_GROUP10_IER_ADC5_DIS << PIE_GROUP10_IER_R_ADC5_BIT)
+#define PIE_GROUP10_IER_R_ADC5_ENA (PIE_GROUP10_IER_ADC5_ENA << PIE_GROUP10_IER_R_ADC5_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC6_BIT ((uint16_t) 5U)
+
+#define PIE_GROUP10_IER_ADC6_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC6_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC6_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC6_MASK (PIE_GROUP10_IER_ADC6_MASK<< PIE_GROUP10_IER_R_ADC6_BIT)
+#define PIE_GROUP10_IER_R_ADC6_DIS (PIE_GROUP10_IER_ADC6_DIS << PIE_GROUP10_IER_R_ADC6_BIT)
+#define PIE_GROUP10_IER_R_ADC6_ENA (PIE_GROUP10_IER_ADC6_ENA << PIE_GROUP10_IER_R_ADC6_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC7_BIT ((uint16_t) 6U)
+
+#define PIE_GROUP10_IER_ADC7_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC7_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC7_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC7_MASK (PIE_GROUP10_IER_ADC7_MASK<< PIE_GROUP10_IER_R_ADC7_BIT)
+#define PIE_GROUP10_IER_R_ADC7_DIS (PIE_GROUP10_IER_ADC7_DIS << PIE_GROUP10_IER_R_ADC7_BIT)
+#define PIE_GROUP10_IER_R_ADC7_ENA (PIE_GROUP10_IER_ADC7_ENA << PIE_GROUP10_IER_R_ADC7_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IER_R_ADC8_BIT ((uint16_t) 7U)
+
+#define PIE_GROUP10_IER_ADC8_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IER_ADC8_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IER_ADC8_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IER_R_ADC8_MASK (PIE_GROUP10_IER_ADC8_MASK<< PIE_GROUP10_IER_R_ADC8_BIT)
+#define PIE_GROUP10_IER_R_ADC8_DIS (PIE_GROUP10_IER_ADC8_DIS << PIE_GROUP10_IER_R_ADC8_BIT)
+#define PIE_GROUP10_IER_R_ADC8_ENA (PIE_GROUP10_IER_ADC8_ENA << PIE_GROUP10_IER_R_ADC8_BIT)
+/*-----------*/
+
+/******************************************************************************************
+ ************************************ 1 PIEIFR *********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC1_BIT ((uint16_t) 0U)
+
+#define PIE_GROUP10_IFR_ADC1_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC1_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC1_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC1_MASK (PIE_GROUP10_IFR_ADC1_MASK<< PIE_GROUP10_IFR_R_ADC1_BIT)
+#define PIE_GROUP10_IFR_R_ADC1_DIS (PIE_GROUP10_IFR_ADC1_DIS << PIE_GROUP10_IFR_R_ADC1_BIT)
+#define PIE_GROUP10_IFR_R_ADC1_ENA (PIE_GROUP10_IFR_ADC1_ENA << PIE_GROUP10_IFR_R_ADC1_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC2_BIT ((uint16_t) 1U)
+
+#define PIE_GROUP10_IFR_ADC2_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC2_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC2_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC2_MASK (PIE_GROUP10_IFR_ADC2_MASK<< PIE_GROUP10_IFR_R_ADC2_BIT)
+#define PIE_GROUP10_IFR_R_ADC2_DIS (PIE_GROUP10_IFR_ADC2_DIS << PIE_GROUP10_IFR_R_ADC2_BIT)
+#define PIE_GROUP10_IFR_R_ADC2_ENA (PIE_GROUP10_IFR_ADC2_ENA << PIE_GROUP10_IFR_R_ADC2_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC3_BIT ((uint16_t) 2U)
+
+#define PIE_GROUP10_IFR_ADC3_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC3_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC3_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC3_MASK (PIE_GROUP10_IFR_ADC3_MASK<< PIE_GROUP10_IFR_R_ADC3_BIT)
+#define PIE_GROUP10_IFR_R_ADC3_DIS (PIE_GROUP10_IFR_ADC3_DIS << PIE_GROUP10_IFR_R_ADC3_BIT)
+#define PIE_GROUP10_IFR_R_ADC3_ENA (PIE_GROUP10_IFR_ADC3_ENA << PIE_GROUP10_IFR_R_ADC3_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC4_BIT ((uint16_t) 3U)
+
+#define PIE_GROUP10_IFR_ADC4_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC4_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC4_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC4_MASK (PIE_GROUP10_IFR_ADC4_MASK<< PIE_GROUP10_IFR_R_ADC4_BIT)
+#define PIE_GROUP10_IFR_R_ADC4_DIS (PIE_GROUP10_IFR_ADC4_DIS << PIE_GROUP10_IFR_R_ADC4_BIT)
+#define PIE_GROUP10_IFR_R_ADC4_ENA (PIE_GROUP10_IFR_ADC4_ENA << PIE_GROUP10_IFR_R_ADC4_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC5_BIT ((uint16_t) 4U)
+
+#define PIE_GROUP10_IFR_ADC5_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC5_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC5_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC5_MASK (PIE_GROUP10_IFR_ADC5_MASK<< PIE_GROUP10_IFR_R_ADC5_BIT)
+#define PIE_GROUP10_IFR_R_ADC5_DIS (PIE_GROUP10_IFR_ADC5_DIS << PIE_GROUP10_IFR_R_ADC5_BIT)
+#define PIE_GROUP10_IFR_R_ADC5_ENA (PIE_GROUP10_IFR_ADC5_ENA << PIE_GROUP10_IFR_R_ADC5_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC6_BIT ((uint16_t) 5U)
+
+#define PIE_GROUP10_IFR_ADC6_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC6_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC6_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC6_MASK (PIE_GROUP10_IFR_ADC6_MASK<< PIE_GROUP10_IFR_R_ADC6_BIT)
+#define PIE_GROUP10_IFR_R_ADC6_DIS (PIE_GROUP10_IFR_ADC6_DIS << PIE_GROUP10_IFR_R_ADC6_BIT)
+#define PIE_GROUP10_IFR_R_ADC6_ENA (PIE_GROUP10_IFR_ADC6_ENA << PIE_GROUP10_IFR_R_ADC6_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC7_BIT ((uint16_t) 6U)
+
+#define PIE_GROUP10_IFR_ADC7_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC7_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC7_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC7_MASK (PIE_GROUP10_IFR_ADC7_MASK<< PIE_GROUP10_IFR_R_ADC7_BIT)
+#define PIE_GROUP10_IFR_R_ADC7_DIS (PIE_GROUP10_IFR_ADC7_DIS << PIE_GROUP10_IFR_R_ADC7_BIT)
+#define PIE_GROUP10_IFR_R_ADC7_ENA (PIE_GROUP10_IFR_ADC7_ENA << PIE_GROUP10_IFR_R_ADC7_BIT)
+/*-----------*/
+
+/*-----------*/
+#define PIE_GROUP10_IFR_R_ADC8_BIT ((uint16_t) 7U)
+
+#define PIE_GROUP10_IFR_ADC8_MASK ((uint16_t) 0x01U)
+#define PIE_GROUP10_IFR_ADC8_DIS ((uint16_t) 0x00U)
+#define PIE_GROUP10_IFR_ADC8_ENA ((uint16_t) 0x01U)
+
+#define PIE_GROUP10_IFR_R_ADC8_MASK (PIE_GROUP10_IFR_ADC8_MASK<< PIE_GROUP10_IFR_R_ADC8_BIT)
+#define PIE_GROUP10_IFR_R_ADC8_DIS (PIE_GROUP10_IFR_ADC8_DIS << PIE_GROUP10_IFR_R_ADC8_BIT)
+#define PIE_GROUP10_IFR_R_ADC8_ENA (PIE_GROUP10_IFR_ADC8_ENA << PIE_GROUP10_IFR_R_ADC8_BIT)
+/*-----------*/
+
+#endif /* DRIVERLIB_PIE_PERIPHERAL_REGISTERDEFINES_XHEADER_PIE_REGISTERDEFINES_GROUP10_H_ */

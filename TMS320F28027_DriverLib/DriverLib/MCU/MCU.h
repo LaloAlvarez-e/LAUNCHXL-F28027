@@ -25,9 +25,11 @@
 #ifndef DRIVERLIB_MCU_MCU_H_
 #define DRIVERLIB_MCU_MCU_H_
 
+#include "DriverLib/MCU/xHeader/MCU_CheckParams.h"
 #include "DriverLib/MCU/xHeader/MCU_Interrupt.h"
 #include "DriverLib/MCU/xHeader/MCU_SpecialFunctions.h"
 #include "DriverLib/MCU/xHeader/MCU_ReadRegister.h"
+#include "DriverLib/MCU/xHeader/MCU_RegisterSourceIRQ.h"
 #include "DriverLib/MCU/xHeader/MCU_WriteRegister.h"
 
 #endif /* DRIVERLIB_MCU_MCU_H_ */

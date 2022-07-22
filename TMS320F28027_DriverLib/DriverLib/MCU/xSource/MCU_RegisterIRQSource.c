@@ -1,6 +1,6 @@
 /**
  *
- * @file MCU_RegisterSourceIRQ.c
+ * @file MCU_RegisterIRQSource.c
  * @copyright
  * @verbatim InDeviceMex 2021 @endverbatim
  *
@@ -21,11 +21,11 @@
  * Date           Author     Version     Description
  * 17 jul. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
-#include "DriverLib/MCU/xHeader/MCU_RegisterSourceIRQ.h"
+#include <DriverLib/MCU/xHeader/MCU_RegisterIRQSource.h>
 #include "DriverLib/MCU/xHeader/MCU_CheckParams.h"
 
-void MCU__vRegisterIRQSourceHandler(void (*pfIrqSourceHandler) (void),
-                                    void (**pfIrqArrayHandler) (void),
+void MCU__vRegisterIRQSourceHandler(MCU_IRQ_SOURCE_t pfIrqSourceHandler,
+                                    MCU_IRQ_SOURCE_t* pfIrqArrayHandler,
                                     uint32_t u32InterruptSource,
                                     uint32_t u32InteruptSourceMax)
 {
@@ -38,8 +38,8 @@ void MCU__vRegisterIRQSourceHandler(void (*pfIrqSourceHandler) (void),
     }
 }
 
-void MCU__vRegisterIRQSourceHandler_RAM(void (*pfIrqSourceHandler) (void),
-                                    void (**pfIrqArrayHandler) (void),
+void MCU__vRegisterIRQSourceHandler_RAM(MCU_IRQ_SOURCE_t pfIrqSourceHandler,
+                                        MCU_IRQ_SOURCE_t* pfIrqArrayHandler,
                                     uint32_t u32InterruptSource,
                                     uint32_t u32InteruptSourceMax)
 {

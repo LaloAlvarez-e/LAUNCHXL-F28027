@@ -23,6 +23,7 @@
  */
 #include "DriverLib/MCU/xHeader/MCU_WriteRegister.h"
 #include "DriverLib/MCU/xHeader/MCU_Interrupt.h"
+#include "DriverLib/MCU/xHeader/MCU_SpecialFunctions.h"
 
 void MCU__vWriteRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg)
 {
@@ -59,6 +60,14 @@ void MCU__vWriteRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg)
         *pu16RegisterAddress = u16Reg;
         MCU__vSetGlobalStatus(u16StatusRegister);
     }
+}
+
+
+void MCU__vWriteProtectedRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg)
+{
+    MCU__vEnaWriteProtectedRegisters();
+    MCU__vWriteProtectedRegister_16Bits(pstRegisterDataArg);
+    MCU__vDisWriteProtectedRegisters();
 }
 
 
@@ -99,6 +108,12 @@ void MCU__vWriteRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg)
     }
 }
 
+void MCU__vWriteProtectedRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg)
+{
+    MCU__vEnaWriteProtectedRegisters();
+    MCU__vWriteProtectedRegister_32Bits(pstRegisterDataArg);
+    MCU__vDisWriteProtectedRegisters();
+}
 
 void MCU__vWriteRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg)
 {
@@ -138,6 +153,14 @@ void MCU__vWriteRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg)
 }
 
 
+void MCU__vWriteProtectedRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg)
+{
+    MCU__vEnaWriteProtectedRegisters();
+    MCU__vWriteProtectedRegister_16Bits_RAM(pstRegisterDataArg);
+    MCU__vDisWriteProtectedRegisters();
+}
+
+
 void MCU__vWriteRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg)
 {
     volatile uint32_t* pu32RegisterAddress;
@@ -173,4 +196,11 @@ void MCU__vWriteRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg)
         *pu32RegisterAddress = u32Reg;
         MCU__vSetGlobalStatus_RAM(u16StatusRegister);
     }
+}
+
+void MCU__vWriteProtectedRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg)
+{
+    MCU__vEnaWriteProtectedRegisters();
+    MCU__vWriteProtectedRegister_32Bits_RAM(pstRegisterDataArg);
+    MCU__vDisWriteProtectedRegisters();
 }

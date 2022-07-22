@@ -29,7 +29,7 @@
 #include "DriverLib/MCU/xHeader/MCU_Interrupt.h"
 #include "DriverLib/MCU/xHeader/MCU_SpecialFunctions.h"
 #include "DriverLib/MCU/xHeader/MCU_ReadRegister.h"
-#include "DriverLib/MCU/xHeader/MCU_RegisterSourceIRQ.h"
 #include "DriverLib/MCU/xHeader/MCU_WriteRegister.h"
+#include "xHeader/MCU_RegisterIRQSource.h"
 
 #endif /* DRIVERLIB_MCU_MCU_H_ */

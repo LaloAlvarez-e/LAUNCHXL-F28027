@@ -29,11 +29,17 @@
 
 #pragma  CODE_SECTION(MCU__vWriteRegister_16Bits_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__vWriteRegister_32Bits_RAM, ".TI.ramfunc")
+#pragma  CODE_SECTION(MCU__vWriteProtectedRegister_16Bits_RAM, ".TI.ramfunc")
+#pragma  CODE_SECTION(MCU__vWriteProtectedRegister_32Bits_RAM, ".TI.ramfunc")
 
 void MCU__vWriteRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg);
+void MCU__vWriteProtectedRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg);
 void MCU__vWriteRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg);
+void MCU__vWriteProtectedRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg);
 
 void MCU__vWriteRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg);
+void MCU__vWriteProtectedRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg);
 void MCU__vWriteRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg);
+void MCU__vWriteProtectedRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg);
 
 #endif /* DRIVERLIB_MCU_XHEADER_MCU_WRITEREGISTER_H_ */

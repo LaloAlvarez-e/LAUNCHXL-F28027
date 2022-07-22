@@ -24,6 +24,7 @@ int main(void)
     PIE->ACK = 0xFFFFU;
     PIE->GROUP[0U].IER= 1U;
     PIE_VECTOR->IRQ.GROUP1_IRQ[0U] = &IRQ32;
+    PIE_vRegisterIRQVectorHandler(&IRQ32, 0, PIE_enVECTOR_IRQ_ADC2_PRI);
     MCU__vDisWriteProtectedRegisters();
 
     MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP1);

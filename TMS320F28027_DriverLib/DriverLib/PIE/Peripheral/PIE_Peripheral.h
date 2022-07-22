@@ -25,8 +25,9 @@
 #ifndef DRIVERLIB_PIE_PERIPHERAL_PIE_PERIPHERAL_H_
 #define DRIVERLIB_PIE_PERIPHERAL_PIE_PERIPHERAL_H_
 
+#include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_RegisterAddress.h"
-#include "DriverLib/PIE/Peripheral/xHeader/PIE_RegisterPeripheral.h"
+#include "DriverLib/PIE/Peripheral/RegisterPeripheral/PIE_RegisterPeripheral.h"
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_StructPeripheral.h"
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_StructRegister.h"
 #include "DriverLib/PIE/Peripheral/RegisterDefines/PIE_RegisterDefines.h"

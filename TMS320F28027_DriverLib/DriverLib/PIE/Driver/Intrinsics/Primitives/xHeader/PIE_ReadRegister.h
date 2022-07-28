@@ -27,7 +27,7 @@
 
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 
-uint16_t PIE__u16ReadRegister(PIE_Register16Bits_t* pstModuleArg);
-uint32_t PIE_VECTOR__u32ReadRegister(PIE_Register32Bits_t* pstModuleArg);
+uint16_t PIE__u16ReadRegister(PIE_Register_t* pstModuleArg);
+uint32_t PIE_VECTOR__u32ReadRegister(PIE_VECTOR_Register_t* pstModuleArg);
 
 #endif /* DRIVERLIB_PIE_DRIVER_INTRINSICS_PRIMITIVES_XHEADER_PIE_READREGISTER_H_ */

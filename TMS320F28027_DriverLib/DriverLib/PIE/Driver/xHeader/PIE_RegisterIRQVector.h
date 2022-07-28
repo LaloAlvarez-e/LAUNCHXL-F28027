@@ -27,8 +27,11 @@
 
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 
-void PIE_vRegisterIRQVectorHandler(MCU_IRQ_VECTOR_t pfIrqVectorHandler,
-                                       MCU_IRQ_VECTOR_t* pfIrqArrayHandler,
+void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
+                                       MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
                                        PIE_nVECTOR_IRQ enInterruptVector);
+
+MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enInterruptVector);
+
 
 #endif /* DRIVERLIB_PIE_DRIVER_XHEADER_PIE_REGISTERIRQVECTOR_H_ */

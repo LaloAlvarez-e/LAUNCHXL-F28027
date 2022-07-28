@@ -26,7 +26,7 @@
 #include "DriverLib/MCU/MCU.h"
 
 
-uint16_t PIE__u16ReadRegister(PIE_Register16Bits_t* pstModuleArg)
+uint16_t PIE__u16ReadRegister(PIE_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uint16_t u16RegisterValue;
@@ -36,7 +36,7 @@ uint16_t PIE__u16ReadRegister(PIE_Register16Bits_t* pstModuleArg)
     return (u16RegisterValue);
 }
 
-uint32_t PIE_VECTOR__u32ReadRegister(PIE_Register32Bits_t* pstModuleArg)
+uint32_t PIE_VECTOR__u32ReadRegister(PIE_VECTOR_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uint32_t u32RegisterValue;

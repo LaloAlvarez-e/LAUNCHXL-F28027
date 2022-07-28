@@ -27,7 +27,7 @@ typedef unsigned int UBase_t;
 typedef unsigned int pointer_t;
 typedef int Base_t;
 
-typedef void (*MCU_IRQ_VECTOR_t)(void);
-typedef void (*MCU_IRQ_SOURCE_t)(uintptr_t uptrModule, uint32_t u32IntSource);
+typedef void (*MCU__pvfIRQVectorHandler_t)(void);
+typedef void (*MCU__pvfIRQSourceHandler_t)(uintptr_t uptrModule, uint32_t u32IntSource);
 
 #endif /* MCU_VARIABLES_H_ */

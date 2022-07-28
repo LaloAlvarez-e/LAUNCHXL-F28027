@@ -29,6 +29,18 @@
 
 typedef enum
 {
+    PIE_enENABLE_DIS = 0U,
+    PIE_enENABLE_ENA = 1U,
+}PIE_nENABLE;
+
+typedef enum
+{
+    PIE_enACK_UNBLOCKED = 0U,
+    PIE_enACK_BLOCKED = 1U,
+}PIE_nACK;
+
+typedef enum
+{
     PIE_enVECTOR_IRQ_RESET      = MCU_enINT_VECTOR_RESET,
     PIE_enVECTOR_IRQ_GROUP1     = MCU_enINT_VECTOR_GROUP1,
     PIE_enVECTOR_IRQ_GROUP2     = MCU_enINT_VECTOR_GROUP2,
@@ -169,10 +181,12 @@ typedef enum
     PIE_enVECTOR_IRQ_RESERVED60 = (MCU_enINT_VECTOR_USER12 + 1U) + (((MCU_enINT_VECTOR_GROUP12 - 1U) << 3U) | 5U),
     PIE_enVECTOR_IRQ_RESERVED61 = (MCU_enINT_VECTOR_USER12 + 1U) + (((MCU_enINT_VECTOR_GROUP12 - 1U) << 3U) | 6U),
     PIE_enVECTOR_IRQ_RESERVED62 = (MCU_enINT_VECTOR_USER12 + 1U) + (((MCU_enINT_VECTOR_GROUP12 - 1U) << 3U) | 7U),
+
+    PIE_enVECTOR_IRQ_INACTIVE = 0xFFFFU,
 }PIE_nVECTOR_IRQ;
 
 
-typedef MCU_Register16Bits_t PIE_Register16Bits_t;
-typedef MCU_Register32Bits_t PIE_Register32Bits_t;
+typedef MCU_Register16Bits_t PIE_Register_t;
+typedef MCU_Register32Bits_t PIE_VECTOR_Register_t;
 
 #endif /* DRIVERLIB_PIE_PERIPHERAL_XHEADER_PIE_ENUM_H_ */

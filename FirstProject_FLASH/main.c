@@ -9,25 +9,29 @@ extern void RamfuncsLoadStart;
 extern void RamfuncsLoadEnd;
 extern void RamfuncsRunStart;
 
+PIE_nVECTOR_IRQ enActiveVector;
+
+MCU__pvfIRQVectorHandler_t pointer;
 
 interrupt void IRQ32 (void)
 {
+    enActiveVector = PIE__enGetActiveIRQVector();
     return;
 }
 
 int main(void)
 {
     MAIN_vStartup();
+    PIE__vEnable();
     MCU__vEnaGlobalInterrupt_Debug();
-    MCU__vEnaWriteProtectedRegisters();
-    PIE->CTRL |= 1U;
-    PIE->ACK = 0xFFFFU;
+    PIE__vClearAllAcknowledgeIRQVector();
     PIE->GROUP[0U].IER= 1U;
-    PIE_VECTOR->IRQ.GROUP1_IRQ[0U] = &IRQ32;
-    PIE_vRegisterIRQVectorHandler(&IRQ32, 0, PIE_enVECTOR_IRQ_ADC2_PRI);
-    MCU__vDisWriteProtectedRegisters();
+    PIE__vRegisterIRQVectorHandler(&IRQ32, 0, PIE_enVECTOR_IRQ_ADC1_PRI);
+    pointer = PIE__pfvGetIRQVectorHandler(PIE_enVECTOR_IRQ_ADC1_PRI);
+    PIE__vRegisterIRQVectorHandler(pointer, 0, PIE_enVECTOR_IRQ_EPWM1_TZ);
 
     MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP1);
+    MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP2);
 	while(1U)
 	{
 

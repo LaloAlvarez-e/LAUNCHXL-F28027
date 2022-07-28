@@ -22,30 +22,45 @@
  * 21 jul. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
 #include "DriverLib/PIE/Driver/xHeader/PIE_RegisterIRQVector.h"
-#include "DriverLib/MCU/MCU.h"
-#include "DriverLib/PIE/Peripheral/PIE_Peripheral.h"
+#include "DriverLib/PIE/Driver/Intrinsics/PIE_Intrinsics.h"
 
-void PIE_vRegisterIRQVectorHandler(MCU_IRQ_VECTOR_t pfIrqVectorHandler,
-                                       MCU_IRQ_VECTOR_t* pfIrqArrayHandler,
-                                       PIE_nVECTOR_IRQ enInterruptVector)
+void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
+                                   MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
+                                   PIE_nVECTOR_IRQ enInterruptVector)
 {
     uint32_t u32InterruptVector;
-    uint16_t u16StatusRegister;
+    PIE_VECTOR_Register_t stVectorRegister;
 
     if(0U != (uintptr_t) pfIrqVectorHandler)
     {
         u32InterruptVector = (uint32_t) enInterruptVector;
-        MCU__vEnaWriteProtectedRegisters();
-        u16StatusRegister = MCU__u16DisGlobalInterrupt_Debug();
-        PIE_VECTOR_IRQ_ARRAY->ARRAY[u32InterruptVector] = pfIrqVectorHandler;
-
-        MCU__vSetGlobalStatus(u16StatusRegister);
-        MCU__vDisWriteProtectedRegisters();
+        stVectorRegister.u16Shift = 0U;
+        stVectorRegister.u32Mask = 0xFFFFFFFFU;
+        stVectorRegister.uptrAddress = u32InterruptVector << 1U;
+        stVectorRegister.u32Value = (uint32_t) pfIrqVectorHandler;
+        PIE_VECTOR__vWriteRegister(&stVectorRegister);
         if(0U != (uintptr_t) pfIrqArrayHandler)
         {
             *pfIrqArrayHandler = pfIrqVectorHandler;
         }
     }
+}
+
+
+MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enInterruptVector)
+{
+    uint32_t u32InterruptVector;
+    PIE_VECTOR_Register_t stVectorRegister;
+
+    u32InterruptVector = (uint32_t) enInterruptVector;
+    stVectorRegister.u16Shift = 0U;
+    stVectorRegister.u32Mask = 0xFFFFFFFFU;
+    stVectorRegister.uptrAddress = u32InterruptVector << 1U;
+    stVectorRegister.u32Value = 0U;
+    PIE_VECTOR__u32ReadRegister(&stVectorRegister);
+
+    return((MCU__pvfIRQVectorHandler_t) stVectorRegister.u32Value);
+
 }
 
 

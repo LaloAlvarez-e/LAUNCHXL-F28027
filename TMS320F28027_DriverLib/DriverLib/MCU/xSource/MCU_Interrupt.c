@@ -7,6 +7,32 @@
 #include "DriverLib/MCU/xHeader/MCU_Interrupt.h"
 
 
+void MCU__pvIRQSourceHandler_Dummy(uintptr_t uptrModule,
+                                       uint32_t u32IntSource)
+{
+    while(1U)
+    {
+    }
+}
+
+void MCU__pvIRQVectorHandler_Dummy(void)
+{
+    while(1U)
+    {
+    }
+}
+
+void MCU__pvIRQSourceHandler_Clear(uintptr_t uptrModule,
+                                       uint32_t u32IntSource)
+{
+
+}
+
+void MCU__pvIRQVectorHandler_Clear(void)
+{
+
+}
+
 uint16_t MCU__u16EnaGlobalInterrupt_Debug_RAM(void)
 {
     __asm volatile(

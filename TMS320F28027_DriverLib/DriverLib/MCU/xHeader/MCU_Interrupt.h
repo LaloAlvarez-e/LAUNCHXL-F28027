@@ -10,6 +10,13 @@
 
 #include "DriverLib/MCU/xHeader/MCU_Enum.h"
 
+
+uint16_t MCU__u16IRQSourceHandler_Dummy(uintptr_t uptrModule, uint32_t u32IntSource);
+void MCU__pvIRQVectorHandler_Dummy(void);
+void MCU__pvIRQSourceHandler_Clear(uintptr_t uptrModule,
+                                       uint32_t u32IntSource);
+void MCU__pvIRQVectorHandler_Clear(void);
+
 #define STRINGIZE_NX(A) #A
 #define STRINGIZE(A) STRINGIZE_NX(A)
 

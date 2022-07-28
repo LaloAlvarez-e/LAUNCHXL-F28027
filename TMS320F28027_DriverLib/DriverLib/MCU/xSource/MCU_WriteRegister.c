@@ -66,7 +66,7 @@ void MCU__vWriteRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg)
 void MCU__vWriteProtectedRegister_16Bits(MCU_Register16Bits_t* pstRegisterDataArg)
 {
     MCU__vEnaWriteProtectedRegisters();
-    MCU__vWriteProtectedRegister_16Bits(pstRegisterDataArg);
+    MCU__vWriteRegister_16Bits(pstRegisterDataArg);
     MCU__vDisWriteProtectedRegisters();
 }
 
@@ -111,7 +111,7 @@ void MCU__vWriteRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg)
 void MCU__vWriteProtectedRegister_32Bits(MCU_Register32Bits_t* pstRegisterDataArg)
 {
     MCU__vEnaWriteProtectedRegisters();
-    MCU__vWriteProtectedRegister_32Bits(pstRegisterDataArg);
+    MCU__vWriteRegister_32Bits(pstRegisterDataArg);
     MCU__vDisWriteProtectedRegisters();
 }
 
@@ -156,7 +156,7 @@ void MCU__vWriteRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg)
 void MCU__vWriteProtectedRegister_16Bits_RAM(MCU_Register16Bits_t* pstRegisterDataArg)
 {
     MCU__vEnaWriteProtectedRegisters();
-    MCU__vWriteProtectedRegister_16Bits_RAM(pstRegisterDataArg);
+    MCU__vWriteRegister_16Bits_RAM(pstRegisterDataArg);
     MCU__vDisWriteProtectedRegisters();
 }
 
@@ -201,6 +201,6 @@ void MCU__vWriteRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg)
 void MCU__vWriteProtectedRegister_32Bits_RAM(MCU_Register32Bits_t* pstRegisterDataArg)
 {
     MCU__vEnaWriteProtectedRegisters();
-    MCU__vWriteProtectedRegister_32Bits_RAM(pstRegisterDataArg);
+    MCU__vWriteRegister_32Bits_RAM(pstRegisterDataArg);
     MCU__vDisWriteProtectedRegisters();
 }

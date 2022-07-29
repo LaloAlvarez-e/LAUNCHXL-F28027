@@ -25,6 +25,11 @@
 #ifndef DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLEIRQVECTOR_H_
 #define DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLEIRQVECTOR_H_
 
+#include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
+
+void PIE__vEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
+void PIE__vDisableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
+PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
 
 
 

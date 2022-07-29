@@ -129,6 +129,14 @@ uint16_t MCU__u16EnaInterrupt_RAM(uint16_t u16InterruptArg)
     return (u16InterruptArg);
 }
 
+uint16_t MCU__u16GetEnaInterrupt_RAM(uint16_t u16InterruptArg)
+{
+    __asm volatile(
+           " MOV  AH, IER \n"
+           " AND  AL, AH \n");
+    return (u16InterruptArg);
+}
+
 uint16_t MCU__u16EnaAllInterrupt_RAM(void)
 {
     __asm volatile(
@@ -522,6 +530,15 @@ uint16_t MCU__u16EnaInterrupt(uint16_t u16InterruptArg)
            " MOV  IER, AH \n");
     return (u16InterruptArg);
 }
+
+uint16_t MCU__u16GetEnaInterrupt(uint16_t u16InterruptArg)
+{
+    __asm volatile(
+           " MOV  AH, IER \n"
+           " AND  AL, AH \n");
+    return (u16InterruptArg);
+}
+
 
 uint16_t MCU__u16EnaAllInterrupt(void)
 {

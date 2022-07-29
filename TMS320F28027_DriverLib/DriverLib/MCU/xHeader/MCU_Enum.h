@@ -13,6 +13,9 @@
 #define MCU_MASK_16 (0xFFFFU)
 #define MCU_MASK_32 (0xFFFFFFFFUL)
 
+#define STRINGIZE_NX(A) #A
+#define STRINGIZE(A) STRINGIZE_NX(A)
+
 typedef enum
 {
     MCU_enINT_VECTOR_RESET = 0U,

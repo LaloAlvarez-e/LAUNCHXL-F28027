@@ -18,5 +18,7 @@
 #define MCU__vSetBreakpoint0()    {__asm volatile(" ESTOP0 \n");}
 #define MCU__vSetBreakpoint1()    {__asm volatile(" ESTOP1 \n");}
 #define MCU__vSetC28xMode()    {__asm volatile(" SETC OBJMODE \n");__asm volatile(" CLRC AMODE \n");}
+#define MCU__vNoOperation()    {__asm volatile(" NOP \n");}
+#define MCU__vRepeatNoOperation(value) {__asm volatile(STRINGIZE_NX(\t RPT value || NOP));}
 
 #endif /* MCU_SPECIALFUNCTIONS_H_ */

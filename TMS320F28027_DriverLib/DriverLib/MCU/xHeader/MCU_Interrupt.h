@@ -17,9 +17,6 @@ void MCU__pvIRQSourceHandler_Clear(uintptr_t uptrModule,
                                        uint32_t u32IntSource);
 void MCU__pvIRQVectorHandler_Clear(void);
 
-#define STRINGIZE_NX(A) #A
-#define STRINGIZE(A) STRINGIZE_NX(A)
-
 #define MCU__vSetInterrupt(values)    {__asm volatile(STRINGIZE_NX(\t INTR values));}
 #define MCU__vSetInterruptTrap(values)    {__asm volatile(STRINGIZE_NX(\t TRAP values));}
 #define MCU__vEnaGlobalInterrupt_Debug() {__asm volatile(" CLRC  INTM,DBGM \n");}
@@ -52,6 +49,7 @@ void MCU__vSetGlobalStatus_RAM(uint16_t u16State);
 uint16_t MCU__u16SetGlobalStatus_RAM(uint16_t u16State);
 
 #pragma  CODE_SECTION(MCU__u16EnaInterrupt_RAM, ".TI.ramfunc")
+#pragma  CODE_SECTION(MCU__u16GetEnaInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__vEnaInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__u16EnaAllInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__u16DisInterrupt_RAM, ".TI.ramfunc")
@@ -59,6 +57,7 @@ uint16_t MCU__u16SetGlobalStatus_RAM(uint16_t u16State);
 #pragma  CODE_SECTION(MCU__u16DisAllInterrupt_RAM, ".TI.ramfunc")
 
 uint16_t MCU__u16EnaInterrupt_RAM(uint16_t u16InterruptArg);
+uint16_t MCU__u16GetEnaInterrupt_RAM(uint16_t u16InterruptArg);
 void MCU__vEnaInterrupt_RAM(uint16_t u16InterruptArg);
 uint16_t MCU__u16EnaAllInterrupt_RAM(void);
 uint16_t MCU__u16DisInterrupt_RAM(uint16_t u16InterruptArg);
@@ -109,6 +108,7 @@ void MCU__vSetGlobalStatus(uint16_t u16State);
 uint16_t MCU__u16SetGlobalStatus(uint16_t u16State);
 
 uint16_t MCU__u16EnaInterrupt(uint16_t u16InterruptArg);
+uint16_t MCU__u16GetEnaInterrupt(uint16_t u16InterruptArg);
 void MCU__vEnaInterrupt(uint16_t u16InterruptArg);
 uint16_t MCU__u16EnaAllInterrupt(void);
 uint16_t MCU__u16DisInterrupt(uint16_t u16InterruptArg);

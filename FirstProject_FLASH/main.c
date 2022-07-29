@@ -25,13 +25,19 @@ int main(void)
     PIE__vEnable();
     MCU__vEnaGlobalInterrupt_Debug();
     PIE__vClearAllAcknowledgeIRQVector();
-    PIE->GROUP[0U].IER= 1U;
+    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_ADC1_PRI);
+    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
+    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_ADC9);
+    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_EPWM4_TZ);
+    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_SW3);
     PIE__vRegisterIRQVectorHandler(&IRQ32, 0, PIE_enVECTOR_IRQ_ADC1_PRI);
     pointer = PIE__pfvGetIRQVectorHandler(PIE_enVECTOR_IRQ_ADC1_PRI);
     PIE__vRegisterIRQVectorHandler(pointer, 0, PIE_enVECTOR_IRQ_EPWM1_TZ);
 
     MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP1);
     MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP2);
+    PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM4_TZ);
+    PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
 	while(1U)
 	{
 

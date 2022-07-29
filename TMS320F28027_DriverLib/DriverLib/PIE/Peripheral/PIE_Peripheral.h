@@ -32,5 +32,4 @@
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_StructRegister.h"
 #include "DriverLib/PIE/Peripheral/RegisterDefines/PIE_RegisterDefines.h"
 
-
 #endif /* DRIVERLIB_PIE_PERIPHERAL_PIE_PERIPHERAL_H_ */

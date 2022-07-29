@@ -34,8 +34,7 @@ int main(void)
     pointer = PIE__pfvGetIRQVectorHandler(PIE_enVECTOR_IRQ_ADC1_PRI);
     PIE__vRegisterIRQVectorHandler(pointer, 0, PIE_enVECTOR_IRQ_EPWM1_TZ);
 
-    MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP1);
-    MCU__vForceInterrupt(MCU_enINT_VECTOR_GROUP2);
+    PIE__vClearStatusIRQVector(PIE_enVECTOR_IRQ_ADC1_PRI);
     PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM4_TZ);
     PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
 	while(1U)

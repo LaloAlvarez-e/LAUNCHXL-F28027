@@ -15,7 +15,7 @@ void MCU__pvIRQSourceHandler_Dummy(uintptr_t uptrModule,
     }
 }
 
-void MCU__pvIRQVectorHandler_Dummy(void)
+interrupt void MCU__pvIRQVectorHandler_Dummy(void)
 {
     while(1U)
     {
@@ -28,7 +28,7 @@ void MCU__pvIRQSourceHandler_Clear(uintptr_t uptrModule,
 
 }
 
-void MCU__pvIRQVectorHandler_Clear(void)
+interrupt void MCU__pvIRQVectorHandler_Clear(void)
 {
 
 }

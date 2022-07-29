@@ -1,6 +1,6 @@
 /**
  *
- * @file PIE_EnableIRQVector.h
+ * @file PIE_StatusIRQVector.h
  * @copyright
  * @verbatim InDeviceMex 2021 @endverbatim
  *
@@ -22,13 +22,12 @@
  * 28 jul. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
 
-#ifndef DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLEIRQVECTOR_H_
-#define DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLEIRQVECTOR_H_
+#ifndef DRIVERLIB_PIE_DRIVER_XHEADER_PIE_STATUSIRQVECTOR_H_
+#define DRIVERLIB_PIE_DRIVER_XHEADER_PIE_STATUSIRQVECTOR_H_
 
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 
-void PIE__vEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
-void PIE__vDisableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
-PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
+void PIE__vClearStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
+PIE_nINT_STATUS PIE__enGetStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg);
 
-#endif /* DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLEIRQVECTOR_H_ */
+#endif /* DRIVERLIB_PIE_DRIVER_XHEADER_PIE_STATUSIRQVECTOR_H_ */

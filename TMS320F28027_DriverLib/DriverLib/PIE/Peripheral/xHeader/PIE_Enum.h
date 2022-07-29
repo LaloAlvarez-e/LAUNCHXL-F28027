@@ -35,6 +35,12 @@ typedef enum
 
 typedef enum
 {
+    PIE_enINT_STATUS_NOOCCUR = 0U,
+    PIE_enINT_STATUS_OCCUR = 1U,
+}PIE_nINT_STATUS;
+
+typedef enum
+{
     PIE_enACK_UNBLOCKED = 0U,
     PIE_enACK_BLOCKED = 1U,
 }PIE_nACK;

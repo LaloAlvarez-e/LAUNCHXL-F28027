@@ -29,9 +29,9 @@
 
 void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
                                        MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
-                                       PIE_nVECTOR_IRQ enInterruptVector);
+                                       PIE_nVECTOR_IRQ enIrqVectorArg);
 
-MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enInterruptVector);
+MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enIrqVectorArg);
 
 
 #endif /* DRIVERLIB_PIE_DRIVER_XHEADER_PIE_REGISTERIRQVECTOR_H_ */

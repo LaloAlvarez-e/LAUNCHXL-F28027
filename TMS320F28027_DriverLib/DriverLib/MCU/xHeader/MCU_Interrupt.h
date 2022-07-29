@@ -12,10 +12,10 @@
 
 
 uint16_t MCU__u16IRQSourceHandler_Dummy(uintptr_t uptrModule, uint32_t u32IntSource);
-void MCU__pvIRQVectorHandler_Dummy(void);
+interrupt void MCU__pvIRQVectorHandler_Dummy(void);
 void MCU__pvIRQSourceHandler_Clear(uintptr_t uptrModule,
                                        uint32_t u32IntSource);
-void MCU__pvIRQVectorHandler_Clear(void);
+interrupt void MCU__pvIRQVectorHandler_Clear(void);
 
 #define MCU__vSetInterrupt(values)    {__asm volatile(STRINGIZE_NX(\t INTR values));}
 #define MCU__vSetInterruptTrap(values)    {__asm volatile(STRINGIZE_NX(\t TRAP values));}

@@ -26,14 +26,14 @@
 
 void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
                                    MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
-                                   PIE_nVECTOR_IRQ enInterruptVector)
+                                   PIE_nVECTOR_IRQ enIrqVectorArg)
 {
     uint32_t u32InterruptVector;
     PIE_VECTOR_Register_t stVectorRegister;
 
     if(0U != (uintptr_t) pfIrqVectorHandler)
     {
-        u32InterruptVector = (uint32_t) enInterruptVector;
+        u32InterruptVector = (uint32_t) enIrqVectorArg;
         stVectorRegister.u16Shift = 0U;
         stVectorRegister.u32Mask = 0xFFFFFFFFU;
         stVectorRegister.uptrAddress = u32InterruptVector << 1U;
@@ -47,12 +47,12 @@ void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandle
 }
 
 
-MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enInterruptVector)
+MCU__pvfIRQVectorHandler_t PIE__pfvGetIRQVectorHandler(PIE_nVECTOR_IRQ enIrqVectorArg)
 {
     uint32_t u32InterruptVector;
     PIE_VECTOR_Register_t stVectorRegister;
 
-    u32InterruptVector = (uint32_t) enInterruptVector;
+    u32InterruptVector = (uint32_t) enIrqVectorArg;
     stVectorRegister.u16Shift = 0U;
     stVectorRegister.u32Mask = 0xFFFFFFFFU;
     stVectorRegister.uptrAddress = u32InterruptVector << 1U;

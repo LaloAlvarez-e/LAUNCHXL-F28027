@@ -65,6 +65,7 @@ void MCU__vDisInterrupt_RAM(uint16_t u16InterruptArg);
 uint16_t MCU__u16DisAllInterrupt_RAM(void);
 
 #pragma  CODE_SECTION(MCU__u16EnaDebugInterrupt_RAM, ".TI.ramfunc")
+#pragma  CODE_SECTION(MCU__u16GetEnaDebugInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__vEnaDebugInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__u16EnaAllDebugInterrupt_RAM, ".TI.ramfunc")
 #pragma  CODE_SECTION(MCU__vEnaAllDebugInterrupt_RAM, ".TI.ramfunc")
@@ -73,6 +74,7 @@ uint16_t MCU__u16DisAllInterrupt_RAM(void);
 #pragma  CODE_SECTION(MCU__vDisAllDebugInterrupt_RAM, ".TI.ramfunc")
 
 uint16_t MCU__u16EnaDebugInterrupt_RAM(uint16_t u16InterruptArg);
+uint16_t MCU__u16GetEnaDebugInterrupt_RAM(uint16_t u16InterruptArg);
 void MCU__vEnaDebugInterrupt_RAM(uint16_t u16InterruptArg);
 uint16_t MCU__u16EnaAllDebugInterrupt_RAM(void);
 void MCU__vEnaAllDebugInterrupt_RAM(void);
@@ -116,6 +118,7 @@ void MCU__vDisInterrupt(uint16_t u16InterruptArg);
 uint16_t MCU__u16DisAllInterrupt(void);
 
 uint16_t MCU__u16EnaDebugInterrupt(uint16_t u16InterruptArg);
+uint16_t MCU__u16GetEnaDebugInterrupt(uint16_t u16InterruptArg);
 void MCU__vEnaDebugInterrupt(uint16_t u16InterruptArg);
 uint16_t MCU__u16EnaAllDebugInterrupt(void);
 void MCU__vEnaAllDebugInterrupt(void);

@@ -197,6 +197,15 @@ uint16_t MCU__u16EnaDebugInterrupt_RAM(uint16_t u16InterruptArg)
     return (u16InterruptArg);
 }
 
+uint16_t MCU__u16GetEnaDebugInterrupt_RAM(uint16_t u16InterruptArg)
+{
+    __asm volatile(
+           " PUSH DBGIER \n"
+           " POP  AH \n"
+           " AND  AL, AH \n");
+    return (u16InterruptArg);
+}
+
 void MCU__vEnaAllDebugInterrupt_RAM(void)
 {
     __asm volatile(
@@ -599,6 +608,17 @@ uint16_t MCU__u16EnaDebugInterrupt(uint16_t u16InterruptArg)
            " POP  DBGIER \n");
     return (u16InterruptArg);
 }
+
+
+uint16_t MCU__u16GetEnaDebugInterrupt(uint16_t u16InterruptArg)
+{
+    __asm volatile(
+           " PUSH DBGIER \n"
+           " POP  AH \n"
+           " AND  AL, AH \n");
+    return (u16InterruptArg);
+}
+
 
 void MCU__vEnaAllDebugInterrupt(void)
 {

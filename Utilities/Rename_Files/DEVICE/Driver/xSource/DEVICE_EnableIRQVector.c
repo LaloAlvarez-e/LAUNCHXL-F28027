@@ -1,6 +1,6 @@
 /**
  *
- * @file PIE_EnableIRQVector.c
+ * @file DEVICE_EnableIRQVector.c
  * @copyright
  * @verbatim InDeviceMex 2021 @endverbatim
  *
@@ -21,26 +21,26 @@
  * Date           Author     Version     Description
  * 28 jul. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
-#include "DriverLib/PIE/Driver/xHeader/PIE_EnableIRQVector.h"
-#include "DriverLib/PIE/Driver/xHeader/PIE_AcknowledgeIRQVector.h"
-#include "DriverLib/PIE/Driver/Intrinsics/PIE_Intrinsics.h"
-#include "DriverLib/PIE/Peripheral/PIE_Peripheral.h"
+#include "DriverLib/DEVICE/Driver/xHeader/DEVICE_EnableIRQVector.h"
+#include "DriverLib/DEVICE/Driver/xHeader/DEVICE_AcknowledgeIRQVector.h"
+#include "DriverLib/DEVICE/Driver/Intrinsics/DEVICE_Intrinsics.h"
+#include "DriverLib/DEVICE/Peripheral/DEVICE_Peripheral.h"
 #include "DriverLib/MCU/MCU.h"
 
-void PIE__vEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+void DEVICE__vEnableIRQVector(DEVICE_nVECTOR_IRQ enIrqVectorArg)
 {
-    PIE_Register_t stRegister;
+    DEVICE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
     uint16_t u16IerStatus;
 
-    if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
+    if((uint16_t) DEVICE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
-        if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
+        if((uint16_t) DEVICE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
         {
             u16IrqVectorReg = (uint16_t) enIrqVectorArg;
-            u16IrqVectorReg -= (uint16_t) PIE_enVECTOR_IRQ_USER12 + 1U;
+            u16IrqVectorReg -= (uint16_t) DEVICE_enVECTOR_IRQ_USER12 + 1U;
 
             u16IrqBitReg = u16IrqVectorReg;
             u16IrqBitReg &= 0x7U;
@@ -52,20 +52,20 @@ void PIE__vEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             u16IrqGroupReg <<= u16IrqVectorReg;
 
             u16IrqVectorReg <<= 1U;
-            u16IrqVectorReg += PIE_GROUP1_OFFSET + PIE_IER_OFFSET;
+            u16IrqVectorReg += DEVICE_GROUP1_OFFSET + DEVICE_IER_OFFSET;
 
             stRegister.u16Shift = u16IrqBitReg;
-            stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
+            stRegister.u16Mask = DEVICE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            stRegister.u16Value = PIE_GROUP_IER_IE1_ENA;
+            stRegister.u16Value = DEVICE_GROUP_IER_IE1_ENA;
             u16IerStatus = MCU__u16GetEnaInterrupt(u16IrqGroupReg);
-            PIE__vWriteRegister(&stRegister);
+            DEVICE__vWriteRegister(&stRegister);
             if(0U == u16IerStatus)
             {
                 MCU__vEnaInterrupt(u16IrqGroupReg);
             }
         }
-        else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
+        else if((uint16_t) DEVICE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
             u16IrqBitReg = (uint16_t) enIrqVectorArg;
             u16IrqBitReg -= 1U;
@@ -83,21 +83,21 @@ void PIE__vEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
 }
 
 
-void PIE__vEnableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+void DEVICE__vEnableDebugIRQVector(DEVICE_nVECTOR_IRQ enIrqVectorArg)
 {
-    PIE_Register_t stRegister;
+    DEVICE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
     uint16_t u16IerStatus;
     uint16_t u16IerDbgStatus;
 
-    if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
+    if((uint16_t) DEVICE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
-        if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
+        if((uint16_t) DEVICE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
         {
             u16IrqVectorReg = (uint16_t) enIrqVectorArg;
-            u16IrqVectorReg -= (uint16_t) PIE_enVECTOR_IRQ_USER12 + 1U;
+            u16IrqVectorReg -= (uint16_t) DEVICE_enVECTOR_IRQ_USER12 + 1U;
 
             u16IrqBitReg = u16IrqVectorReg;
             u16IrqBitReg &= 0x7U;
@@ -109,15 +109,15 @@ void PIE__vEnableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             u16IrqGroupReg <<= u16IrqVectorReg;
 
             u16IrqVectorReg <<= 1U;
-            u16IrqVectorReg += PIE_GROUP1_OFFSET + PIE_IER_OFFSET;
+            u16IrqVectorReg += DEVICE_GROUP1_OFFSET + DEVICE_IER_OFFSET;
 
             stRegister.u16Shift = u16IrqBitReg;
-            stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
+            stRegister.u16Mask = DEVICE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            stRegister.u16Value = PIE_GROUP_IER_IE1_ENA;
+            stRegister.u16Value = DEVICE_GROUP_IER_IE1_ENA;
             u16IerDbgStatus = MCU__u16GetEnaDebugInterrupt(u16IrqGroupReg);
             u16IerStatus = MCU__u16GetEnaInterrupt(u16IrqGroupReg);
-            PIE__vWriteRegister(&stRegister);
+            DEVICE__vWriteRegister(&stRegister);
             if(0U == u16IerDbgStatus)
             {
                 MCU__vEnaDebugInterrupt(u16IrqGroupReg);
@@ -127,7 +127,7 @@ void PIE__vEnableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
                 MCU__vEnaInterrupt(u16IrqGroupReg);
             }
         }
-        else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
+        else if((uint16_t) DEVICE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
             u16IrqBitReg = (uint16_t) enIrqVectorArg;
             u16IrqBitReg -= 1U;
@@ -145,21 +145,21 @@ void PIE__vEnableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     }
 }
 
-void PIE__vDisableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+void DEVICE__vDisableIRQVector(DEVICE_nVECTOR_IRQ enIrqVectorArg)
 {
-    PIE_Register_t stRegister;
+    DEVICE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
     uint16_t u16InterruptStatus;
     uint16_t u16GroupStatus;
 
-    if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
+    if((uint16_t) DEVICE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
-        if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
+        if((uint16_t) DEVICE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
         {
             u16IrqVectorReg = (uint16_t) enIrqVectorArg;
-            u16IrqVectorReg -= (uint16_t) PIE_enVECTOR_IRQ_USER12 + 1U;
+            u16IrqVectorReg -= (uint16_t) DEVICE_enVECTOR_IRQ_USER12 + 1U;
 
             u16IrqBitReg = u16IrqVectorReg;
             u16IrqBitReg &= 0x7U;
@@ -171,30 +171,30 @@ void PIE__vDisableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             u16IrqGroupReg <<= u16IrqVectorReg;
 
             u16IrqVectorReg <<= 1U;
-            u16IrqVectorReg += PIE_GROUP1_OFFSET + PIE_IER_OFFSET;
+            u16IrqVectorReg += DEVICE_GROUP1_OFFSET + DEVICE_IER_OFFSET;
 
             stRegister.u16Shift = u16IrqBitReg;
-            stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
+            stRegister.u16Mask = DEVICE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            stRegister.u16Value = PIE_GROUP_IER_IE1_DIS;
+            stRegister.u16Value = DEVICE_GROUP_IER_IE1_DIS;
 
             u16InterruptStatus = MCU__u16DisGlobalInterrupt_Debug();
-            PIE__vWriteRegister(&stRegister);
+            DEVICE__vWriteRegister(&stRegister);
             MCU__vRepeatNoOperation(#5);
             MCU__vClearInterruptStatus(u16IrqGroupReg);
-            PIE__vClearAcknowledgeIRQVector(enIrqVectorArg);
+            DEVICE__vClearAcknowledgeIRQVector(enIrqVectorArg);
 
-            stRegister.u16Shift = PIE_GROUP_IER_R_IE1_BIT;
+            stRegister.u16Shift = DEVICE_GROUP_IER_R_IE1_BIT;
             stRegister.u16Mask = 0xFFFFU;
             stRegister.uptrAddress = u16IrqVectorReg;
-            u16GroupStatus = PIE__u16ReadRegister(&stRegister);
+            u16GroupStatus = DEVICE__u16ReadRegister(&stRegister);
             if(0U == u16GroupStatus)
             {
                 MCU__vDisInterrupt(u16IrqGroupReg);
             }
             MCU__vSetGlobalStatus(u16InterruptStatus);
         }
-        else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
+        else if((uint16_t) DEVICE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
             u16IrqBitReg = (uint16_t) enIrqVectorArg;
             u16IrqBitReg -= 1U;
@@ -210,21 +210,21 @@ void PIE__vDisableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     }
 }
 
-void PIE__vDisableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+void DEVICE__vDisableDebugIRQVector(DEVICE_nVECTOR_IRQ enIrqVectorArg)
 {
-    PIE_Register_t stRegister;
+    DEVICE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
     uint16_t u16InterruptStatus;
     uint16_t u16GroupStatus;
 
-    if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
+    if((uint16_t) DEVICE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
-        if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
+        if((uint16_t) DEVICE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
         {
             u16IrqVectorReg = (uint16_t) enIrqVectorArg;
-            u16IrqVectorReg -= (uint16_t) PIE_enVECTOR_IRQ_USER12 + 1U;
+            u16IrqVectorReg -= (uint16_t) DEVICE_enVECTOR_IRQ_USER12 + 1U;
 
             u16IrqBitReg = u16IrqVectorReg;
             u16IrqBitReg &= 0x7U;
@@ -236,23 +236,23 @@ void PIE__vDisableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             u16IrqGroupReg <<= u16IrqVectorReg;
 
             u16IrqVectorReg <<= 1U;
-            u16IrqVectorReg += PIE_GROUP1_OFFSET + PIE_IER_OFFSET;
+            u16IrqVectorReg += DEVICE_GROUP1_OFFSET + DEVICE_IER_OFFSET;
 
             stRegister.u16Shift = u16IrqBitReg;
-            stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
+            stRegister.u16Mask = DEVICE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            stRegister.u16Value = PIE_GROUP_IER_IE1_DIS;
+            stRegister.u16Value = DEVICE_GROUP_IER_IE1_DIS;
 
             u16InterruptStatus = MCU__u16DisGlobalInterrupt_Debug();
-            PIE__vWriteRegister(&stRegister);
+            DEVICE__vWriteRegister(&stRegister);
             MCU__vRepeatNoOperation(#5);
             MCU__vClearInterruptStatus(u16IrqGroupReg);
-            PIE__vClearAcknowledgeIRQVector(enIrqVectorArg);
+            DEVICE__vClearAcknowledgeIRQVector(enIrqVectorArg);
 
-            stRegister.u16Shift = PIE_GROUP_IER_R_IE1_BIT;
+            stRegister.u16Shift = DEVICE_GROUP_IER_R_IE1_BIT;
             stRegister.u16Mask = 0xFFFFU;
             stRegister.uptrAddress = u16IrqVectorReg;
-            u16GroupStatus = PIE__u16ReadRegister(&stRegister);
+            u16GroupStatus = DEVICE__u16ReadRegister(&stRegister);
             if(0U == u16GroupStatus)
             {
                 MCU__vDisDebugInterrupt(u16IrqGroupReg);
@@ -260,7 +260,7 @@ void PIE__vDisableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             }
             MCU__vSetGlobalStatus(u16InterruptStatus);
         }
-        else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
+        else if((uint16_t) DEVICE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
             u16IrqBitReg = (uint16_t) enIrqVectorArg;
             u16IrqBitReg -= 1U;
@@ -277,21 +277,21 @@ void PIE__vDisableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     }
 }
 
-PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+DEVICE_nENABLE DEVICE__enGetEnableIRQVector(DEVICE_nVECTOR_IRQ enIrqVectorArg)
 {
 
-    PIE_Register_t stRegister;
+    DEVICE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
-    PIE_nENABLE enEnableReg = PIE_enENABLE_ENA;
+    DEVICE_nENABLE enEnableReg = DEVICE_enENABLE_ENA;
 
-    if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
+    if((uint16_t) DEVICE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
-        if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
+        if((uint16_t) DEVICE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
         {
             u16IrqVectorReg = (uint16_t) enIrqVectorArg;
-            u16IrqVectorReg -= (uint16_t) PIE_enVECTOR_IRQ_USER12 + 1U;
+            u16IrqVectorReg -= (uint16_t) DEVICE_enVECTOR_IRQ_USER12 + 1U;
 
             u16IrqBitReg = u16IrqVectorReg;
             u16IrqBitReg &= 0x7U;
@@ -300,21 +300,21 @@ PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             u16IrqVectorReg &= 0xFU;
 
             u16IrqVectorReg <<= 1U;
-            u16IrqVectorReg += PIE_GROUP1_OFFSET + PIE_IER_OFFSET;
+            u16IrqVectorReg += DEVICE_GROUP1_OFFSET + DEVICE_IER_OFFSET;
 
             stRegister.u16Shift = u16IrqBitReg;
-            stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
+            stRegister.u16Mask = DEVICE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            enEnableReg = (PIE_nENABLE) PIE__u16ReadRegister(&stRegister);
+            enEnableReg = (DEVICE_nENABLE) DEVICE__u16ReadRegister(&stRegister);
         }
-        else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
+        else if((uint16_t) DEVICE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
             u16IrqBitReg = (uint16_t) enIrqVectorArg;
             u16IrqBitReg -= 1U;
 
             u16IrqGroupReg = 1U;
             u16IrqGroupReg <<= u16IrqBitReg;
-            enEnableReg = (PIE_nENABLE) MCU__u16GetEnaInterrupt(u16IrqGroupReg);
+            enEnableReg = (DEVICE_nENABLE) MCU__u16GetEnaInterrupt(u16IrqGroupReg);
         }
         else
         {

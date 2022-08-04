@@ -1,0 +1,198 @@
+/**
+ *
+ * @file DEVICE_RegisterDefines.h
+ * @copyright
+ * @verbatim InDeviceMex 2021 @endverbatim
+ *
+ * @par Responsibility
+ * @verbatim InDeviceMex Developers @endverbatim
+ *
+ * @version
+ * @verbatim 1.0 @endverbatim
+ *
+ * @date
+ * @verbatim 3 ago. 2022 @endverbatim
+ *
+ * @author
+ * @verbatim InDeviceMex @endverbatim
+ *
+ * @par Change History
+ * @verbatim
+ * Date           Author     Version     Description
+ * 3 ago. 2022     InDeviceMex    1.0         initial Version@endverbatim
+ */
+
+#ifndef DRIVERLIB_DEVICE_PERIPHERAL_XHEADER_DEVICE_REGISTERDEFINES_H_
+#define DRIVERLIB_DEVICE_PERIPHERAL_XHEADER_DEVICE_REGISTERDEFINES_H_
+
+#include "DriverLib/MCU/xHeader/MCU_Variables.h"
+
+/******************************************************************************************
+ ************************************ 1 CNF ***********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define DEVICE_CNF_R_VMAPS_BIT ((uint32_t) 3U)
+
+#define DEVICE_CNF_VMAPS_MASK   ((uint32_t) 0x00000001UL)
+#define DEVICE_CNF_VMAPS_MEMORY ((uint32_t) 0x00000000UL)
+#define DEVICE_CNF_VMAPS_PIE    ((uint32_t) 0x00000001UL)
+
+#define DEVICE_CNF_R_VMAPS_MASK (DEVICE_CNF_VMAPS_MASK<< DEVICE_CNF_R_VMAPS_BIT)
+#define DEVICE_CNF_R_VMAPS_MEMORY (DEVICE_CNF_VMAPS_MEMORY << DEVICE_CNF_R_VMAPS_BIT)
+#define DEVICE_CNF_R_VMAPS_PIE (DEVICE_CNF_VMAPS_PIE << DEVICE_CNF_R_VMAPS_BIT)
+/*-----------*/
+
+/*-----------*/
+#define DEVICE_CNF_R_XRS_BIT ((uint32_t) 5U)
+
+#define DEVICE_CNF_XRS_MASK   ((uint32_t) 0x00000001UL)
+#define DEVICE_CNF_XRS_LOW ((uint32_t) 0x00000000UL)
+#define DEVICE_CNF_XRS_HIGH    ((uint32_t) 0x00000001UL)
+
+#define DEVICE_CNF_R_XRS_MASK (DEVICE_CNF_XRS_MASK<< DEVICE_CNF_R_XRS_BIT)
+#define DEVICE_CNF_R_XRS_LOW (DEVICE_CNF_XRS_LOW << DEVICE_CNF_R_XRS_BIT)
+#define DEVICE_CNF_R_XRS_HIGH (DEVICE_CNF_XRS_HIGH << DEVICE_CNF_R_XRS_BIT)
+/*-----------*/
+
+/*-----------*/
+#define DEVICE_CNF_R_ENPROT_BIT ((uint32_t) 19U)
+
+#define DEVICE_CNF_ENPROT_MASK   ((uint32_t) 0x00000001UL)
+#define DEVICE_CNF_ENPROT_DIS ((uint32_t) 0x00000000UL)
+#define DEVICE_CNF_ENPROT_ENA    ((uint32_t) 0x00000001UL)
+
+#define DEVICE_CNF_R_ENPROT_MASK (DEVICE_CNF_ENPROT_MASK<< DEVICE_CNF_R_ENPROT_BIT)
+#define DEVICE_CNF_R_ENPROT_DIS (DEVICE_CNF_ENPROT_DIS << DEVICE_CNF_R_ENPROT_BIT)
+#define DEVICE_CNF_R_ENPROT_ENA (DEVICE_CNF_ENPROT_ENA << DEVICE_CNF_R_ENPROT_BIT)
+/*-----------*/
+
+/*-----------*/
+#define DEVICE_CNF_R_TRST_BIT ((uint32_t) 27U)
+
+#define DEVICE_CNF_TRST_MASK   ((uint32_t) 0x00000001UL)
+#define DEVICE_CNF_TRST_DISCONNECTED ((uint32_t) 0x00000000UL)
+#define DEVICE_CNF_TRST_CONNECTED    ((uint32_t) 0x00000001UL)
+
+#define DEVICE_CNF_R_TRST_MASK (DEVICE_CNF_TRST_MASK<< DEVICE_CNF_R_TRST_BIT)
+#define DEVICE_CNF_R_TRST_DISCONNECTED (DEVICE_CNF_TRST_DISCONNECTED << DEVICE_CNF_R_TRST_BIT)
+#define DEVICE_CNF_R_TRST_CONNECTED (DEVICE_CNF_TRST_CONNECTED << DEVICE_CNF_R_TRST_BIT)
+/*-----------*/
+
+/******************************************************************************************
+ ************************************ 2 PART ***********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define DEVICE_PART_R_NO_BIT ((uint16_t) 0U)
+
+#define DEVICE_PART_NO_MASK   ((uint16_t) 0x00FFUL)
+#define DEVICE_PART_NO_F280220DA ((uint16_t) 0x0004UL)
+#define DEVICE_PART_NO_F280220PT ((uint16_t) 0x0005UL)
+#define DEVICE_PART_NO_F280260DA ((uint16_t) 0x0006UL)
+#define DEVICE_PART_NO_F280260PT ((uint16_t) 0x0007UL)
+#define DEVICE_PART_NO_F280230DA ((uint16_t) 0x000CUL)
+#define DEVICE_PART_NO_F280230PT ((uint16_t) 0x000DUL)
+#define DEVICE_PART_NO_F280270DA ((uint16_t) 0x000EUL)
+#define DEVICE_PART_NO_F280270PT ((uint16_t) 0x000FUL)
+#define DEVICE_PART_NO_F280200DA ((uint16_t) 0x00C0UL)
+#define DEVICE_PART_NO_F280200PT ((uint16_t) 0x00C1UL)
+#define DEVICE_PART_NO_F28020DA ((uint16_t) 0x00C2UL)
+#define DEVICE_PART_NO_F28020PT ((uint16_t) 0x00C3UL)
+#define DEVICE_PART_NO_F28022DA ((uint16_t) 0x00C4UL)
+#define DEVICE_PART_NO_F28022PT ((uint16_t) 0x00C5UL)
+#define DEVICE_PART_NO_F28026DA ((uint16_t) 0x00C6UL)
+#define DEVICE_PART_NO_F28026PT ((uint16_t) 0x00C7UL)
+#define DEVICE_PART_NO_F28021DA ((uint16_t) 0x00CAUL)
+#define DEVICE_PART_NO_F28021PT ((uint16_t) 0x00CBUL)
+#define DEVICE_PART_NO_F28023DA ((uint16_t) 0x00CCUL)
+#define DEVICE_PART_NO_F28023PT ((uint16_t) 0x00CDUL)
+#define DEVICE_PART_NO_F28027DA ((uint16_t) 0x00CEUL)
+#define DEVICE_PART_NO_F28027PT ((uint16_t) 0x00CFUL)
+
+#define DEVICE_PART_R_NO_MASK (DEVICE_PART_NO_MASK<< DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280220DA (DEVICE_PART_NO_F280220DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280220PT (DEVICE_PART_NO_F280220PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280260DA (DEVICE_PART_NO_F280260DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280260PT (DEVICE_PART_NO_F280260PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280230DA (DEVICE_PART_NO_F280230DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280230PT (DEVICE_PART_NO_F280230PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280270DA (DEVICE_PART_NO_F280270DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280270PT (DEVICE_PART_NO_F280270PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280200DA (DEVICE_PART_NO_F280200DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F280200PT (DEVICE_PART_NO_F280200PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28020DA (DEVICE_PART_NO_F28020DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28020PT (DEVICE_PART_NO_F28020PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28022DA (DEVICE_PART_NO_F28022DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28022PT (DEVICE_PART_NO_F28022PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28026DA (DEVICE_PART_NO_F28026DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28026PT (DEVICE_PART_NO_F28026PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28021DA (DEVICE_PART_NO_F28021DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28021PT (DEVICE_PART_NO_F28021PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28023DA (DEVICE_PART_NO_F28023DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28023PT (DEVICE_PART_NO_F28023PT << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28027DA (DEVICE_PART_NO_F28027DA << DEVICE_PART_R_NO_BIT)
+#define DEVICE_PART_R_NO_F28027PT (DEVICE_PART_NO_F28027PT << DEVICE_PART_R_NO_BIT)
+/*-----------*/
+
+/*-----------*/
+#define DEVICE_PART_R_TYPE_BIT ((uint16_t) 8U)
+
+#define DEVICE_PART_TYPE_MASK   ((uint16_t) 0x00FFUL)
+#define DEVICE_PART_TYPE_FLASH ((uint16_t) 0x0000UL)
+
+#define DEVICE_PART_R_TYPE_MASK (DEVICE_PART_TYPE_MASK<< DEVICE_PART_R_TYPE_BIT)
+#define DEVICE_PART_R_TYPE_FLASH (DEVICE_PART_TYPE_FLASH << DEVICE_PART_R_TYPE_BIT)
+/*-----------*/
+
+
+/******************************************************************************************
+ ************************************ 3 CLASS ***********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define DEVICE_CLASS_R_ID_BIT ((uint16_t) 0U)
+
+#define DEVICE_CLASS_ID_MASK   ((uint16_t) 0xFFFFUL)
+#define DEVICE_CLASS_ID_F28020 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F28022 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F28026 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F280200 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F280220 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F280230 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F280260 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F280270 ((uint16_t) 0x00C7UL)
+#define DEVICE_CLASS_ID_F28021 ((uint16_t) 0x00CFUL)
+#define DEVICE_CLASS_ID_F28023 ((uint16_t) 0x00CFUL)
+#define DEVICE_CLASS_ID_F28027 ((uint16_t) 0x00CFUL)
+
+#define DEVICE_CLASS_R_ID_MASK (DEVICE_CLASS_ID_MASK<< DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28020 (DEVICE_CLASS_ID_F28020 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28022 (DEVICE_CLASS_ID_F28022 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28026 (DEVICE_CLASS_ID_F28026 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F280200 (DEVICE_CLASS_ID_F280200 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F280220 (DEVICE_CLASS_ID_F280220 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F280230 (DEVICE_CLASS_ID_F280230 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F280260 (DEVICE_CLASS_ID_F280260 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F280270 (DEVICE_CLASS_ID_F280270 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28021 (DEVICE_CLASS_ID_F28021 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28023 (DEVICE_CLASS_ID_F28023 << DEVICE_CLASS_R_ID_BIT)
+#define DEVICE_CLASS_R_ID_F28027 (DEVICE_CLASS_ID_F28027 << DEVICE_CLASS_R_ID_BIT)
+/*-----------*/
+
+/******************************************************************************************
+ ************************************ 4 REV ***********************************************
+ ******************************************************************************************/
+/*-----------*/
+#define DEVICE_REV_R_ID_BIT ((uint16_t) 0U)
+
+#define DEVICE_REV_ID_MASK   ((uint16_t) 0xFFFFUL)
+#define DEVICE_REV_ID_REV0 ((uint16_t) 0x0000UL)
+#define DEVICE_REV_ID_REVA ((uint16_t) 0x0001UL)
+#define DEVICE_REV_ID_REVB ((uint16_t) 0x0002UL)
+
+#define DEVICE_REV_R_ID_MASK (DEVICE_REV_ID_MASK<< DEVICE_REV_R_ID_BIT)
+#define DEVICE_REV_R_ID_REV0 (DEVICE_REV_ID_REV0 << DEVICE_REV_R_ID_BIT)
+#define DEVICE_REV_R_ID_REVA (DEVICE_REV_ID_REVA << DEVICE_REV_R_ID_BIT)
+#define DEVICE_REV_R_ID_REVB (DEVICE_REV_ID_REVB << DEVICE_REV_R_ID_BIT)
+/*-----------*/
+
+
+#endif /* DRIVERLIB_DEVICE_PERIPHERAL_XHEADER_DEVICE_REGISTERDEFINES_H_ */

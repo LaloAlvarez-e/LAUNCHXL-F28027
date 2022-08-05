@@ -50,13 +50,13 @@ void MAIN_vStartup(void)
     uint16_t *pui16DestRamCode = (uint16_t*) 0UL;
     MCU__vSetC28xMode();
     MCU__vEnaWriteProtectedRegisters();
-    /*Enable ADC clock*/
+    SYSCTL->PCLKCR0_bits.ADCENCLK = SYSCTL_PCLKCR0_ADCENCLK_ENA;
     MCU__vDeviceCalibration();
-    /*Disable ADC clock*/
+    SYSCTL->PCLKCR0_bits.ADCENCLK = SYSCTL_PCLKCR0_ADCENCLK_DIS;
     MCU__vDisWriteProtectedRegisters();
-    /**/
-    /* Copy the ramcode segment initializers from flash to SRAM.*/
-    /**/
+    /**
+     ** Copy the ramcode segment initializers from flash to SRAM.
+     **/
     pui16SrcRamCode = (uint16_t*) &RamfuncsLoadStart;
     pui16DestRamCode = (uint16_t*) &RamfuncsRunStart;
     while(pui16SrcRamCode < (uint16_t*) &RamfuncsLoadEnd)

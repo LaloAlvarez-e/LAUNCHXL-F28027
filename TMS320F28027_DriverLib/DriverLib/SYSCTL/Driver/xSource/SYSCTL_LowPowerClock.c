@@ -54,11 +54,9 @@ SYSCTL_nLPCLK_DIV SYSCTL__enGetLowPowerClockDivisor(void)
     stRegister.u16Shift = SYSCTL_LOSPCP_R_LSPCLK_BIT;
     stRegister.u16Mask = SYSCTL_LOSPCP_LSPCLK_MASK;
     stRegister.uptrAddress = SYSCTL_LOSPCP_OFFSET;
-    stRegister.u16Value = (uint16_t) SYSCTL_enLPCLK_DIV_DIV1;
     SYSCTL__u16ReadRegister(&stRegister);
     return ((SYSCTL_nLPCLK_DIV) stRegister.u16Value);
 }
-
 
 SYSCTL_nLPCLK_SRC SYSCTL__enGetLowPowerClockSource(void)
 {

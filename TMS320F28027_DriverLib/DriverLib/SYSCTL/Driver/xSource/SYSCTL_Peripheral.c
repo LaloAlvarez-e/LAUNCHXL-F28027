@@ -25,7 +25,7 @@
 #include "DriverLib/SYSCTL/Driver/Intrinsics/SYSCTL_Intrinsics.h"
 #include "DriverLib/SYSCTL/Peripheral/SYSCTL_Peripheral.h"
 
-void SYSCTL__vSetEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg, SYSCTL_nENABLE enEnableArg)
+void SYSCTL__vSetPeripheralState(SYSCTL_nPERIPHERAL enPeripheralArg, SYSCTL_nENABLE enEnableArg)
 {
     SYSCTL_Register_t stRegister;
     uint16_t u16PeripheralBit;
@@ -48,12 +48,12 @@ void SYSCTL__vSetEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg, SYSCTL_nEN
 
 void SYSCTL__vEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg)
 {
-    SYSCTL__vSetEnablePeripheral(enPeripheralArg, SYSCTL_enENABLE_ENA);
+    SYSCTL__vSetPeripheralState(enPeripheralArg, SYSCTL_enENABLE_ENA);
 }
 
 void SYSCTL__vDisablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg)
 {
-    SYSCTL__vSetEnablePeripheral(enPeripheralArg, SYSCTL_enENABLE_DIS);
+    SYSCTL__vSetPeripheralState(enPeripheralArg, SYSCTL_enENABLE_DIS);
 }
 
 SYSCTL_nENABLE SYSCTL__enGetEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg)

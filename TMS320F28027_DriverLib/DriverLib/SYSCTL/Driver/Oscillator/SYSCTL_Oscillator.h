@@ -25,6 +25,10 @@
 #ifndef DRIVERLIB_SYSCTL_DRIVER_OSCILLATOR_SYSCTL_OSCILLATOR_H_
 #define DRIVERLIB_SYSCTL_DRIVER_OSCILLATOR_SYSCTL_OSCILLATOR_H_
 
+#include "DriverLib/SYSCTL/Driver/Oscillator/xHeader/SYSCTL_ExternalInput.h"
+#include "DriverLib/SYSCTL/Driver/Oscillator/xHeader/SYSCTL_ExternalOsc.h"
+#include "DriverLib/SYSCTL/Driver/Oscillator/xHeader/SYSCTL_InternalOsc1.h"
+#include "DriverLib/SYSCTL/Driver/Oscillator/xHeader/SYSCTL_InternalOsc2.h"
 
 
 

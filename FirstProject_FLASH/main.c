@@ -43,17 +43,31 @@ int main(void)
 	}
 }
 
+void MAIN_vClockInit(void)
+{
+    SYSCTL__vSetExternalClockSource(SYSCTL_enEXTCLK_SRC_NONE);
+
+    SYSCTL__vSetOsc1ClockSource(SYSCTL_enOSC1CLK_SRC_INTOSC1);
+    SYSCTL__vSetOsc2ClockSource(SYSCTL_enOSC2CLK_SRC_INTOSC2);
+
+    SYSCTL__vSetCPUWatchdogClockSource(SYSCTL_enWDTCLK_SRC_OSC2CLK);
+    SYSCTL__vSetOscClockSource(SYSCTL_enOSCCLK_SRC_OSC2CLK);
+    SYSCTL__vSetCPUTimer2ClockSource(SYSCTL_enTIMER2CLK_SRC_SYSCLK);
+
+}
+
 
 void MAIN_vStartup(void)
 {
     uint16_t *pui16SrcRamCode = (uint16_t*) 0UL;
     uint16_t *pui16DestRamCode = (uint16_t*) 0UL;
     MCU__vSetC28xMode();
+    SYSCTL__vEnablePeripheral(SYSCTL_enADC);
     MCU__vEnaWriteProtectedRegisters();
-    SYSCTL->PCLKCR0_bits.ADCENCLK = SYSCTL_PCLKCR0_ADCENCLK_ENA;
     MCU__vDeviceCalibration();
-    SYSCTL->PCLKCR0_bits.ADCENCLK = SYSCTL_PCLKCR0_ADCENCLK_DIS;
     MCU__vDisWriteProtectedRegisters();
+    SYSCTL__vDisablePeripheral(SYSCTL_enADC);
+    MAIN_vClockInit();
     /**
      ** Copy the ramcode segment initializers from flash to SRAM.
      **/
@@ -65,5 +79,7 @@ void MAIN_vStartup(void)
         pui16SrcRamCode += 1UL;
         pui16DestRamCode += 1UL;
     }
+
+
 }
 

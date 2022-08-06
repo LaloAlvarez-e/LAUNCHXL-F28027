@@ -25,8 +25,8 @@
 #ifndef DRIVERLIB_SYSCTL_DRIVER_CLOCKSIGNAL_SYSCTL_CLOCKSIGNAL_H_
 #define DRIVERLIB_SYSCTL_DRIVER_CLOCKSIGNAL_SYSCTL_CLOCKSIGNAL_H_
 
-
-
-
+#include "DriverLib/SYSCTL/Driver/ClockSignal/xHeader/SYSCTL_CPUTimer2Clock.h"
+#include "DriverLib/SYSCTL/Driver/ClockSignal/xHeader/SYSCTL_CPUWatchdogClock.h"
+#include "DriverLib/SYSCTL/Driver/ClockSignal/xHeader/SYSCTL_OscClock.h"
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_CLOCKSIGNAL_SYSCTL_CLOCKSIGNAL_H_ */

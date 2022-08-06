@@ -27,7 +27,7 @@
 
 #include "DriverLib/SYSCTL/Peripheral/xHeader/SYSCTL_Enum.h"
 
-void SYSCTL__vSetEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg, SYSCTL_nENABLE enEnableArg);
+void SYSCTL__vSetPeripheralState(SYSCTL_nPERIPHERAL enPeripheralArg, SYSCTL_nENABLE enEnableArg);
 void SYSCTL__vEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg);
 void SYSCTL__vDisablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg);
 SYSCTL_nENABLE SYSCTL__enGetEnablePeripheral(SYSCTL_nPERIPHERAL enPeripheralArg);

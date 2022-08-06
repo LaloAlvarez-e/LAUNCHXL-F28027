@@ -25,8 +25,8 @@
 #ifndef DRIVERLIB_SYSCTL_DRIVER_CLOCK_SYSCTL_CLOCK_H_
 #define DRIVERLIB_SYSCTL_DRIVER_CLOCK_SYSCTL_CLOCK_H_
 
-
-
-
+#include "DriverLib/SYSCTL/Driver/Clock/xHeader/SYSCTL_ExternalClock.h"
+#include "DriverLib/SYSCTL/Driver/Clock/xHeader/SYSCTL_Osc1Clock.h"
+#include "DriverLib/SYSCTL/Driver/Clock/xHeader/SYSCTL_Osc2Clock.h"
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_CLOCK_SYSCTL_CLOCK_H_ */

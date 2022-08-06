@@ -21,7 +21,191 @@
  * Date           Author     Version     Description
  * 5 ago. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
+#include "DriverLib/SYSCTL/Driver/Oscillator/xHeader/SYSCTL_InternalOsc1.h"
+#include "DriverLib/SYSCTL/Driver/Intrinsics/SYSCTL_Intrinsics.h"
+#include "DriverLib/SYSCTL/Peripheral/SYSCTL_Peripheral.h"
 
+#define SYSCTL_INTOSC1_FREQ (10000000UL)
+#define SYSCTL_COARSETRIM_MAX (127)
+#define SYSCTL_COARSETRIM_MIN (-127)
+#define SYSCTL_FINETRIM_MAX (31)
+#define SYSCTL_FINETRIM_MIN (-31)
+
+uint32_t SYSCTL__u32GetInternalOsc1Frequency(void)
+{
+    SYSCTL_nSTATE enStateReg;
+    uint32_t u32FrequencyReg;
+
+    enStateReg = SYSCTL__enGetInternalOsc1PowerState();
+    if(SYSCTL_enSTATE_OFF == enStateReg)
+    {
+        u32FrequencyReg = 0U;
+    }
+    else
+    {
+        u32FrequencyReg = SYSCTL_INTOSC1_FREQ;
+    }
+
+    return (u32FrequencyReg);
+}
+
+void SYSCTL__vSetInternalOsc1PowerState(SYSCTL_nSTATE enStateArg)
+{
+    SYSCTL_Register_t stRegister;
+    uint16_t u16StateReg;
+
+    if(SYSCTL_enSTATE_OFF == enStateArg)
+    {
+        u16StateReg = SYSCTL_CLKCTL_INTOSC1OFF_OFF;
+    }
+    else
+    {
+        u16StateReg = SYSCTL_CLKCTL_INTOSC1OFF_ON;
+    }
+
+    stRegister.u16Shift = SYSCTL_CLKCTL_R_INTOSC1OFF_BIT;
+    stRegister.u16Mask = SYSCTL_CLKCTL_INTOSC1OFF_MASK;
+    stRegister.uptrAddress = SYSCTL_CLKCTL_OFFSET;
+    stRegister.u16Value = u16StateReg;
+    SYSCTL__vWriteRegister(&stRegister);
+}
+
+SYSCTL_nSTATE SYSCTL__enGetInternalOsc1PowerState(void)
+{
+    SYSCTL_Register_t stRegister;
+    SYSCTL_nSTATE enStateReg;
+    uint16_t u16StateReg;
+
+    stRegister.u16Shift = SYSCTL_CLKCTL_R_INTOSC1OFF_BIT;
+    stRegister.u16Mask = SYSCTL_CLKCTL_INTOSC1OFF_MASK;
+    stRegister.uptrAddress = SYSCTL_CLKCTL_OFFSET;
+    u16StateReg = SYSCTL__u16ReadRegister(&stRegister);
+
+    if(SYSCTL_CLKCTL_INTOSC1OFF_OFF == u16StateReg)
+    {
+        enStateReg = SYSCTL_enSTATE_OFF;
+    }
+    else
+    {
+        enStateReg = SYSCTL_enSTATE_ON;
+    }
+    return (enStateReg);
+}
+
+
+void SYSCTL__vSetInternalOsc1OnHaltAction(SYSCTL_nONHALT enOnHaltArg)
+{
+    SYSCTL_Register_t stRegister;
+
+    stRegister.u16Shift = SYSCTL_CLKCTL_R_INTOSC1HALTI_BIT;
+    stRegister.u16Mask = SYSCTL_CLKCTL_INTOSC1HALTI_MASK;
+    stRegister.uptrAddress = SYSCTL_CLKCTL_OFFSET;
+    stRegister.u16Value = (uint16_t) enOnHaltArg;
+    SYSCTL__vWriteRegister(&stRegister);
+}
+
+SYSCTL_nONHALT SYSCTL__enGetInternalOsc1OnHaltAction(void)
+{
+    SYSCTL_Register_t stRegister;
+
+    stRegister.u16Shift = SYSCTL_CLKCTL_R_INTOSC1HALTI_BIT;
+    stRegister.u16Mask = SYSCTL_CLKCTL_INTOSC1HALTI_MASK;
+    stRegister.uptrAddress = SYSCTL_CLKCTL_OFFSET;
+    SYSCTL__u16ReadRegister(&stRegister);
+
+    return ((SYSCTL_nONHALT) stRegister.u16Value);
+}
+
+
+void SYSCTL__vSetInternalOsc1CoarseTrimming(int16_t s16TrimArg)
+{
+    SYSCTL_Register_t stRegister;
+
+    if(SYSCTL_COARSETRIM_MAX < s16TrimArg)
+    {
+        s16TrimArg = SYSCTL_COARSETRIM_MAX;
+    }
+    else if(SYSCTL_COARSETRIM_MIN > s16TrimArg)
+    {
+        s16TrimArg = SYSCTL_COARSETRIM_MIN;
+    }
+    stRegister.u16Shift = SYSCTL_INTOSC1TRIM_R_COARSETRIM_BIT;
+    stRegister.u16Mask = SYSCTL_INTOSC1TRIM_COARSETRIM_MASK;
+    stRegister.uptrAddress = SYSCTL_INTOSC1TRIM_OFFSET;
+    stRegister.u16Value = (uint16_t) s16TrimArg;
+    SYSCTL__vWriteRegister(&stRegister);
+}
+
+int16_t SYSCTL__s16GetInternalOsc1CoarseTrimming(void)
+{
+    SYSCTL_Register_t stRegister;
+    int16_t s16TrimReg;
+    uint16_t u16TrimReg;
+
+    stRegister.u16Shift = SYSCTL_INTOSC1TRIM_R_COARSETRIM_BIT;
+    stRegister.u16Mask = SYSCTL_INTOSC1TRIM_COARSETRIM_MASK;
+    stRegister.uptrAddress = SYSCTL_INTOSC1TRIM_OFFSET;
+    u16TrimReg = SYSCTL__u16ReadRegister(&stRegister);
+    s16TrimReg = (int16_t) u16TrimReg;
+
+    return (s16TrimReg);
+}
+
+
+void SYSCTL__vSetInternalOsc1FineTrimming(int16_t s16TrimArg)
+{
+    SYSCTL_Register_t stRegister;
+
+    if(SYSCTL_FINETRIM_MAX < s16TrimArg)
+    {
+        s16TrimArg = SYSCTL_FINETRIM_MAX;
+    }
+    else if(SYSCTL_FINETRIM_MIN > s16TrimArg)
+    {
+        s16TrimArg = SYSCTL_FINETRIM_MIN;
+    }
+    stRegister.u16Shift = SYSCTL_INTOSC1TRIM_R_FINETRIM_BIT;
+    stRegister.u16Mask = SYSCTL_INTOSC1TRIM_FINETRIM_MASK;
+    stRegister.uptrAddress = SYSCTL_INTOSC1TRIM_OFFSET;
+    stRegister.u16Value = (uint16_t) s16TrimArg;
+    SYSCTL__vWriteRegister(&stRegister);
+}
+
+int16_t SYSCTL__s16GetInternalOsc1FineTrimming(void)
+{
+    SYSCTL_Register_t stRegister;
+    int16_t s16TrimReg;
+    uint16_t u16TrimReg;
+
+    stRegister.u16Shift = SYSCTL_INTOSC1TRIM_R_FINETRIM_BIT;
+    stRegister.u16Mask = SYSCTL_INTOSC1TRIM_FINETRIM_MASK;
+    stRegister.uptrAddress = SYSCTL_INTOSC1TRIM_OFFSET;
+    u16TrimReg = SYSCTL__u16ReadRegister(&stRegister);
+    s16TrimReg = (int16_t) u16TrimReg;
+
+    return (s16TrimReg);
+}
+
+void SYSCTL__vSetInternalOsc1Trimming(int16_t s16CoarseTrimArg, int16_t s16FineTrimArg)
+{
+    SYSCTL__vSetInternalOsc1CoarseTrimming(s16CoarseTrimArg);
+    SYSCTL__vSetInternalOsc1FineTrimming(s16FineTrimArg);
+}
+
+void SYSCTL__vGetInternalOsc1CoarseTrimming(int16_t* ps16CoarseTrimArg, int16_t* ps16FineTrimArg)
+{
+    int16_t s16CoarseTrimReg;
+    int16_t s16FineTrimReg;
+    if((0U != ps16CoarseTrimArg) && (0U != ps16FineTrimArg))
+    {
+        s16CoarseTrimReg = SYSCTL__s16GetInternalOsc1CoarseTrimming();
+        s16FineTrimReg = SYSCTL__s16GetInternalOsc1FineTrimming();
+
+        *ps16CoarseTrimArg = s16CoarseTrimReg;
+        *ps16FineTrimArg = s16FineTrimReg;
+
+    }
+}
 
 
 

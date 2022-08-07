@@ -2,6 +2,7 @@
 /**
  * main.c
  */
+void MAIN_vCopyFlash2Ram(void);
 void MAIN_vStartup(void);
 interrupt void IRQ32 (void);
 
@@ -48,8 +49,6 @@ int main(void)
 
 void MAIN_vStartup(void)
 {
-    uint16_t *pui16SrcRamCode = (uint16_t*) 0UL;
-    uint16_t *pui16DestRamCode = (uint16_t*) 0UL;
     MCU__vSetC28xMode();
     SYSCTL__vEnablePeripheral(SYSCTL_enADC);
     MCU__vEnaWriteProtectedRegisters();
@@ -57,6 +56,17 @@ void MAIN_vStartup(void)
     MCU__vDisWriteProtectedRegisters();
     SYSCTL__vDisablePeripheral(SYSCTL_enADC);
     SYSCTL__u32InitSystemClock(50000000UL);
+    MAIN_vCopyFlash2Ram();
+    FLASH__vInit();
+
+
+}
+
+
+void MAIN_vCopyFlash2Ram(void)
+{
+    uint16_t *pui16SrcRamCode;
+    uint16_t *pui16DestRamCode;
     /**
      ** Copy the ramcode segment initializers from flash to SRAM.
      **/
@@ -69,6 +79,4 @@ void MAIN_vStartup(void)
         pui16DestRamCode += 1UL;
     }
 
-
 }
-

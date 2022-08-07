@@ -28,6 +28,7 @@
 #include "DriverLib/MCU/MCU.h"
 #include "DriverLib/DEVICE/DEVICE.h"
 #include "DriverLib/SYSCTL/SYSCTL.h"
+#include "DriverLib/FLASH/FLASH.h"
 #include "DriverLib/PIE/PIE.h"
 #include "DriverLib/BOR/BOR.h"
 

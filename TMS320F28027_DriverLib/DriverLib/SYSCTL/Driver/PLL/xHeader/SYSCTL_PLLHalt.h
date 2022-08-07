@@ -1,6 +1,6 @@
 /**
  *
- * @file SYSCTL_PLLMultiplier.h
+ * @file SYSCTL_PLLHalt.h
  * @copyright
  * @verbatim InDeviceMex 2021 @endverbatim
  *
@@ -22,14 +22,13 @@
  * 6 ago. 2022     InDeviceMex    1.0         initial Version@endverbatim
  */
 
-#ifndef DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLMULTIPLIER_H_
-#define DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLMULTIPLIER_H_
+#ifndef DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLHALT_H_
+#define DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLHALT_H_
 
 #include "DriverLib/SYSCTL/Peripheral/xHeader/SYSCTL_Enum.h"
 
-void SYSCTL__vSetPLLMultiplier(SYSCTL_nPLL_MULTIPLIER enPLLMultiplierArg);
-SYSCTL_nPLL_MULTIPLIER SYSCTL__enGetPLLMultiplier(void);
-void SYSCTL__vSetPLLMultiplierNum(uint16_t u16MultiplierArg);
-uint16_t SYSCTL__u16GetPLLMultiplier(void);
+void SYSCTL__vSetCPLLOnHaltAction(SYSCTL_nONHALT enOnHaltArg);
+SYSCTL_nONHALT SYSCTL__enGetCPLLOnHaltAction(void);
 
-#endif /* DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLMULTIPLIER_H_ */
+
+#endif /* DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLHALT_H_ */

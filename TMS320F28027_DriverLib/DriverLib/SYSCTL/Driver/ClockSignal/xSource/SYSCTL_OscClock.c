@@ -146,7 +146,7 @@ SYSCTL_nSTATE SYSCTL__enGetOscClockErrorDetectionState(void)
     return (enDetectionStateReg);
 }
 
-void SYSCTL__enClearOscClockErrorDetectionStatus(void)
+void SYSCTL__vClearOscClockErrorDetectionStatus(void)
 {
     SYSCTL_Register_t stRegister;
     stRegister.u16Shift = SYSCTL_PLLSTS_R_MCLKCLR_BIT;

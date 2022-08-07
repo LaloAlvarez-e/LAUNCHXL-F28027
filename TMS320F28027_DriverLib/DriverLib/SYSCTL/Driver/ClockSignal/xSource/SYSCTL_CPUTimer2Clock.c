@@ -27,6 +27,7 @@
 
 #include "DriverLib/SYSCTL/Driver/Clock/SYSCTL_Clock.h"
 #include "DriverLib/SYSCTL/Driver/Oscillator/SYSCTL_Oscillator.h"
+#include "DriverLib/SYSCTL/Driver/xHeader/SYSCTL_SystemClock.h"
 
 void SYSCTL__vSetCPUTimer2ClockSource(SYSCTL_nTIMER2CLK_SRC enClockSourceArg)
 {
@@ -121,7 +122,7 @@ uint32_t SYSCTL__u32GetCPUTimer2ClockFrequency(void)
     switch(enCurrentSourceReg)
     {
     case SYSCTL_enTIMER2CLK_SRC_SYSCLK:
-        u32FrequencyReg = 0U; /*TODO: Pending*/
+        u32FrequencyReg = SYSCTL__u32GetSystemClockFrequency();
         break;
     case SYSCTL_enTIMER2CLK_SRC_EXTCLK:
         u32FrequencyReg = SYSCTL__u32GetExternalClockFrequency();

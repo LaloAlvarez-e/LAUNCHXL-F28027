@@ -25,8 +25,10 @@
 #ifndef DRIVERLIB_SYSCTL_DRIVER_XHEADER_SYSCTL_SYSTEMCLOCK_H_
 #define DRIVERLIB_SYSCTL_DRIVER_XHEADER_SYSCTL_SYSTEMCLOCK_H_
 
+#include "DriverLib/SYSCTL/Peripheral/xHeader/SYSCTL_Enum.h"
 
+uint32_t SYSCTL__u32InitSystemClock(uint32_t u32FrequencyArg);
 
-
+uint32_t SYSCTL__u32GetSystemClockFrequency(void);
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_XHEADER_SYSCTL_SYSTEMCLOCK_H_ */

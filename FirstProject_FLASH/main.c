@@ -19,6 +19,8 @@ interrupt void IRQ32 (void)
     return;
 }
 
+uint32_t u32SystemClockFrequency;
+
 int main(void)
 {
     MAIN_vStartup();
@@ -43,19 +45,6 @@ int main(void)
 	}
 }
 
-void MAIN_vClockInit(void)
-{
-    SYSCTL__vSetExternalClockSource(SYSCTL_enEXTCLK_SRC_NONE);
-
-    SYSCTL__vSetOsc1ClockSource(SYSCTL_enOSC1CLK_SRC_INTOSC1);
-    SYSCTL__vSetOsc2ClockSource(SYSCTL_enOSC2CLK_SRC_INTOSC2);
-
-    SYSCTL__vSetCPUWatchdogClockSource(SYSCTL_enWDTCLK_SRC_OSC2CLK);
-    SYSCTL__vSetOscClockSource(SYSCTL_enOSCCLK_SRC_OSC2CLK);
-    SYSCTL__vSetCPUTimer2ClockSource(SYSCTL_enTIMER2CLK_SRC_SYSCLK);
-
-}
-
 
 void MAIN_vStartup(void)
 {
@@ -67,7 +56,7 @@ void MAIN_vStartup(void)
     MCU__vDeviceCalibration();
     MCU__vDisWriteProtectedRegisters();
     SYSCTL__vDisablePeripheral(SYSCTL_enADC);
-    MAIN_vClockInit();
+    SYSCTL__u32InitSystemClock(50000000UL);
     /**
      ** Copy the ramcode segment initializers from flash to SRAM.
      **/

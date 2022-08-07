@@ -37,6 +37,27 @@ SYSCTL_nLOCK SYSCTL__enGetPLLLockState(void)
     return ((SYSCTL_nLOCK) stRegister.u16Value);
 }
 
+void SYSCTL__vSetPLLLockPeriod(uint16_t u16PeriodArg)
+{
+    SYSCTL_Register_t stRegister;
 
+    stRegister.u16Shift = SYSCTL_PLLLOCKPRD_R_PLLLOCKPRD_BIT;
+    stRegister.u16Mask = SYSCTL_PLLLOCKPRD_PLLLOCKPRD_MASK;
+    stRegister.uptrAddress = SYSCTL_PLLLOCKPRD_OFFSET;
+    stRegister.u16Value = u16PeriodArg;
+    SYSCTL__vWriteRegister(&stRegister);
+}
+
+uint16_t SYSCTL__u16GetPLLLockPeriod(void)
+{
+    SYSCTL_Register_t stRegister;
+
+    stRegister.u16Shift = SYSCTL_PLLLOCKPRD_R_PLLLOCKPRD_BIT;
+    stRegister.u16Mask = SYSCTL_PLLLOCKPRD_PLLLOCKPRD_MASK;
+    stRegister.uptrAddress = SYSCTL_PLLLOCKPRD_OFFSET;
+    SYSCTL__u16ReadRegister(&stRegister);
+
+    return (stRegister.u16Value);
+}
 
 

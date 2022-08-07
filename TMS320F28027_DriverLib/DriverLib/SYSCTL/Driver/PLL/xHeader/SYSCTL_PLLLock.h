@@ -29,6 +29,8 @@
 
 SYSCTL_nLOCK SYSCTL__enGetPLLLockState(void);
 
+void SYSCTL__vSetPLLLockPeriod(uint16_t u16PeriodArg);
+uint16_t SYSCTL__u16GetPLLLockPeriod(void);
 
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_PLL_XHEADER_SYSCTL_PLLLOCK_H_ */

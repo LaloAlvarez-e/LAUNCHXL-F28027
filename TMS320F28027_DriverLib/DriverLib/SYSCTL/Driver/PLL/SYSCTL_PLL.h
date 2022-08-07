@@ -25,8 +25,10 @@
 #ifndef DRIVERLIB_SYSCTL_DRIVER_PLL_SYSCTL_PLL_H_
 #define DRIVERLIB_SYSCTL_DRIVER_PLL_SYSCTL_PLL_H_
 
-
-
-
+#include "DriverLib/SYSCTL/Driver/PLL/xHeader/SYSCTL_PLLDivisor.h"
+#include "DriverLib/SYSCTL/Driver/PLL/xHeader/SYSCTL_PLLHalt.h"
+#include "DriverLib/SYSCTL/Driver/PLL/xHeader/SYSCTL_PLLLock.h"
+#include "DriverLib/SYSCTL/Driver/PLL/xHeader/SYSCTL_PLLMultiplier.h"
+#include "DriverLib/SYSCTL/Driver/PLL/xHeader/SYSCTL_PLLPowerState.h"
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_PLL_SYSCTL_PLL_H_ */

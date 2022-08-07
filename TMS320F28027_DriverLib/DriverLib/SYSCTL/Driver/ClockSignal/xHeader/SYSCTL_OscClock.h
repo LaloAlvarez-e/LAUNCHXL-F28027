@@ -39,7 +39,7 @@ void SYSCTL__vDisableOscClockErrorDetection(void);
 SYSCTL_nSTATE SYSCTL__enGetOscClockErrorDetectionState(void);
 
 SYSCTL_nSTATUS SYSCTL__enGetOscClockErrorDetectionStatus(void);
-void SYSCTL__enClearOscClockErrorDetectionStatus(void);
+void SYSCTL__vClearOscClockErrorDetectionStatus(void);
 
 uint32_t SYSCTL__u32GetOscClockFrequency(void);
 

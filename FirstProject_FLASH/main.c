@@ -2,7 +2,7 @@
 /**
  * main.c
  */
-void MAIN_vCopyFlash2Ram(void);
+void MAIN_vCopyFunctionsFlash2Ram(void);
 void MAIN_vStartup(void);
 interrupt void IRQ32 (void);
 
@@ -21,7 +21,7 @@ interrupt void IRQ32 (void)
 }
 
 uint32_t u32SystemClockFrequency;
-
+uint32_t u32Timer0Value;
 int main(void)
 {
     MAIN_vStartup();
@@ -42,7 +42,7 @@ int main(void)
     PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
 	while(1U)
 	{
-
+	    u32Timer0Value = TIMER->MODULE[0U].TIM;
 	}
 }
 
@@ -56,14 +56,14 @@ void MAIN_vStartup(void)
     MCU__vDisWriteProtectedRegisters();
     SYSCTL__vDisablePeripheral(SYSCTL_enADC);
     SYSCTL__u32InitSystemClock(50000000UL);
-    MAIN_vCopyFlash2Ram();
+    MAIN_vCopyFunctionsFlash2Ram();
     FLASH__vInit();
 
 
 }
 
 
-void MAIN_vCopyFlash2Ram(void)
+void MAIN_vCopyFunctionsFlash2Ram(void)
 {
     uint16_t *pui16SrcRamCode;
     uint16_t *pui16DestRamCode;

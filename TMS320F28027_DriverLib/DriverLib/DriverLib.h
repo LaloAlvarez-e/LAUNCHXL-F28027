@@ -31,5 +31,6 @@
 #include "DriverLib/FLASH/FLASH.h"
 #include "DriverLib/PIE/PIE.h"
 #include "DriverLib/BOR/BOR.h"
+#include "DriverLib/TIMER/TIMER.h"
 
 #endif /* DRIVERLIB_DRIVERLIB_H_ */

@@ -48,9 +48,6 @@
 **/.settings/**
 **/.launches/**
 **/.launches/
-.cproject
-.project
-.ccsproject
 
 #Doxygen Generator
 **/html

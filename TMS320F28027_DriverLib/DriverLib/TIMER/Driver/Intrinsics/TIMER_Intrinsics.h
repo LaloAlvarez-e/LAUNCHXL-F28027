@@ -25,6 +25,7 @@
 #ifndef DRIVERLIB_TIMER_DRIVER_INTRINSICS_TIMER_INTRINSICS_H_
 #define DRIVERLIB_TIMER_DRIVER_INTRINSICS_TIMER_INTRINSICS_H_
 
+#include "DriverLib/TIMER/Driver/Intrinsics/Interrupt/TIMER_Interrupt.h"
 #include "DriverLib/TIMER/Driver/Intrinsics/Primitives/TIMER_Primitives.h"
 
 #endif /* DRIVERLIB_TIMER_DRIVER_INTRINSICS_TIMER_INTRINSICS_H_ */

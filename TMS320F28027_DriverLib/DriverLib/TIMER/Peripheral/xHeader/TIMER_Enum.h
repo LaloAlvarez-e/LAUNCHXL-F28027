@@ -37,6 +37,12 @@ typedef enum
 
 typedef enum
 {
+    TIMER_enINT_STATUS_NOOCCUR = 0U,
+    TIMER_enINT_STATUS_OCCUR = 0U,
+}TIMER_nINT_STATUS;
+
+typedef enum
+{
     TIMER_enSTATE_START = 0U,
     TIMER_enSTATE_STOP = 1U,
 }TIMER_nSTATE;

@@ -4,7 +4,7 @@
  */
 void MAIN_vCopyFunctionsFlash2Ram(void);
 void MAIN_vStartup(void);
-interrupt void IRQ32 (void);
+void IRQ32(uintptr_t uptrModule, uint32_t u32IntSource);
 
 extern void RamfuncsLoadStart;
 extern void RamfuncsLoadEnd;
@@ -14,7 +14,7 @@ PIE_nVECTOR_IRQ enActiveVector;
 
 MCU__pvfIRQVectorHandler_t pointer;
 
-interrupt void IRQ32 (void)
+void IRQ32(uintptr_t uptrModule, uint32_t u32IntSource)
 {
     enActiveVector = PIE__enGetActiveIRQVector();
     return;
@@ -24,22 +24,26 @@ uint32_t u32SystemClockFrequency;
 uint32_t u32Timer0Value;
 int main(void)
 {
+    MCU__pvfIRQVectorHandler_t Timer0Vector;
     MAIN_vStartup();
     PIE__vEnable();
     MCU__vEnaGlobalInterrupt_Debug();
     PIE__vClearAllAcknowledgeIRQVector();
-    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_ADC1_PRI);
-    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
-    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_ADC9);
-    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_EPWM4_TZ);
-    PIE__vEnableIRQVector(PIE_enVECTOR_IRQ_SW3);
-    PIE__vRegisterIRQVectorHandler(&IRQ32, 0, PIE_enVECTOR_IRQ_ADC1_PRI);
-    pointer = PIE__pfvGetIRQVectorHandler(PIE_enVECTOR_IRQ_ADC1_PRI);
-    PIE__vRegisterIRQVectorHandler(pointer, 0, PIE_enVECTOR_IRQ_EPWM1_TZ);
 
-    PIE__vClearStatusIRQVector(PIE_enVECTOR_IRQ_ADC1_PRI);
-    PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM4_TZ);
-    PIE__vDisableIRQVector(PIE_enVECTOR_IRQ_EPWM1_TZ);
+    TIMER0->TCR_bits.TSS = 1U;
+    TIMER0->PRD = 0x2FAU;
+    TIMER0->TPR_bits.TDDR = 0x7FU;
+    TIMER0->TPRH_bits.TDDRH = 0xF0U;
+    TIMER0->TCR_bits.TRB = 1U;
+
+    Timer0Vector = TIMER__pvfGetIRQVectorHandler(TIMER_enMODULE_0);
+    TIMER__vRegisterIRQVectorHandler(Timer0Vector, TIMER_enMODULE_0);
+    TIMER__vRegisterIRQSourceHandler(&IRQ32, TIMER_enMODULE_0);
+
+    TIMER__vEnableInterruptSource(TIMER_enMODULE_0);
+    TIMER__vEnableInterruptVector(TIMER_enMODULE_0);
+
+    TIMER0->TCR_bits.TSS = 0U;
 	while(1U)
 	{
 	    u32Timer0Value = TIMER->MODULE[0U].TIM;

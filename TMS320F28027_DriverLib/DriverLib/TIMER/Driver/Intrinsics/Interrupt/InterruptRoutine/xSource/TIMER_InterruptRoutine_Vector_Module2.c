@@ -30,15 +30,17 @@
 interrupt void TIMER2__vIRQVectorHandler(void)
 {
     volatile uint32_t u32Reg;
+    volatile uint32_t u32Counter;
     MCU__pvfIRQSourceHandler_t pvfCallback;
 
+    u32Counter = TIMER2_TIM_R;
     u32Reg = TIMER2_TCR_R;
 
     if(TIMER_TCR_R_TIF_OCCUR & u32Reg)
     {
         TIMER2_TCR_R |= TIMER_TCR_R_TIF_CLEAR;
         pvfCallback = TIMER__pvfGetIRQSourceHandler(TIMER_enMODULE_2);
-        pvfCallback(TIMER_enMODULE_2, 0U);
+        pvfCallback(TIMER_enMODULE_2, u32Counter);
     }
 }
 

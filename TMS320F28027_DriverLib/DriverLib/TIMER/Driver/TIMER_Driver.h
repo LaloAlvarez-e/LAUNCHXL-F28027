@@ -26,6 +26,11 @@
 #define DRIVERLIB_TIMER_DRIVER_TIMER_DRIVER_H_
 
 #include "DriverLib/TIMER/Driver/Intrinsics/TIMER_Intrinsics.h"
+#include "DriverLib/TIMER/Driver/xHeader/TIMER_Counter.h"
+#include "DriverLib/TIMER/Driver/xHeader/TIMER_EmuMode.h"
+#include "DriverLib/TIMER/Driver/xHeader/TIMER_Period.h"
+#include "DriverLib/TIMER/Driver/xHeader/TIMER_Prescaler.h"
+#include "DriverLib/TIMER/Driver/xHeader/TIMER_Reload.h"
 #include "DriverLib/TIMER/Driver/xHeader/TIMER_State.h"
 
 #endif /* DRIVERLIB_TIMER_DRIVER_TIMER_DRIVER_H_ */

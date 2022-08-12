@@ -30,15 +30,17 @@
 interrupt void TIMER0__vIRQVectorHandler(void)
 {
     volatile uint32_t u32Reg;
+    volatile uint32_t u32Counter;
     MCU__pvfIRQSourceHandler_t pvfCallback;
 
+    u32Counter = TIMER0_TIM_R;
     u32Reg = TIMER0_TCR_R;
 
     if(TIMER_TCR_R_TIF_OCCUR & u32Reg)
     {
         TIMER0_TCR_R |= TIMER_TCR_R_TIF_CLEAR;
         pvfCallback = TIMER__pvfGetIRQSourceHandler(TIMER_enMODULE_0);
-        pvfCallback(TIMER_enMODULE_0, 0U);
+        pvfCallback(TIMER_enMODULE_0, u32Counter);
     }
 
     PIE_ACK_R = PIE_ACK_R_ACK_GROUP1;

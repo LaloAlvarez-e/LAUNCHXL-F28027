@@ -30,23 +30,23 @@ int main(void)
     MCU__vEnaGlobalInterrupt_Debug();
     PIE__vClearAllAcknowledgeIRQVector();
 
-    TIMER0->TCR_bits.TSS = 1U;
-    TIMER0->PRD = 0x2FAU;
-    TIMER0->TPR_bits.TDDR = 0x7FU;
-    TIMER0->TPRH_bits.TDDRH = 0xF0U;
-    TIMER0->TCR_bits.TRB = 1U;
 
     Timer0Vector = TIMER__pvfGetIRQVectorHandler(TIMER_enMODULE_0);
     TIMER__vRegisterIRQVectorHandler(Timer0Vector, TIMER_enMODULE_0);
     TIMER__vRegisterIRQSourceHandler(&IRQ32, TIMER_enMODULE_0);
 
+    TIMER__vSetState(TIMER_enMODULE_0, TIMER_enSTATE_STOP);
+    TIMER__vSetEmulationMode(TIMER_enMODULE_0, TIMER_enEMUMODE_HARDSTOP);
+    TIMER__vSetPrescalerValue(TIMER_enMODULE_0, 50U - 1U);
+    TIMER__vSetPeriod(TIMER_enMODULE_0, 1000U);
     TIMER__vEnableInterruptSource(TIMER_enMODULE_0);
     TIMER__vEnableInterruptVector(TIMER_enMODULE_0);
 
-    TIMER0->TCR_bits.TSS = 0U;
+    TIMER__vReload(TIMER_enMODULE_0);
+    TIMER__vSetState(TIMER_enMODULE_0, TIMER_enSTATE_START);
 	while(1U)
 	{
-	    u32Timer0Value = TIMER->MODULE[0U].TIM;
+	    u32Timer0Value = TIMER__u32GetCounter(TIMER_enMODULE_0);
 	}
 }
 

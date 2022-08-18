@@ -27,7 +27,7 @@
 
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 
-void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
+PIE_nERROR PIE__enRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
                                        MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
                                        PIE_nVECTOR_IRQ enIrqVectorArg);
 

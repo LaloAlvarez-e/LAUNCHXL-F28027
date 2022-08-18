@@ -33,7 +33,7 @@ SYSCTL_nTIMER2CLK_SRC SYSCTL__enGetCPUTimer2ClockSource(void);
 void SYSCTL__vSetCPUTimer2ClockDivisor(SYSCTL_nTIMER2CLK_DIV enClockDivisorArg);
 SYSCTL_nTIMER2CLK_DIV SYSCTL__enGetCPUTimer2ClockDivisor(void);
 
-void SYSCTL__vSetCPUTimer2ClockDivisorNum(uint16_t u16DivArg);
+SYSCTL_nERROR SYSCTL__enSetCPUTimer2ClockDivisorNum(uint16_t u16DivArg);
 uint16_t SYSCTL__u16GetCPUTimer2ClockDivisor(void);
 
 uint32_t SYSCTL__u32GetCPUTimer2ClockFrequency(void);

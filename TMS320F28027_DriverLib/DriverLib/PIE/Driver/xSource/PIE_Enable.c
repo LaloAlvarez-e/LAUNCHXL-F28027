@@ -25,7 +25,7 @@
 #include "DriverLib/PIE/Driver/Intrinsics/PIE_Intrinsics.h"
 #include "DriverLib/PIE/Peripheral/PIE_Peripheral.h"
 
-void PIE__vSetEnable(PIE_nENABLE enEnableArg)
+void PIE__vSetState(PIE_nSTATE enEnableArg)
 {
     PIE_Register_t stRegister;
 
@@ -38,23 +38,23 @@ void PIE__vSetEnable(PIE_nENABLE enEnableArg)
 
 void PIE__vEnable(void)
 {
-    PIE__vSetEnable(PIE_enENABLE_ENA);
+    PIE__vSetState(PIE_enSTATE_ENA);
 }
 
 void PIE__vDisable(void)
 {
-    PIE__vSetEnable(PIE_enENABLE_DIS);
+    PIE__vSetState(PIE_enSTATE_DIS);
 }
 
-PIE_nENABLE PIE__enGetEnable(void)
+PIE_nSTATE PIE__enGetState(void)
 {
     PIE_Register_t stRegister;
 
     stRegister.u16Shift = PIE_CTRL_R_EN_BIT;
     stRegister.u16Mask = PIE_CTRL_EN_MASK;
     stRegister.uptrAddress = PIE_CTRL_OFFSET;
-    stRegister.u16Value = (uint16_t) PIE_enENABLE_DIS;
+    stRegister.u16Value = (uint16_t) PIE_enSTATE_DIS;
     PIE__u16ReadRegister(&stRegister);
-    return ((PIE_nENABLE) stRegister.u16Value);
+    return ((PIE_nSTATE) stRegister.u16Value);
 }
 

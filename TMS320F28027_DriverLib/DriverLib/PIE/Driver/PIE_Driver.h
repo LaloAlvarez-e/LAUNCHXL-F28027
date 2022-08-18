@@ -30,6 +30,7 @@
 #include "DriverLib/PIE/Driver/xHeader/PIE_ActiveIRQVector.h"
 #include "DriverLib/PIE/Driver/xHeader/PIE_Enable.h"
 #include "DriverLib/PIE/Driver/xHeader/PIE_EnableIRQVector.h"
+#include "DriverLib/PIE/Driver/xHeader/PIE_Init.h"
 #include "DriverLib/PIE/Driver/xHeader/PIE_RegisterIRQVector.h"
 #include "DriverLib/PIE/Driver/xHeader/PIE_StatusIRQVector.h"
 

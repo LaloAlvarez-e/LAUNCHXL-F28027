@@ -29,9 +29,15 @@
 
 typedef enum
 {
-    PIE_enENABLE_DIS = 0U,
-    PIE_enENABLE_ENA = 1U,
-}PIE_nENABLE;
+    PIE_enERROR_OK = 0U,
+    PIE_enERROR_POINTER = 1U,
+}PIE_nERROR;
+
+typedef enum
+{
+    PIE_enSTATE_DIS = 0U,
+    PIE_enSTATE_ENA = 1U,
+}PIE_nSTATE;
 
 typedef enum
 {

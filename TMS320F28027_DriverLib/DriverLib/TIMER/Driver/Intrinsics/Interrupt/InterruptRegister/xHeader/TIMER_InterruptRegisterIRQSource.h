@@ -27,7 +27,7 @@
 
 #include <DriverLib/TIMER/Peripheral/xHeader/TIMER_Enum.h>
 
-void TIMER__vRegisterIRQSourceHandler(MCU__pvfIRQSourceHandler_t pvfIrqSourceHandler,
+TIMER_nERROR TIMER__enRegisterIRQSourceHandler(MCU__pvfIRQSourceHandler_t pvfIrqSourceHandler,
                                       TIMER_nMODULE enModuleArg);
 
 #endif /* XDRIVER_MCU_TIMER_DRIVER_INTRINSICS_INTERRUPT_INTERRUPTREGISTER_XHEADER_TIMER_INTERRUPTREGISTERIRQSOURCE_H_ */

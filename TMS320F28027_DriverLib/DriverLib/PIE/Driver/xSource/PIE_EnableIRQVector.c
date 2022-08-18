@@ -277,14 +277,14 @@ void PIE__vDisableDebugIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     }
 }
 
-PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
+PIE_nSTATE PIE__enGetStateIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
 {
 
     PIE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
-    PIE_nENABLE enEnableReg = PIE_enENABLE_ENA;
+    PIE_nSTATE enEnableReg;
 
     if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
@@ -305,7 +305,7 @@ PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             stRegister.u16Shift = u16IrqBitReg;
             stRegister.u16Mask = PIE_GROUP_IER_IE1_MASK;
             stRegister.uptrAddress = u16IrqVectorReg;
-            enEnableReg = (PIE_nENABLE) PIE__u16ReadRegister(&stRegister);
+            enEnableReg = (PIE_nSTATE) PIE__u16ReadRegister(&stRegister);
         }
         else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
         {
@@ -314,12 +314,16 @@ PIE_nENABLE PIE__enGetEnableIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
 
             u16IrqGroupReg = 1U;
             u16IrqGroupReg <<= u16IrqBitReg;
-            enEnableReg = (PIE_nENABLE) MCU__u16GetEnaInterrupt(u16IrqGroupReg);
+            enEnableReg = (PIE_nSTATE) MCU__u16GetEnaInterrupt(u16IrqGroupReg);
         }
         else
         {
             /*ILLEGAL, EMU, NMI, USER always are active, they are always enabled*/
         }
+    }
+    else
+    {
+        enEnableReg = PIE_enSTATE_ENA;
     }
     return (enEnableReg);
 }

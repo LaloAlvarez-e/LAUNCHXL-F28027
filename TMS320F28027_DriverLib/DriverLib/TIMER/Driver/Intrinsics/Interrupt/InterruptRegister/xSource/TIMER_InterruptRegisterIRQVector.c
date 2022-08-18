@@ -27,10 +27,12 @@
 #include "DriverLib/TIMER/Driver/Intrinsics/Interrupt/InterruptRoutine/TIMER_InterruptRoutine.h"
 #include "DriverLib/PIE/PIE.h"
 
-void TIMER__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pvfIrqVectorHandler,
+TIMER_nERROR TIMER__enRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pvfIrqVectorHandler,
                                       TIMER_nMODULE enModuleArg)
 {
     PIE_nVECTOR_IRQ enVectorReg;
+    TIMER_nERROR enErrorReg;
+    PIE_nERROR enPieErrorReg;
     MCU__pvfIRQVectorHandler_t* pvfIrqVectorArray;
     const PIE_nVECTOR_IRQ VECTOR_IRQ_TIMER[(uint16_t) TIMER_enMODULE_MAX]=
     {
@@ -41,6 +43,19 @@ void TIMER__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pvfIrqVectorHan
     {
         pvfIrqVectorArray = TIMER__pvfGetIRQVectorHandlerPointer(enModuleArg);
         enVectorReg = VECTOR_IRQ_TIMER[(uint16_t) enModuleArg];
-        PIE__vRegisterIRQVectorHandler(pvfIrqVectorHandler, pvfIrqVectorArray, enVectorReg);
+        enPieErrorReg = PIE__enRegisterIRQVectorHandler(pvfIrqVectorHandler, pvfIrqVectorArray, enVectorReg);
+        if(PIE_enERROR_POINTER == enPieErrorReg)
+        {
+            enErrorReg = TIMER_enERROR_POINTER;
+        }
+        else if(PIE_enERROR_OK != enPieErrorReg)
+        {
+            enErrorReg = TIMER_enERROR_UNDEFINED;
+        }
     }
+    else
+    {
+        enErrorReg = TIMER_enERROR_POINTER;
+    }
+    return (enErrorReg);
 }

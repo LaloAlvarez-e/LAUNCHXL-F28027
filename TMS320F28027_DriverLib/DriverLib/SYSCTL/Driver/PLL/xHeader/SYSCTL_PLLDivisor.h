@@ -29,7 +29,7 @@
 
 void SYSCTL__vSetPLLDivisor(SYSCTL_nPLL_DIV enPLLDivisorArg);
 SYSCTL_nPLL_DIV SYSCTL__enGetPLLDivisor(void);
-void SYSCTL__vSetPLLDivisorNum(uint16_t u16DivArg);
+SYSCTL_nERROR SYSCTL__enSetPLLDivisorNum(uint16_t u16DivArg);
 uint16_t SYSCTL__u16GetPLLDivisor(void);
 
 

@@ -24,15 +24,17 @@
 #include "DriverLib/PIE/Driver/xHeader/PIE_RegisterIRQVector.h"
 #include "DriverLib/PIE/Driver/Intrinsics/PIE_Intrinsics.h"
 
-void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
+PIE_nERROR PIE__enRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandler,
                                    MCU__pvfIRQVectorHandler_t* pfIrqArrayHandler,
                                    PIE_nVECTOR_IRQ enIrqVectorArg)
 {
     uint32_t u32InterruptVector;
     PIE_VECTOR_Register_t stVectorRegister;
+    PIE_nERROR enErrorReg;
 
     if(0U != (uintptr_t) pfIrqVectorHandler)
     {
+        enErrorReg = PIE_enERROR_OK;
         u32InterruptVector = (uint32_t) enIrqVectorArg;
         stVectorRegister.u16Shift = 0U;
         stVectorRegister.u32Mask = 0xFFFFFFFFU;
@@ -44,6 +46,11 @@ void PIE__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pfIrqVectorHandle
             *pfIrqArrayHandler = pfIrqVectorHandler;
         }
     }
+    else
+    {
+        enErrorReg = PIE_enERROR_POINTER;
+    }
+    return (enErrorReg);
 }
 
 

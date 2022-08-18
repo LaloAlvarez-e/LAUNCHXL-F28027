@@ -42,6 +42,6 @@ void SYSCTL__vSetInternalOsc2FineTrimming(int16_t s16TrimArg);
 int16_t SYSCTL__s16GetInternalOsc2FineTrimming(void);
 
 void SYSCTL__vSetInternalOsc2Trimming(int16_t s16CoarseTrimArg, int16_t s16FineTrimArg);
-void SYSCTL__vGetInternalOsc2CoarseTrimming(int16_t* ps16CoarseTrimArg, int16_t* ps16FineTrimArg);
+SYSCTL_nERROR SYSCTL__enGetInternalOsc2CoarseTrimming(int16_t* ps16CoarseTrimArg, int16_t* ps16FineTrimArg);
 
 #endif /* DRIVERLIB_SYSCTL_DRIVER_OSCILLATOR_XHEADER_SYSCTL_INTERNALOSC2_H_ */

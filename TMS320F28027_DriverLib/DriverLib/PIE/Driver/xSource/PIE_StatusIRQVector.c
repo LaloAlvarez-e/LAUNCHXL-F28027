@@ -36,7 +36,7 @@ void PIE__vClearStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     uint16_t u16InterruptStatus;
     MCU__pvfIRQVectorHandler_t pvfIrqVectorHandler;
     PIE_nINT_STATUS enStatusReg;
-    PIE_nENABLE enEnableReg;
+    PIE_nSTATE enEnableReg;
 
     if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
@@ -46,9 +46,9 @@ void PIE__vClearStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
             if(PIE_enINT_STATUS_OCCUR == enStatusReg)
             {
                 pvfIrqVectorHandler = PIE__pfvGetIRQVectorHandler(enIrqVectorArg);
-                PIE__vRegisterIRQVectorHandler(&MCU__pvIRQVectorHandler_Clear, (MCU__pvfIRQVectorHandler_t*) 0U, enIrqVectorArg);
-                enEnableReg = PIE__enGetEnableIRQVector(enIrqVectorArg);
-                if(PIE_enENABLE_DIS == enEnableReg)
+                PIE__enRegisterIRQVectorHandler(&MCU__pvIRQVectorHandler_Clear, (MCU__pvfIRQVectorHandler_t*) 0U, enIrqVectorArg);
+                enEnableReg = PIE__enGetStateIRQVector(enIrqVectorArg);
+                if(PIE_enSTATE_DIS == enEnableReg)
                 {
                     PIE__vEnableIRQVector(enIrqVectorArg);
                 }
@@ -60,11 +60,11 @@ void PIE__vClearStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
                 }while(PIE_enINT_STATUS_OCCUR == enStatusReg);
                 MCU__vSetGlobalStatus(u16InterruptStatus);
 
-                if(PIE_enENABLE_DIS == enEnableReg)
+                if(PIE_enSTATE_DIS == enEnableReg)
                 {
                     PIE__vDisableIRQVector(enIrqVectorArg);
                 }
-                PIE__vRegisterIRQVectorHandler(pvfIrqVectorHandler, (MCU__pvfIRQVectorHandler_t*) 0U, enIrqVectorArg);
+                PIE__enRegisterIRQVectorHandler(pvfIrqVectorHandler, (MCU__pvfIRQVectorHandler_t*) 0U, enIrqVectorArg);
             }
         }
         else if((uint16_t) PIE_enVECTOR_IRQ_RTOS >= (uint16_t) enIrqVectorArg)
@@ -91,7 +91,7 @@ PIE_nINT_STATUS PIE__enGetStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
     uint16_t u16IrqBitReg;
     uint16_t u16IrqGroupReg;
     uint16_t u16StatusReg;
-    PIE_nINT_STATUS enStatusReg = PIE_enINT_STATUS_NOOCCUR;
+    PIE_nINT_STATUS enStatusReg;
 
     if((uint16_t) PIE_enVECTOR_IRQ_RESET != (uint16_t) enIrqVectorArg)
     {
@@ -136,6 +136,10 @@ PIE_nINT_STATUS PIE__enGetStatusIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
         {
             /*ILLEGAL, EMU, NMI, USER always are active, they are always Statusd*/
         }
+    }
+    else
+    {
+        enStatusReg = PIE_enINT_STATUS_NOOCCUR;
     }
     return (enStatusReg);
 }

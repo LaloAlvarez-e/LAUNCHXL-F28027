@@ -29,6 +29,14 @@
 
 typedef enum
 {
+    SYSCTL_enERROR_OK = 0U,
+    SYSCTL_enERROR_POINTER = 1U,
+    SYSCTL_enERROR_VALUE = 2U,
+    SYSCTL_enERROR_UNDEFINED = 0xFFFFU
+}SYSCTL_nERROR;
+
+typedef enum
+{
     SYSCTL_enENABLE_DIS = 0U,
     SYSCTL_enENABLE_ENA = 1U,
 }SYSCTL_nENABLE;

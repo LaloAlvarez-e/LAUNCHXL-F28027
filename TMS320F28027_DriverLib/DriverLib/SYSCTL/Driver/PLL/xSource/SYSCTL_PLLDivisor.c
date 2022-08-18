@@ -51,12 +51,14 @@ SYSCTL_nPLL_DIV SYSCTL__enGetPLLDivisor(void)
     return ((SYSCTL_nPLL_DIV) stRegister.u16Value);
 }
 
-void SYSCTL__vSetPLLDivisorNum(uint16_t u16DivArg)
+SYSCTL_nERROR SYSCTL__enSetPLLDivisorNum(uint16_t u16DivArg)
 {
     uint16_t u16Value;
+    SYSCTL_nERROR enErrorReg;
 
     if(0U != u16DivArg)
     {
+        enErrorReg = SYSCTL_enERROR_OK;
         if(0U != (0x4U &u16DivArg))
         {
             u16Value = SYSCTL_PLLSTS_DIVSEL_DIV4;
@@ -80,6 +82,11 @@ void SYSCTL__vSetPLLDivisorNum(uint16_t u16DivArg)
         stRegister.u16Value = u16Value;
         SYSCTL__vWriteRegister(&stRegister);
     }
+    else
+    {
+        enErrorReg = SYSCTL_enERROR_VALUE;
+    }
+    return (enErrorReg);
 }
 
 uint16_t SYSCTL__u16GetPLLDivisor(void)

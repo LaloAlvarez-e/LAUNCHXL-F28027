@@ -30,4 +30,6 @@
 void TIMER__vSetPeriod(TIMER_nMODULE enModuleArg, uint32_t u32PeriodArg);
 uint32_t TIMER__u32GetPeriod(TIMER_nMODULE enModuleArg);
 
+uint64_t TIMER__u64SetPeriodUs(TIMER_nMODULE enModuleArg, uint32_t u32PeriodUsArg);
+
 #endif /* DRIVERLIB_TIMER_DRIVER_XHEADER_TIMER_PERIOD_H_ */

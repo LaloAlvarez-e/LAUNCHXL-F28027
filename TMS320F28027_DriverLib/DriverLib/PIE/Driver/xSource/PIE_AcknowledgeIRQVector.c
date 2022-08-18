@@ -61,7 +61,7 @@ PIE_nACK PIE__enGetAcknowledgeIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
 {
     PIE_Register_t stRegister;
     uint16_t u16IrqVectorReg;
-    PIE_nACK enACKValue = PIE_enACK_UNBLOCKED;
+    PIE_nACK enACKValue;
     if((uint16_t) PIE_enVECTOR_IRQ_USER12 < (uint16_t) enIrqVectorArg)
     {
         u16IrqVectorReg = (uint16_t) enIrqVectorArg;
@@ -76,6 +76,10 @@ PIE_nACK PIE__enGetAcknowledgeIRQVector(PIE_nVECTOR_IRQ enIrqVectorArg)
 
         enACKValue = (PIE_nACK) PIE__u16ReadRegister(&stRegister);
 
+    }
+    else
+    {
+        enACKValue = PIE_enACK_UNBLOCKED;
     }
     return (enACKValue);
 }

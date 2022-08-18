@@ -71,12 +71,13 @@ SYSCTL_nTIMER2CLK_DIV SYSCTL__enGetCPUTimer2ClockDivisor(void)
     return ((SYSCTL_nTIMER2CLK_DIV) stRegister.u16Value);
 }
 
-void SYSCTL__vSetCPUTimer2ClockDivisorNum(uint16_t u16DivArg)
+SYSCTL_nERROR SYSCTL__enSetCPUTimer2ClockDivisorNum(uint16_t u16DivArg)
 {
     uint16_t u16Count;
-
+    SYSCTL_nERROR enErrorReg;
     if(0U != u16DivArg)
     {
+        enErrorReg = SYSCTL_enERROR_OK;
         u16Count = 0U;
         u16DivArg >>= 1U;
         u16DivArg &= 0xFU;
@@ -93,6 +94,11 @@ void SYSCTL__vSetCPUTimer2ClockDivisorNum(uint16_t u16DivArg)
         stRegister.u16Value = u16Count;
         SYSCTL__vWriteRegister(&stRegister);
     }
+    else
+    {
+        enErrorReg = SYSCTL_enERROR_VALUE;
+    }
+    return (enErrorReg);
 }
 
 uint16_t SYSCTL__u16GetCPUTimer2ClockDivisor(void)

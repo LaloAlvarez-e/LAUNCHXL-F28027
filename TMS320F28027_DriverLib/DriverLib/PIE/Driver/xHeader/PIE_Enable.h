@@ -27,9 +27,9 @@
 
 #include "DriverLib/PIE/Peripheral/xHeader/PIE_Enum.h"
 
-void PIE__vSetEnable(PIE_nENABLE enEnableArg);
+void PIE__vSetState(PIE_nSTATE enEnableArg);
 void PIE__vEnable(void);
 void PIE__vDisable(void);
-PIE_nENABLE PIE__enGetEnable(void);
+PIE_nSTATE PIE__enGetState(void);
 
 #endif /* DRIVERLIB_PIE_DRIVER_XHEADER_PIE_ENABLE_H_ */

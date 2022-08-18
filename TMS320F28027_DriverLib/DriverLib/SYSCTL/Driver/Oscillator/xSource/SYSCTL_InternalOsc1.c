@@ -192,19 +192,26 @@ void SYSCTL__vSetInternalOsc1Trimming(int16_t s16CoarseTrimArg, int16_t s16FineT
     SYSCTL__vSetInternalOsc1FineTrimming(s16FineTrimArg);
 }
 
-void SYSCTL__vGetInternalOsc1CoarseTrimming(int16_t* ps16CoarseTrimArg, int16_t* ps16FineTrimArg)
+SYSCTL_nERROR SYSCTL__enGetInternalOsc1CoarseTrimming(int16_t* ps16CoarseTrimArg, int16_t* ps16FineTrimArg)
 {
     int16_t s16CoarseTrimReg;
     int16_t s16FineTrimReg;
+    SYSCTL_nERROR enErrorReg;
     if((0U != ps16CoarseTrimArg) && (0U != ps16FineTrimArg))
     {
+        enErrorReg = SYSCTL_enERROR_OK;
         s16CoarseTrimReg = SYSCTL__s16GetInternalOsc1CoarseTrimming();
         s16FineTrimReg = SYSCTL__s16GetInternalOsc1FineTrimming();
 
         *ps16CoarseTrimArg = s16CoarseTrimReg;
         *ps16FineTrimArg = s16FineTrimReg;
-
     }
+    else
+    {
+        enErrorReg = SYSCTL_enERROR_POINTER;
+    }
+
+    return (enErrorReg);
 }
 
 

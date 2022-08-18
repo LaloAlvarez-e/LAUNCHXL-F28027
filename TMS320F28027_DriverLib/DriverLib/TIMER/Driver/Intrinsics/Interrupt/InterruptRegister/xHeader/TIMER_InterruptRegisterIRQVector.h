@@ -27,7 +27,7 @@
 
 #include <DriverLib/TIMER/Peripheral/xHeader/TIMER_Enum.h>
 
-void TIMER__vRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pvfIrqVectorHandler,
+TIMER_nERROR TIMER__enRegisterIRQVectorHandler(MCU__pvfIRQVectorHandler_t pvfIrqVectorHandler,
                                       TIMER_nMODULE enModuleArg);
 
 #endif /* XAPPLICATION_MCU_TIMER_INTERRUPT_INTERRUPTREGISTER_XHEADER_TIMER_INTERRUPTREGISTERIRQVECTOR_H_ */

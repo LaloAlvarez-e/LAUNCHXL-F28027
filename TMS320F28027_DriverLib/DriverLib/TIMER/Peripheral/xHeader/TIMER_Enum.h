@@ -29,6 +29,13 @@
 
 typedef enum
 {
+    TIMER_enERROR_OK = 0UL,
+    TIMER_enERROR_POINTER= 1UL,
+    TIMER_enERROR_UNDEFINED= 0xFFFFUL,
+}TIMER_nERROR;
+
+typedef enum
+{
     TIMER_enMODULE_0 = 0UL,
     TIMER_enMODULE_1 = 1UL,
     TIMER_enMODULE_2 = 2UL,

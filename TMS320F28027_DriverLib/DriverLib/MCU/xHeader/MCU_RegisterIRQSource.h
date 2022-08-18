@@ -28,13 +28,13 @@
 #include "DriverLib/MCU/xHeader/MCU_Variables.h"
 
 
-#pragma CODE_SECTION (MCU__vRegisterIRQSourceHandler_RAM, ".TI.ramfunc")
-void MCU__vRegisterIRQSourceHandler_RAM(MCU__pvfIRQSourceHandler_t pfIrqSourceHandler,
+#pragma CODE_SECTION (MCU__enRegisterIRQSourceHandler_RAM, ".TI.ramfunc")
+MCU_error_t MCU__enRegisterIRQSourceHandler_RAM(MCU__pvfIRQSourceHandler_t pfIrqSourceHandler,
                                         MCU__pvfIRQSourceHandler_t* pfIrqArrayHandler,
                                     uint32_t u32InterruptSource,
                                     uint32_t u32InteruptSourceMax);
 
-void MCU__vRegisterIRQSourceHandler(MCU__pvfIRQSourceHandler_t pfIrqSourceHandler,
+MCU_error_t MCU__enRegisterIRQSourceHandler(MCU__pvfIRQSourceHandler_t pfIrqSourceHandler,
                                     MCU__pvfIRQSourceHandler_t* pfIrqArrayHandler,
                                     uint32_t u32InterruptSource,
                                     uint32_t u32InteruptSourceMax);

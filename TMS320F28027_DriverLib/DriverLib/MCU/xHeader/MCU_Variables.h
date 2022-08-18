@@ -23,6 +23,13 @@ typedef enum
     TRUE = 1U,
 }boolean_t;
 
+
+typedef enum
+{
+    MCU_error_OK = 0U,
+    MCU_error_pointer = 1U,
+}MCU_error_t;
+
 typedef unsigned int UBase_t;
 typedef unsigned int pointer_t;
 typedef int Base_t;

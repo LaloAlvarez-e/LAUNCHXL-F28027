@@ -41,19 +41,24 @@ int main(void)
     MCU__pvfIRQVectorHandler_t TimerVector;
     MAIN_vStartup();
 
+    SYSCTL__vSetOutputClockConfig(SYSCTL_enOUTCLK_SRC_SYSCLK, SYSCTL_enOUTCLK_DIV_DIV4);
     MCU__vEnaWriteProtectedRegisters();
+
     GPIOA->CTRL_bits.QUALPRD0 = 0U;
     GPIO->A.QSEL_LOW = 0U;
     GPIO_ARRAY->CONTROL[0U].MUX_LOW = 0U;
+    GPIO->A.MUX_HIGH_bits.PIN18 = 3U;
     GPIOA->DIR_bits.PIN0 = 1U;
     GPIOA->DIR_bits.PIN1 = 1U;
     GPIOA->DIR_bits.PIN2 = 1U;
     GPIOA->DIR_bits.PIN3 = 1U;
+    GPIOA->DIR_bits.PIN18 = 1U;
 
     GPIOA->PUD_bits.PIN0 = 1U;
     GPIOA->PUD_bits.PIN1 = 1U;
     GPIOA->PUD_bits.PIN2 = 1U;
     GPIOA->PUD_bits.PIN3 = 1U;
+    GPIOA->PUD_bits.PIN18 = 1U;
 
     GPIOA->SET = 0xFU;
 
@@ -75,19 +80,19 @@ int main(void)
     TIMER__vSetState(TIMER_enMODULE_2, TIMER_enSTATE_STOP);
 
     TIMER__vSetEmulationMode(TIMER_enMODULE_0, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_0, 2000000UL);
+    TIMER__u64SetPeriodUs(TIMER_enMODULE_0, 400UL);
     TIMER__vEnableInterruptSource(TIMER_enMODULE_0);
     TIMER__vEnableInterruptVector(TIMER_enMODULE_0);
     TIMER__vReload(TIMER_enMODULE_0);
 
     TIMER__vSetEmulationMode(TIMER_enMODULE_1, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_1, 1000000UL);
+    TIMER__u64SetPeriodUs(TIMER_enMODULE_1, 200UL);
     TIMER__vEnableInterruptSource(TIMER_enMODULE_1);
     TIMER__vEnableInterruptVector(TIMER_enMODULE_1);
     TIMER__vReload(TIMER_enMODULE_1);
 
     TIMER__vSetEmulationMode(TIMER_enMODULE_2, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_2, 500000UL);
+    TIMER__u64SetPeriodUs(TIMER_enMODULE_2, 100UL);
     TIMER__vEnableInterruptSource(TIMER_enMODULE_2);
     TIMER__vEnableInterruptVector(TIMER_enMODULE_2);
     TIMER__vReload(TIMER_enMODULE_2);

@@ -79,7 +79,8 @@ uint32_t SYSCTL__u32InitSystemClock(uint32_t u32FrequencyArg)
     SYSCTL__vSetOsc2ClockSource(SYSCTL_enOSC2CLK_SRC_INTOSC2);
 
     SYSCTL__vSetCPUWatchdogClockSource(SYSCTL_enWDTCLK_SRC_OSC2CLK);
-    SYSCTL__vSetOscClockSource(SYSCTL_enOSCCLK_SRC_OSC2CLK);    SYSCTL__vSetCPUTimer2ClockSource(SYSCTL_enTIMER2CLK_SRC_SYSCLK);
+    SYSCTL__vSetOscClockSource(SYSCTL_enOSCCLK_SRC_OSC2CLK);
+    SYSCTL__vSetCPUTimer2ClockSource(SYSCTL_enTIMER2CLK_SRC_SYSCLK);
 
     u32OscSourceReg = SYSCTL__u32GetOscClockFrequency();
     if(10000000UL >= u32OscSourceReg)

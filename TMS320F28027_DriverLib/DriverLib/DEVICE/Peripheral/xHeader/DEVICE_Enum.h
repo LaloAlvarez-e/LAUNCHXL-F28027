@@ -29,9 +29,9 @@
 
 typedef enum
 {
-    DEVICE_enENABLE_DIS = 0U,
-    DEVICE_enENABLE_ENA = 1U,
-}DEVICE_nENABLE;
+    DEVICE_enSTATE_DIS = 0U,
+    DEVICE_enSTATE_ENA = 1U,
+}DEVICE_nSTATE;
 
 
 typedef enum

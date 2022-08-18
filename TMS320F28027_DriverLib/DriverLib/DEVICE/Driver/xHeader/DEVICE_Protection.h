@@ -27,9 +27,9 @@
 
 #include "DriverLib/DEVICE/Peripheral/xHeader/DEVICE_Enum.h"
 
-void DEVICE__vSetWriteReadProtection(DEVICE_nENABLE enEnableArg);
+void DEVICE__vSetWriteReadProtection(DEVICE_nSTATE enEnableArg);
 void DEVICE__vEnableWriteReadProtection(void);
 void DEVICE__vDisableWriteReadProtection(void);
-DEVICE_nENABLE DEVICE__enGetWriteReadProtection(void);
+DEVICE_nSTATE DEVICE__enGetWriteReadProtection(void);
 
 #endif /* DRIVERLIB_DEVICE_DRIVER_XHEADER_DEVICE_PROTECTION_H_ */

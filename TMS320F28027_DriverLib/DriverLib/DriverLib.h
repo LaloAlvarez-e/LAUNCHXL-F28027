@@ -32,5 +32,6 @@
 #include "DriverLib/PIE/PIE.h"
 #include "DriverLib/BOR/BOR.h"
 #include "DriverLib/TIMER/TIMER.h"
+#include "DriverLib/GPIO/GPIO.h"
 
 #endif /* DRIVERLIB_DRIVERLIB_H_ */

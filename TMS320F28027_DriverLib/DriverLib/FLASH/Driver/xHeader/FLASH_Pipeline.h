@@ -27,16 +27,16 @@
 
 #include "DriverLib/FLASH/Peripheral/xHeader/FLASH_Enum.h"
 
-#pragma  CODE_SECTION(FLASH__vSetEnablePipeline, ".TI.ramfunc")
+#pragma  CODE_SECTION(FLASH__vSetPipelineState, ".TI.ramfunc")
 #pragma  CODE_SECTION(FLASH__vEnablePipeline, ".TI.ramfunc")
 #pragma  CODE_SECTION(FLASH__vDisablePipeline, ".TI.ramfunc")
-#pragma  CODE_SECTION(FLASH__enGetEnablePipeline, ".TI.ramfunc")
+#pragma  CODE_SECTION(FLASH__enGetPipelineState, ".TI.ramfunc")
 
-void FLASH__vSetEnablePipeline(FLASH_nENABLE enEnableArg);
+void FLASH__vSetPipelineState(FLASH_nSTATE enEnableArg);
 void FLASH__vEnablePipeline(void);
 void FLASH__vDisablePipeline(void);
 
-FLASH_nENABLE FLASH__enGetEnablePipeline(void);
+FLASH_nSTATE FLASH__enGetPipelineState(void);
 
 
 

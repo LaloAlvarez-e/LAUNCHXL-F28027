@@ -30,7 +30,7 @@
 #pragma  CODE_SECTION(FLASH__vSetPowerState, ".TI.ramfunc")
 #pragma  CODE_SECTION(FLASH__enGetPowerState, ".TI.ramfunc")
 
-void FLASH__vSetPowerState(FLASH_nSTATE enStateArg);
-FLASH_nSTATE FLASH__enGetPowerState(void);
+void FLASH__vSetPowerState(FLASH_nPOWER_STATE enStateArg);
+FLASH_nPOWER_STATE FLASH__enGetPowerState(void);
 
 #endif /* DRIVERLIB_FLASH_DRIVER_XHEADER_FLASH_POWERSTATE_H_ */

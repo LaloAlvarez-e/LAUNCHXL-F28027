@@ -26,7 +26,7 @@
 #include "DriverLib/FLASH/Driver/Intrinsics/FLASH_Intrinsics.h"
 #include "DriverLib/FLASH/Peripheral/FLASH_Peripheral.h"
 
-void FLASH__vSetPowerState(FLASH_nSTATE enStateArg)
+void FLASH__vSetPowerState(FLASH_nPOWER_STATE enStateArg)
 {
     FLASH_Register_t stRegister;
 
@@ -37,7 +37,7 @@ void FLASH__vSetPowerState(FLASH_nSTATE enStateArg)
     FLASH__vWriteRegister(&stRegister);
 }
 
-FLASH_nSTATE FLASH__enGetPowerState(void)
+FLASH_nPOWER_STATE FLASH__enGetPowerState(void)
 {
     FLASH_Register_t stRegister;
 
@@ -45,7 +45,7 @@ FLASH_nSTATE FLASH__enGetPowerState(void)
     stRegister.u16Mask = FLASH_STATUS_PWRS_MASK;
     stRegister.uptrAddress = FLASH_STATUS_OFFSET;
     FLASH__u16ReadRegister(&stRegister);
-    return ((FLASH_nSTATE) stRegister.u16Value);
+    return ((FLASH_nPOWER_STATE) stRegister.u16Value);
 }
 
 

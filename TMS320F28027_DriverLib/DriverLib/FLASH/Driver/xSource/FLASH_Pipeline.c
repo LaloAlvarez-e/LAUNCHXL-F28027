@@ -26,7 +26,7 @@
 #include "DriverLib/FLASH/Driver/Intrinsics/FLASH_Intrinsics.h"
 #include "DriverLib/FLASH/Peripheral/FLASH_Peripheral.h"
 
-void FLASH__vSetEnablePipeline(FLASH_nENABLE enEnableArg)
+void FLASH__vSetPipelineState(FLASH_nSTATE enEnableArg)
 {
     FLASH_Register_t stRegister;
 
@@ -39,15 +39,15 @@ void FLASH__vSetEnablePipeline(FLASH_nENABLE enEnableArg)
 
 void FLASH__vEnablePipeline(void)
 {
-    FLASH__vSetEnablePipeline(FLASH_enENABLE_ENA);
+    FLASH__vSetPipelineState(FLASH_enSTATE_ENA);
 }
 
 void FLASH__vDisablePipeline(void)
 {
-    FLASH__vSetEnablePipeline(FLASH_enENABLE_DIS);
+    FLASH__vSetPipelineState(FLASH_enSTATE_DIS);
 }
 
-FLASH_nENABLE FLASH__enGetEnablePipeline(void)
+FLASH_nSTATE FLASH__enGetPipelineState(void)
 {
     FLASH_Register_t stRegister;
 
@@ -55,7 +55,7 @@ FLASH_nENABLE FLASH__enGetEnablePipeline(void)
     stRegister.u16Mask = FLASH_OPT_ENPIPE_MASK;
     stRegister.uptrAddress = FLASH_OPT_OFFSET;
     FLASH__u16ReadRegister(&stRegister);
-    return ((FLASH_nENABLE) stRegister.u16Value);
+    return ((FLASH_nSTATE) stRegister.u16Value);
 }
 
 

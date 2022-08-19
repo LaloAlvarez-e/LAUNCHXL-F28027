@@ -33,5 +33,8 @@
 #define GPIO_ARRAY    ((GPIOS_t*) (GPIO_BASE))
 
 uintptr_t GPIO__uptrBlockBaseAddress(GPIO_nPORT enPortArg);
+uintptr_t GPIO_CONTROL__uptrBlockBaseAddress(GPIO_nPORT enPortArg);
+uintptr_t GPIO_DATA__uptrBlockBaseAddress(GPIO_nPORT enPortArg);
+uintptr_t GPIO_INTERRUPT__uptrBlockBaseAddress(GPIO_nPORT enPortArg);
 
 #endif /* DRIVERLIB_GPIO_PERIPHERAL_REGISTERPERIPHERAL_GPIO_REGISTERPERIPHERAL_H_ */

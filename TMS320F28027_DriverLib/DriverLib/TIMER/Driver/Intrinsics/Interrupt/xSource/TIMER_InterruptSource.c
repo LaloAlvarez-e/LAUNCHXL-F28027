@@ -37,7 +37,7 @@ void TIMER__vEnableInterruptSource(TIMER_nMODULE enModuleArg)
     TIMER__vWriteRegister16Bits(enModuleArg, &stRegister);
 }
 
-void TIMER__vDisInterruptSource(TIMER_nMODULE enModuleArg)
+void TIMER__vDisableInterruptSource(TIMER_nMODULE enModuleArg)
 {
     TIMER_Register16Bits_t stRegister;
 

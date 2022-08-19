@@ -30,6 +30,8 @@
 #include "DriverLib/MCU/xHeader/MCU_Variables.h"
 
 #define AIO ((AIO_t*) AIO_BASE)
+#define AIO_CONTROL ((GPIO_CONTROL_t*) AIO_CONTROL_BASE)
+#define AIO_DATA ((GPIO_DATA_t*) AIO_DATA_BASE)
 
 /******************************************************************************************
  ************************************ 4 MUX_LOW *********************************************

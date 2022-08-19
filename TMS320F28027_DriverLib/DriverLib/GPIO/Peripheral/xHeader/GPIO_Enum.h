@@ -30,12 +30,16 @@
 typedef enum
 {
     GPIO_enERROR_OK = 0UL,
+    GPIO_enERROR_POINTER = 1U,
+    GPIO_enERROR_VALUE = 2U,
+    GPIO_enERROR_UNDEFINED = 0xFFFFUL,
 }GPIO_nERROR;
 
 typedef enum
 {
     GPIO_enPORT_A = 0UL,
     GPIO_enPORT_B = 1UL,
+    GPIO_enPORT_RESERVED = 2UL,
     GPIO_enPORT_AIO = 3UL,
     GPIO_enPORT_MAX = 4UL,
 }GPIO_nPORT;

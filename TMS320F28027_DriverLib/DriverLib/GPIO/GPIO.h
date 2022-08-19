@@ -26,5 +26,6 @@
 #define DRIVERLIB_GPIO_GPIO_H_
 
 #include "DriverLib/GPIO/Peripheral/GPIO_Peripheral.h"
+#include "DriverLib/GPIO/Driver/GPIO_Driver.h"
 
 #endif /* DRIVERLIB_GPIO_GPIO_H_ */

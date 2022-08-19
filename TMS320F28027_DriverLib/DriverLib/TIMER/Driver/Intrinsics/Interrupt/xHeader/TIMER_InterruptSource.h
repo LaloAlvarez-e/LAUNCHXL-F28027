@@ -28,7 +28,7 @@
 #include <DriverLib/TIMER/Peripheral/xHeader/TIMER_Enum.h>
 
 void TIMER__vEnableInterruptSource(TIMER_nMODULE enModuleArg);
-void TIMER__vDisInterruptSource(TIMER_nMODULE enModuleArg);
+void TIMER__vDisableInterruptSource(TIMER_nMODULE enModuleArg);
 void TIMER__vClearInterruptSource(TIMER_nMODULE enModuleArg);
 TIMER_nINT_STATUS TIMER__enStatusInterruptSource(TIMER_nMODULE enModuleArg);
 

@@ -30,6 +30,8 @@
 #include "DriverLib/MCU/xHeader/MCU_Variables.h"
 
 #define GPIOB ((GPIOB_t*) GPIOB_BASE)
+#define GPIOB_CONTROL ((GPIO_CONTROL_t*) GPIOB_CONTROL_BASE)
+#define GPIOB_DATA ((GPIO_DATA_t*) GPIOB_DATA_BASE)
 
 /******************************************************************************************
  ************************************ 1 CTRL *********************************************

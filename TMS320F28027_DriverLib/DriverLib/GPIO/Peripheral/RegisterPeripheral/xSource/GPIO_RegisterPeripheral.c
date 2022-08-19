@@ -32,4 +32,30 @@ uintptr_t GPIO__uptrBlockBaseAddress(GPIO_nPORT enPortArg)
     return (GPIO_BLOCK_BASE[(uint16_t) enPortArg]);
 }
 
+uintptr_t GPIO_CONTROL__uptrBlockBaseAddress(GPIO_nPORT enPortArg)
+{
+    uintptr_t GPIO_CONTROL_BLOCK_BASE[(uint16_t) GPIO_enPORT_MAX] =
+    {
+     GPIOA_CONTROL_BASE, GPIOB_CONTROL_BASE, GPIOA_CONTROL_BASE, AIO_CONTROL_BASE
+    };
+    return (GPIO_CONTROL_BLOCK_BASE[(uint16_t) enPortArg]);
+}
+
+uintptr_t GPIO_DATA__uptrBlockBaseAddress(GPIO_nPORT enPortArg)
+{
+    uintptr_t GPIO_DATA_BLOCK_BASE[(uint16_t) GPIO_enPORT_MAX] =
+    {
+     GPIOA_DATA_BASE, GPIOB_DATA_BASE, GPIOA_DATA_BASE, AIO_DATA_BASE
+    };
+    return (GPIO_DATA_BLOCK_BASE[(uint16_t) enPortArg]);
+}
+
+uintptr_t GPIO_INTERRUPT__uptrBlockBaseAddress(GPIO_nPORT enPortArg)
+{
+    uintptr_t GPIO_INTERRUPT_BLOCK_BASE[(uint16_t) GPIO_enPORT_MAX] =
+    {
+     GPIOA_INTERRUPT_BASE, GPIOA_INTERRUPT_BASE, GPIOA_INTERRUPT_BASE, GPIOA_INTERRUPT_BASE
+    };
+    return (GPIO_INTERRUPT_BLOCK_BASE[(uint16_t) enPortArg]);
+}
 

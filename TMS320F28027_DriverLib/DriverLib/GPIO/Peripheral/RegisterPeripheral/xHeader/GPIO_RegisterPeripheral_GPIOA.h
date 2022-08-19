@@ -30,6 +30,9 @@
 #include "DriverLib/MCU/xHeader/MCU_Variables.h"
 
 #define GPIOA ((GPIOA_t*) GPIOA_BASE)
+#define GPIOA_CONTROL ((GPIO_CONTROL_t*) GPIOA_CONTROL_BASE)
+#define GPIOA_DATA ((GPIO_DATA_t*) GPIOA_DATA_BASE)
+#define GPIOA_INTERRUPT ((GPIO_INTERRUPT_t*) GPIOA_INTERRUPT_BASE)
 
 /******************************************************************************************
  ************************************ 1 CTRL *********************************************

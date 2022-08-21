@@ -29,6 +29,7 @@
 #include "DriverLib/SYSCTL/Driver/Clock/SYSCTL_Clock.h"
 #include "DriverLib/SYSCTL/Driver/ClockSignal/SYSCTL_ClockSignal.h"
 #include "DriverLib/SYSCTL/Driver/PLL/SYSCTL_PLL.h"
+#include "DriverLib/SYSCTL/Driver/xHeader/SYSCTL_JTAG.h"
 #include "DriverLib/SYSCTL/Driver/xHeader/SYSCTL_LowPowerClock.h"
 #include "DriverLib/SYSCTL/Driver/xHeader/SYSCTL_OutputClock.h"
 #include "DriverLib/SYSCTL/Driver/xHeader/SYSCTL_Peripheral.h"

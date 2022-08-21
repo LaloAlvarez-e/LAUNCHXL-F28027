@@ -137,8 +137,11 @@ typedef volatile struct
     volatile unsigned short WDINTE: 1;
 }SYSCTL_LPMCR0_t;
 
-
-
+typedef volatile struct
+{
+    volatile unsigned short JTAGDIS: 1;
+    const unsigned short reserved1: 15;
+}SYSCTL_JTAGDEBUG_t;
 
 
 #endif /* DRIVERLIB_SYSCTL_PERIPHERAL_XHEADER_SYSCTL_STRUCTREGISTER_H_ */

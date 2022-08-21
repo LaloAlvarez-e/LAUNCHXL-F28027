@@ -27,16 +27,10 @@
 
 #include "DriverLib/GPIO/Peripheral/xHeader/GPIO_Enum.h"
 
-void GPIO__vWriteRegister16Bits(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg);
-void GPIO__vWriteProtectedRegister16Bits(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg);
+void GPIO__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg);
+void GPIO__vWriteProtectedRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg);
 
-void GPIO_INTERRUPT__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg);
-void GPIO_INTERRUPT__vWriteProtectedRegister(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg);
-
-void GPIO__vWriteRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg);
-void GPIO__vWriteProtectedRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg);
-
-void GPIO_CONTROL__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg);
-void GPIO_DATA__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg);
+void GPIO_CONTROL__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg);
+void GPIO_DATA__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg);
 
 #endif /* DRIVERLIB_GPIO_DRIVER_INTRINSICS_PRIMITIVES_XHEADER_GPIO_WRITEREGISTER_H_ */

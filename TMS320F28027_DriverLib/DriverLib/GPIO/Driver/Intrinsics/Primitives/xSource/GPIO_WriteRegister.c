@@ -25,39 +25,7 @@
 #include "DriverLib/GPIO/Peripheral/GPIO_Peripheral.h"
 #include "DriverLib/MCU/MCU.h"
 
-void GPIO__vWriteRegister16Bits(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg)
-{
-    uintptr_t uptrModuleBase;
-    uptrModuleBase = GPIO__uptrBlockBaseAddress(enModuleArg);
-    pstModuleArg->uptrAddress += uptrModuleBase;
-    MCU__vWriteRegister_16Bits(pstModuleArg);
-}
-
-void GPIO__vWriteProtectedRegister16Bits(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg)
-{
-    uintptr_t uptrModuleBase;
-    uptrModuleBase = GPIO__uptrBlockBaseAddress(enModuleArg);
-    pstModuleArg->uptrAddress += uptrModuleBase;
-    MCU__vWriteProtectedRegister_16Bits(pstModuleArg);
-}
-
-void GPIO_INTERRUPT__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg)
-{
-    uintptr_t uptrModuleBase;
-    uptrModuleBase = GPIO_INTERRUPT__uptrBlockBaseAddress(enModuleArg);
-    pstModuleArg->uptrAddress += uptrModuleBase;
-    MCU__vWriteRegister_16Bits(pstModuleArg);
-}
-
-void GPIO_INTERRUPT__vWriteProtectedRegister(GPIO_nPORT enModuleArg, GPIO_Register16Bits_t* pstModuleArg)
-{
-    uintptr_t uptrModuleBase;
-    uptrModuleBase = GPIO_INTERRUPT__uptrBlockBaseAddress(enModuleArg);
-    pstModuleArg->uptrAddress += uptrModuleBase;
-    MCU__vWriteProtectedRegister_16Bits(pstModuleArg);
-}
-
-void GPIO__vWriteRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg)
+void GPIO__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uptrModuleBase = GPIO__uptrBlockBaseAddress(enModuleArg);
@@ -65,7 +33,7 @@ void GPIO__vWriteRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* p
     MCU__vWriteRegister_32Bits(pstModuleArg);
 }
 
-void GPIO__vWriteProtectedRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg)
+void GPIO__vWriteProtectedRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uptrModuleBase = GPIO__uptrBlockBaseAddress(enModuleArg);
@@ -73,7 +41,7 @@ void GPIO__vWriteProtectedRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32
     MCU__vWriteProtectedRegister_32Bits(pstModuleArg);
 }
 
-void GPIO_DATA__vWriteRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg)
+void GPIO_DATA__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uptrModuleBase = GPIO_DATA__uptrBlockBaseAddress(enModuleArg);
@@ -81,7 +49,7 @@ void GPIO_DATA__vWriteRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits
     MCU__vWriteRegister_32Bits(pstModuleArg);
 }
 
-void GPIO_CONTROL__vWriteProtectedRegister32Bits(GPIO_nPORT enModuleArg, GPIO_Register32Bits_t* pstModuleArg)
+void GPIO_CONTROL__vWriteRegister(GPIO_nPORT enModuleArg, GPIO_Register_t* pstModuleArg)
 {
     uintptr_t uptrModuleBase;
     uptrModuleBase = GPIO_CONTROL__uptrBlockBaseAddress(enModuleArg);

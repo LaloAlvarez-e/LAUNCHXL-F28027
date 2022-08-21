@@ -31,6 +31,6 @@ void GPIO__vSetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg, GPIO_nDIR e
 uint32_t GPIO__u32GetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg);
 
 void GPIO__vSetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg, GPIO_nDIR enDirectionArg);
-GPIO_nDIR GPIO__u32GetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg);
+GPIO_nDIR GPIO__enGetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg);
 
 #endif /* DRIVERLIB_GPIO_DRIVER_XHEADER_GPIO_DIRECTION_H_ */

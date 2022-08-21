@@ -25,7 +25,6 @@
 #ifndef DRIVERLIB_GPIO_DRIVER_INTRINSICS_GPIO_INTRINSICS_H_
 #define DRIVERLIB_GPIO_DRIVER_INTRINSICS_GPIO_INTRINSICS_H_
 
-#include "DriverLib/GPIO/Driver/Intrinsics/Interrupt/GPIO_Interrupt.h"
 #include "DriverLib/GPIO/Driver/Intrinsics/Primitives/GPIO_Primitives.h"
 
 #endif /* DRIVERLIB_GPIO_DRIVER_INTRINSICS_GPIO_INTRINSICS_H_ */

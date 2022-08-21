@@ -44,8 +44,14 @@ typedef enum
 
 typedef enum
 {
+    TIMER_enINT_STATE_DISABLE = 0U,
+    TIMER_enINT_STATE_ENABLE = 1U,
+}TIMER_nINT_STATE;
+
+typedef enum
+{
     TIMER_enINT_STATUS_NOOCCUR = 0U,
-    TIMER_enINT_STATUS_OCCUR = 0U,
+    TIMER_enINT_STATUS_OCCUR = 1U,
 }TIMER_nINT_STATUS;
 
 typedef enum
@@ -68,8 +74,21 @@ typedef enum
     TIMER_enEMUMODE_FREERUN = 2U,
 }TIMER_nEMUMODE;
 
-
 typedef MCU_Register16Bits_t TIMER_Register16Bits_t;
 typedef MCU_Register32Bits_t TIMER_Register32Bits_t;
+
+
+typedef struct
+{
+    uint32_t u16PeriodUs;
+    TIMER_nEMUMODE enEmulationMode;
+}TIMER_Config_t;
+
+typedef struct
+{
+    uint32_t u16PeriodUs;
+    TIMER_nEMUMODE enEmulationMode;
+    TIMER_nINT_STATE enInterruptState;
+}TIMER_ConfigExt_t;
 
 #endif /* DRIVERLIB_TIMER_PERIPHERAL_XHEADER_TIMER_ENUM_H_ */

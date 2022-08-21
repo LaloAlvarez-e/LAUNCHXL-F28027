@@ -33,5 +33,6 @@
 #include "DriverLib/BOR/BOR.h"
 #include "DriverLib/TIMER/TIMER.h"
 #include "DriverLib/GPIO/GPIO.h"
+#include "DriverLib/XINT/XINT.h"
 
 #endif /* DRIVERLIB_DRIVERLIB_H_ */

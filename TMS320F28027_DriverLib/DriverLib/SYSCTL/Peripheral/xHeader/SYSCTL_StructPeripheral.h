@@ -92,6 +92,12 @@ typedef volatile struct
         volatile unsigned short PLLCR;
         SYSCTL_PLLCR_t PLLCR_bits;
     };
+    const unsigned short reserved4[8U];
+    union
+    {
+        volatile unsigned short JTAGDEBUG;
+        SYSCTL_JTAGDEBUG_t JTAGDEBUG_bits;
+    };
 }SYSCTL_t;
 
 #endif /* DRIVERLIB_SYSCTL_PERIPHERAL_XHEADER_SYSCTL_STRUCTPERIPHERAL_H_ */

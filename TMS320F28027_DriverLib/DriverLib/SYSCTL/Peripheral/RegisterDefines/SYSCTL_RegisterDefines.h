@@ -27,6 +27,7 @@
 
 #include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_CLKCTL.h"
 #include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_INTOSCnTRIM.h"
+#include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_JTAGDEBUG.h"
 #include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_LOSPCP.h"
 #include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_LPMCR0.h"
 #include "DriverLib/SYSCTL/Peripheral/RegisterDefines/xHeader/SYSCTL_RegisterDefines_PCLKCR0.h"

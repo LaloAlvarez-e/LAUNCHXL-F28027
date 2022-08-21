@@ -4,6 +4,8 @@
  */
 void MAIN_vCopyFunctionsFlash2Ram(void);
 void MAIN_vStartup(void);
+void MAIN_vTimerInit(void);
+void MAIN_vExternalInterruptInit(void);
 void Timer0_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
 void Timer1_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
 void Timer2_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
@@ -55,16 +57,10 @@ uint32_t u32SystemClockFrequency;
 uint32_t u32Timer0Value;
 int main(void)
 {
-    MCU__pvfIRQVectorHandler_t pfvVector;
     MAIN_vStartup();
-
     SYSCTL__vSetOutputClockConfig(SYSCTL_enOUTCLK_SRC_SYSCLK, SYSCTL_enOUTCLK_DIV_DIV4);
-
-
-    pfvVector = GPIO__pvfGetIRQVectorHandler(GPIO_enXINT_1);
-    GPIO__enRegisterIRQVectorHandler(pfvVector, GPIO_enXINT_1);
-    GPIO__enRegisterIRQSourceHandler(&Xint1_IRQhandler, GPIO_enXINT_1);
-
+    MAIN_vTimerInit();
+    MAIN_vExternalInterruptInit();
 
     MCU__vEnaWriteProtectedRegisters();
 
@@ -72,11 +68,6 @@ int main(void)
     GPIOA_CONTROL_QSEL_LOW_R = 0U;
     GPIOA_CONTROL_MUX_LOW_R = 0U;
     GPIOA_CONTROL_MUX_HIGH->PIN18 = GPIOA_CONTROL_MUX_HIGH_PIN18_XCLKOUT;
-    GPIOA_CONTROL_DIR->PIN0 = GPIO_CONTROL_DIR_PIN0_OUTPUT;
-    GPIOA_CONTROL_DIR->PIN1 = GPIO_CONTROL_DIR_PIN1_OUTPUT;
-    GPIOA_CONTROL_DIR->PIN2 = GPIO_CONTROL_DIR_PIN2_OUTPUT;
-    GPIOA_CONTROL_DIR->PIN3 = GPIO_CONTROL_DIR_PIN3_OUTPUT;
-    GPIOA_CONTROL_DIR->PIN18 = GPIO_CONTROL_DIR_PIN18_OUTPUT;
 
     GPIOA_CONTROL_PUD->PIN0 = GPIO_CONTROL_PUD_PIN0_NONE;
     GPIOA_CONTROL_PUD->PIN1 = GPIO_CONTROL_PUD_PIN1_NONE;
@@ -86,60 +77,23 @@ int main(void)
 
     GPIOA_DATA_SET_R = 0xFU;
 
-
-
     GPIOA_CONTROL_CTRL->QUALPRD1 = 0xFFU;
     GPIOA_CONTROL_QSEL_LOW->PIN12 = GPIO_CONTROL_QSEL_LOW_PIN12_5SAMPLES;
     GPIOA_CONTROL_MUX_LOW->PIN12 = GPIO_CONTROL_MUX_LOW_PIN12_GPIO;
-    GPIOA_CONTROL_DIR->PIN12 = GPIO_CONTROL_DIR_PIN12_INPUT;
     GPIOA_CONTROL_PUD->PIN12 = GPIO_CONTROL_PUD_PIN12_NONE;
-
-    GPIOA_INTERRUPT_XINT1SEL_R = GPIOA_INTERRUPT_XINT1SEL_R_SEL_PIN12;
-    GPIOA_INTERRUPT_XINT1CR->ENABLE = GPIOA_INTERRUPT_XINT1CR_ENABLE_ENA;
-    GPIOA_INTERRUPT_XINT1CR->POLARITY = GPIOA_INTERRUPT_XINT1CR_POLARITY_BOTH;
 
     MCU__vDisWriteProtectedRegisters();
 
-    GPIO__vEnableInterruptSource(GPIO_enXINT_1);
-    GPIO__vEnableInterruptVector(GPIO_enXINT_1);
+    GPIO__vSetDirection(GPIO_enPORT_A,
+                        (uint32_t)(GPIO_enPIN_0 | GPIO_enPIN_1 | GPIO_enPIN_2 | GPIO_enPIN_3 | GPIO_enPIN_18),
+                        GPIO_enDIR_OUTPUT);
 
 
-    pfvVector = TIMER__pvfGetIRQVectorHandler(TIMER_enMODULE_0);
-    TIMER__enRegisterIRQVectorHandler(pfvVector, TIMER_enMODULE_0);
-    pfvVector = TIMER__pvfGetIRQVectorHandler(TIMER_enMODULE_1);
-    TIMER__enRegisterIRQVectorHandler(pfvVector, TIMER_enMODULE_1);
-    pfvVector = TIMER__pvfGetIRQVectorHandler(TIMER_enMODULE_2);
-    TIMER__enRegisterIRQVectorHandler(pfvVector, TIMER_enMODULE_2);
-    TIMER__enRegisterIRQSourceHandler(&Timer0_IRQhandler, TIMER_enMODULE_0);
-    TIMER__enRegisterIRQSourceHandler(&Timer1_IRQhandler, TIMER_enMODULE_1);
-    TIMER__enRegisterIRQSourceHandler(&Timer2_IRQhandler, TIMER_enMODULE_2);
-
-    TIMER__vSetState(TIMER_enMODULE_0, TIMER_enSTATE_STOP);
-    TIMER__vSetState(TIMER_enMODULE_1, TIMER_enSTATE_STOP);
-    TIMER__vSetState(TIMER_enMODULE_2, TIMER_enSTATE_STOP);
-
-    TIMER__vSetEmulationMode(TIMER_enMODULE_0, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_0, 4000000UL);
-    TIMER__vEnableInterruptSource(TIMER_enMODULE_0);
-    TIMER__vEnableInterruptVector(TIMER_enMODULE_0);
-    TIMER__vReload(TIMER_enMODULE_0);
-
-    TIMER__vSetEmulationMode(TIMER_enMODULE_1, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_1, 2000000UL);
-    TIMER__vEnableInterruptSource(TIMER_enMODULE_1);
-    TIMER__vEnableInterruptVector(TIMER_enMODULE_1);
-    TIMER__vReload(TIMER_enMODULE_1);
-
-    TIMER__vSetEmulationMode(TIMER_enMODULE_2, TIMER_enEMUMODE_HARDSTOP);
-    TIMER__u64SetPeriodUs(TIMER_enMODULE_2, 1000000UL);
-    TIMER__vEnableInterruptSource(TIMER_enMODULE_2);
-    TIMER__vEnableInterruptVector(TIMER_enMODULE_2);
-    TIMER__vReload(TIMER_enMODULE_2);
+    GPIO__vSetDirection(GPIO_enPORT_A,
+                        (uint32_t)(GPIO_enPIN_12),
+                        GPIO_enDIR_INPUT);
 
 
-    TIMER__vSetState(TIMER_enMODULE_0, TIMER_enSTATE_START);
-    TIMER__vSetState(TIMER_enMODULE_1, TIMER_enSTATE_START);
-    TIMER__vSetState(TIMER_enMODULE_2, TIMER_enSTATE_START);
 
     MCU__vEnaGlobalInterrupt_Debug();
 	while(1U)
@@ -164,6 +118,43 @@ void MAIN_vStartup(void)
     FLASH__vInit();
 }
 
+void MAIN_vExternalInterruptInit(void)
+{
+    XINT_ConfigExt_t stExternalInterruptConfig;
+    XINT__vInit();
+
+    XINT__enRegisterIRQSourceHandler(&Xint1_IRQhandler, XINT_enMODULE_1);
+
+    stExternalInterruptConfig.enEdge = XINT_enEDGE_BOTH;
+    stExternalInterruptConfig.enPin = XINT_enPIN_GPIOA12;
+    stExternalInterruptConfig.enInterruptState = XINT_enSTATE_ENABLE;
+    XINT__enConfigExt(XINT_enMODULE_1, &stExternalInterruptConfig);
+}
+
+void MAIN_vTimerInit(void)
+{
+    TIMER_ConfigExt_t stTimerConfig;
+    TIMER__vInit();
+
+    TIMER__enRegisterIRQSourceHandler(&Timer0_IRQhandler, TIMER_enMODULE_0);
+    TIMER__enRegisterIRQSourceHandler(&Timer1_IRQhandler, TIMER_enMODULE_1);
+    TIMER__enRegisterIRQSourceHandler(&Timer2_IRQhandler, TIMER_enMODULE_2);
+
+    stTimerConfig.enEmulationMode = TIMER_enEMUMODE_HARDSTOP;
+    stTimerConfig.u16PeriodUs = 4000000UL;
+    stTimerConfig.enInterruptState = TIMER_enINT_STATE_ENABLE;
+    TIMER__enConfigExt(TIMER_enMODULE_0, &stTimerConfig);
+
+    stTimerConfig.u16PeriodUs = 2000000UL;
+    TIMER__enConfigExt(TIMER_enMODULE_1, &stTimerConfig);
+
+    stTimerConfig.u16PeriodUs = 1000000UL;
+    TIMER__enConfigExt(TIMER_enMODULE_2, &stTimerConfig);
+
+    TIMER__vSetState(TIMER_enMODULE_0, TIMER_enSTATE_START);
+    TIMER__vSetState(TIMER_enMODULE_1, TIMER_enSTATE_START);
+    TIMER__vSetState(TIMER_enMODULE_2, TIMER_enSTATE_START);
+}
 
 void MAIN_vCopyFunctionsFlash2Ram(void)
 {
@@ -180,5 +171,4 @@ void MAIN_vCopyFunctionsFlash2Ram(void)
         pui16SrcRamCode += 1UL;
         pui16DestRamCode += 1UL;
     }
-
 }

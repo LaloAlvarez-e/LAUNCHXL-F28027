@@ -27,5 +27,6 @@
 
 #include "DriverLib/GPIO/Driver/Intrinsics/GPIO_Intrinsics.h"
 #include "DriverLib/GPIO/Driver/xHeader/GPIO_Direction.h"
+#include "DriverLib/GPIO/Driver/xHeader/GPIO_Resistor.h"
 
 #endif /* DRIVERLIB_GPIO_DRIVER_GPIO_DRIVER_H_ */

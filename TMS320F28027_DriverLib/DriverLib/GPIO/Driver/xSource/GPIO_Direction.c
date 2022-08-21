@@ -28,7 +28,7 @@
 
 void GPIO__vSetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg, GPIO_nDIR enDirectionArg)
 {
-    GPIO_Register32Bits_t stRegister;
+    GPIO_Register_t stRegister;
     uint32_t u32Reg;
 
     if(GPIO_enDIR_INPUT == enDirectionArg)
@@ -49,7 +49,7 @@ void GPIO__vSetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg, GPIO_nDIR e
 
 uint32_t GPIO__u32GetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg)
 {
-    GPIO_Register32Bits_t stRegister;
+    GPIO_Register_t stRegister;
 
 
     stRegister.u16Shift = GPIO_CONTROL_DIR_R_PIN0_BIT;
@@ -63,7 +63,7 @@ uint32_t GPIO__u32GetDirection(GPIO_nPORT enModuleArg, uint32_t u32PinArg)
 
 void GPIO__vSetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg, GPIO_nDIR enDirectionArg)
 {
-    GPIO_Register32Bits_t stRegister;
+    GPIO_Register_t stRegister;
 
     stRegister.u16Shift = (uint16_t) enPinNumberArg;
     stRegister.u32Mask = GPIO_CONTROL_DIR_PIN0_MASK;
@@ -73,9 +73,9 @@ void GPIO__vSetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinN
 }
 
 
-GPIO_nDIR GPIO__u32GetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg)
+GPIO_nDIR GPIO__enGetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNumberArg)
 {
-    GPIO_Register32Bits_t stRegister;
+    GPIO_Register_t stRegister;
 
     stRegister.u16Shift = (uint16_t) enPinNumberArg;
     stRegister.u32Mask = GPIO_CONTROL_DIR_PIN0_MASK;

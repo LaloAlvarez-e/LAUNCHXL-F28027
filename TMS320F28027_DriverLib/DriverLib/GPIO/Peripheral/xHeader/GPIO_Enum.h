@@ -46,33 +46,12 @@ typedef enum
 
 typedef enum
 {
-    GPIO_enSTATE_DISABLE = 0UL,
-    GPIO_enSTATE_ENABLE = 1UL,
-}GPIO_nSTATE;
-
-typedef enum
-{
     GPIO_enSYNC_SYSCLK = 0UL,
     GPIO_enSYNC_2SAMPLES = 1UL,
     GPIO_enSYNC_5SAMPLES = 2UL,
     GPIO_enSYNC_ASYNC = 3UL,
     GPIO_enSYNC_MAX = 3UL,
 }GPIO_nSYNC;
-
-typedef enum
-{
-    GPIO_enXINT_1 = 0UL,
-    GPIO_enXINT_2 = 1UL,
-    GPIO_enXINT_3 = 2UL,
-    GPIO_enXINT_MAX = 3UL,
-}GPIO_nXINT;
-
-typedef enum
-{
-    GPIO_enEDGE_FALLING = 0UL,
-    GPIO_enEDGE_RISING = 1UL,
-    GPIO_enEDGE_BOTH = 3UL,
-}GPIO_nEDGE;
 
 typedef enum
 {
@@ -89,6 +68,17 @@ typedef enum
 }GPIO_nRESISTOR;
 
 typedef enum
+{
+    GPIO_enFUNCTION_GPIO = 0UL,
+    GPIO_enFUNCTION_PERIPHERAL1 = 1UL,
+    GPIO_enFUNCTION_PERIPHERAL2 = 2UL,
+    GPIO_enFUNCTION_PERIPHERAL3 = 3UL,
+    GPIO_enFUNCTION_MAX = 4UL,
+}GPIO_nFUNCTION;
+
+
+typedef enum
+
 {
     GPIO_enPIN_NONE = 0x0UL,
     GPIO_enPIN_0   = 0x00000001UL,
@@ -293,7 +283,6 @@ typedef enum
     GPIO_enGPIO_UNDEF = 0xFFFFFFFFUL,
 }GPIO_nDIGITAL_FUNCTION;
 
-typedef MCU_Register16Bits_t GPIO_Register16Bits_t;
-typedef MCU_Register32Bits_t GPIO_Register32Bits_t;
+typedef MCU_Register32Bits_t GPIO_Register_t;
 
 #endif /* DRIVERLIB_GPIO_PERIPHERAL_XHEADER_GPIO_ENUM_H_ */

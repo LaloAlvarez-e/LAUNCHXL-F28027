@@ -20,6 +20,9 @@ def main():
     WordToReplace = arguments.word
     ReplaceWord = arguments.replace
     
+    if pathDirFiles is None:
+        pathDirFiles = os.getcwd()
+
     isPathDirValid = os.path.isdir(pathDirFiles)
     if isPathDirValid is True:
         print ("Directories names in progress..")

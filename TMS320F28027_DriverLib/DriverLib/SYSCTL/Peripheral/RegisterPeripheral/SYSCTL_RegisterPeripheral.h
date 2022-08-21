@@ -103,6 +103,12 @@
 #define SYSCTL_PLLCR_R   (*(volatile uint16_t*) (SYSCTL_BASE + SYSCTL_PLLCR_OFFSET))
 #define SYSCTL_PLLCR     ((SYSCTL_PLLCR_t*) (SYSCTL_BASE + SYSCTL_PLLCR_OFFSET))
 
+/******************************************************************************************
+ ************************************ 13 JTAGDEBUG *********************************************
+ ******************************************************************************************/
+#define SYSCTL_JTAGDEBUG_R   (*(volatile uint16_t*) (SYSCTL_BASE + SYSCTL_JTAGDEBUG_OFFSET))
+#define SYSCTL_JTAGDEBUG     ((SYSCTL_JTAGDEBUG_t*) (SYSCTL_BASE + SYSCTL_JTAGDEBUG_OFFSET))
+
 uintptr_t SYSCTL__uptrBlockBaseAddress(void);
 
 #endif /* DRIVERLIB_SYSCTL_PERIPHERAL_REGISTERPERIPHERAL_SYSCTL_REGISTERPERIPHERAL_H_ */

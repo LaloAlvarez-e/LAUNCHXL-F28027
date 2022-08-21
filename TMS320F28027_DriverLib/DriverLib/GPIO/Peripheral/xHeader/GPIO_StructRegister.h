@@ -37,25 +37,6 @@ typedef volatile struct
 
 typedef volatile struct
 {
-    volatile unsigned short SEL: 5;
-    const unsigned short reserved1: 11;
-}GPIO_XINTnSEL_t;
-
-typedef volatile struct
-{
-    volatile unsigned short ENABLE: 1;
-    const unsigned short reserved1: 1;
-    volatile unsigned short POLARITY: 2;
-    const unsigned short reserved2: 12;
-}GPIO_XINTnCR_t;
-
-typedef volatile struct
-{
-    volatile unsigned short INTCTR: 16;
-}GPIO_XINTnCTR_t;
-
-typedef volatile struct
-{
     volatile unsigned long PIN0: 1;
     volatile unsigned long PIN1: 1;
     volatile unsigned long PIN2: 1;

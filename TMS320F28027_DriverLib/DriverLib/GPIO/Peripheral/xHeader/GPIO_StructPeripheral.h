@@ -95,37 +95,6 @@ typedef volatile struct
 }GPIO_DATA_t;
 
 
-
-typedef volatile struct
-{
-    union
-    {
-        volatile unsigned short XINTSEL[3U];
-        GPIO_XINTnSEL_t XINTSEL_bits[3U];
-    };
-    const unsigned short reserved1[5U];
-    union
-    {
-        volatile unsigned long LPMSEL;
-        GPIO_PIN_t LPMSEL_bits;
-    };
-    const unsigned short reserved2[134U];
-    union
-    {
-        volatile unsigned short XINTCR[3U];
-        GPIO_XINTnCR_t XINTCR_bits[3U];
-    };
-    const unsigned short reserved3[5U];
-    union
-    {
-        volatile unsigned short XINTCTR[3U];
-        GPIO_XINTnCTR_t XINTCTR_bits[3U];
-    };
-    const unsigned short reserved4[5U];
-}GPIO_INTERRUPT_t;
-
-
-
 typedef volatile struct
 {
     union
@@ -186,30 +155,6 @@ typedef volatile struct
         GPIO_PIN_t TOGGLE_bits;
     };
     const unsigned long reserved2[12U];
-    union
-    {
-        volatile unsigned short XINTSEL[3U];
-        GPIO_XINTnSEL_t XINTSEL_bits[3U];
-    };
-    const unsigned short reserved3[5U];
-    union
-    {
-        volatile unsigned long LPMSEL;
-        GPIO_PIN_t LPMSEL_bits;
-    };
-    const unsigned short reserved4[134U];
-    union
-    {
-        volatile unsigned short XINTCR[3U];
-        GPIO_XINTnCR_t XINTCR_bits[3U];
-    };
-    const unsigned short reserved5[5U];
-    union
-    {
-        volatile unsigned short XINTCTR[3U];
-        GPIO_XINTnCTR_t XINTCTR_bits[3U];
-    };
-    const unsigned short reserved6[5U];
 }GPIOA_t;
 
 
@@ -267,7 +212,6 @@ typedef volatile struct
         GPIO_PIN_t TOGGLE_bits;
     };
     const unsigned long reserved6[8U];
-    const unsigned short reserved7[160U];
 }GPIOB_t;
 
 
@@ -308,7 +252,6 @@ typedef volatile struct
         volatile unsigned long TOGGLE;
         GPIO_PIN_t TOGGLE_bits;
     };
-    const unsigned short reserved5[160U];
 }AIO_t;
 
 
@@ -316,7 +259,6 @@ typedef volatile struct
 {
     GPIO_CONTROL_t CONTROL[(uint16_t) GPIO_enPORT_MAX];
     GPIO_DATA_t DATA[(uint16_t) GPIO_enPORT_MAX];
-    GPIO_INTERRUPT_t INTERRUPT;
 }GPIOS_t;
 
 typedef volatile struct

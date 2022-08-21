@@ -29,7 +29,6 @@
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_CTRL.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_DAT.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_DIR.h"
-#include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_LPMSEL.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_MUX1.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_MUX2.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_PUD.h"
@@ -37,8 +36,5 @@
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_QSEL2.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_SET.h"
 #include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_TOGGLE.h"
-#include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_XINTnSEL.h"
-#include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_XINTnCR.h"
-#include "DriverLib/GPIO/Peripheral/RegisterDefines/xHeader/GPIO_RegisterDefines_XINTnCTR.h"
 
 #endif /* DRIVERLIB_GPIO_PERIPHERAL_REGISTERDEFINES_GPIO_REGISTERDEFINES_H_ */

@@ -63,6 +63,13 @@ typedef enum
 
 typedef enum
 {
+    GPIO_enVALUE_LOW = 0UL,
+    GPIO_enVALUE_HIGH = 1UL,
+    GPIO_enVALUE_MAX = 2UL,
+}GPIO_nVALUE;
+
+typedef enum
+{
     GPIO_enRESISTOR_PULLUP = 0UL,
     GPIO_enRESISTOR_NONE = 1UL,
     GPIO_enRESISTOR_MAX = 2UL,

@@ -52,12 +52,9 @@ void Xint1_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource)
     return;
 }
 
-
-
-uint32_t u32SystemClockFrequency;
-uint32_t u32Timer0Value;
 int main(void)
 {
+    volatile uint32_t u32Timer0Value;
     MAIN_vStartup();
     SYSCTL__vSetOutputClockConfig(SYSCTL_enOUTCLK_SRC_SYSCLK, SYSCTL_enOUTCLK_DIV_DIV4);
     MAIN_vTimerInit();
@@ -89,6 +86,7 @@ void MAIN_vStartup(void)
 
 void MAIN_vGpioInit(void)
 {
+    GPIO__vSetData(GPIO_enPORT_A, (uint32_t) (GPIO_enPIN_0 | GPIO_enPIN_1 | GPIO_enPIN_2 | GPIO_enPIN_3));
 
     GPIO__vSetConfigByFunction(GPIO_enXCLK_OUT_PA18, GPIO_enCONFIG_OUTPUT_NOPULL);
     GPIO__vSetConfigByFunction(GPIO_enGPIOA0, GPIO_enCONFIG_OUTPUT_NOPULL);
@@ -96,11 +94,9 @@ void MAIN_vGpioInit(void)
     GPIO__vSetConfigByFunction(GPIO_enGPIOA2, GPIO_enCONFIG_OUTPUT_NOPULL);
     GPIO__vSetConfigByFunction(GPIO_enGPIOA3, GPIO_enCONFIG_OUTPUT_NOPULL);
 
-    GPIOA_DATA_SET_R = 0xFU;
 
     GPIO__enSetInputSampleCyclesByFunction(GPIO_enGPIOA12, 510U);
     GPIO__vSetConfigByFunction(GPIO_enGPIOA12, GPIO_enCONFIG_INPUT_NOPULL_5SAMPLES);
-
 }
 
 void MAIN_vExternalInterruptInit(void)

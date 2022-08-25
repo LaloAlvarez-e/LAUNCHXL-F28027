@@ -27,6 +27,7 @@
 
 #include "DriverLib/GPIO/Driver/Intrinsics/GPIO_Intrinsics.h"
 #include "DriverLib/GPIO/Driver/xHeader/GPIO_Config.h"
+#include "DriverLib/GPIO/Driver/xHeader/GPIO_Data.h"
 #include "DriverLib/GPIO/Driver/xHeader/GPIO_Direction.h"
 #include "DriverLib/GPIO/Driver/xHeader/GPIO_Function.h"
 #include "DriverLib/GPIO/Driver/xHeader/GPIO_InputSampleCycles.h"

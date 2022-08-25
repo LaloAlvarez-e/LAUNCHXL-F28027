@@ -85,3 +85,45 @@ GPIO_nDIR GPIO__enGetDirectionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER 
 }
 
 
+
+void GPIO__vSetDirectionByFunction(GPIO_nDIGITAL_FUNCTION enFunctionArg, GPIO_nDIR enDirectionArg)
+{
+    uint32_t u32FunctionReg;
+    uint32_t u32BitNumberReg;
+    uint32_t u32ModuleReg;
+
+    u32FunctionReg = (uint32_t) enFunctionArg;
+
+    u32FunctionReg >>= 8U;
+    u32BitNumberReg = u32FunctionReg;
+    u32BitNumberReg &= 0xFFU;
+
+    u32FunctionReg >>= 8U;
+    u32ModuleReg = u32FunctionReg;
+    u32ModuleReg &= 0xFFU;
+
+    GPIO__vSetDirectionByNumber((GPIO_nPORT) u32ModuleReg, (GPIO_nPIN_NUMBER) u32BitNumberReg, enDirectionArg);
+}
+
+
+GPIO_nDIR GPIO__enGetDirectionByFunction(GPIO_nDIGITAL_FUNCTION enFunctionArg)
+{
+    uint32_t u32FunctionReg;
+    uint32_t u32BitNumberReg;
+    uint32_t u32ModuleReg;
+    GPIO_nDIR enDirectionReg;
+
+    u32FunctionReg = (uint32_t) enFunctionArg;
+
+    u32FunctionReg >>= 8U;
+    u32BitNumberReg = u32FunctionReg;
+    u32BitNumberReg &= 0xFFU;
+
+    u32FunctionReg >>= 8U;
+    u32ModuleReg = u32FunctionReg;
+    u32ModuleReg &= 0xFFU;
+
+    enDirectionReg = GPIO__enGetDirectionByNumber((GPIO_nPORT) u32ModuleReg, (GPIO_nPIN_NUMBER) u32BitNumberReg);
+    return (enDirectionReg);
+}
+

@@ -28,6 +28,16 @@
 
 void SYSCTL__vSetExternalClockSource(SYSCTL_nEXTCLK_SRC enClockSourceArg)
 {
+    SYSCTL__vSetExternalInputPowerState(SYSCTL_enSTATE_OFF);
+    SYSCTL__vSetExternalOscPowerState(SYSCTL_enSTATE_OFF);
+    SYSCTL__vSetExternalInputPowerState(SYSCTL_enSTATE_ON);
+    SYSCTL__vSetExternalOscPowerState(SYSCTL_enSTATE_ON);
+    SYSCTL__vSetExternalInputPowerState(SYSCTL_enSTATE_OFF);
+    SYSCTL__vSetExternalOscPowerState(SYSCTL_enSTATE_OFF);
+    SYSCTL__vSetExternalInputPowerState(SYSCTL_enSTATE_ON);
+    SYSCTL__vSetExternalOscPowerState(SYSCTL_enSTATE_ON);
+    SYSCTL__vSetExternalInputPowerState(SYSCTL_enSTATE_OFF);
+    SYSCTL__vSetExternalOscPowerState(SYSCTL_enSTATE_OFF);
     switch (enClockSourceArg)
     {
     case SYSCTL_enEXTCLK_SRC_INOSC:

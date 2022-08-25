@@ -6,6 +6,7 @@ void MAIN_vCopyFunctionsFlash2Ram(void);
 void MAIN_vStartup(void);
 void MAIN_vTimerInit(void);
 void MAIN_vExternalInterruptInit(void);
+void MAIN_vGpioInit(void);
 void Timer0_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
 void Timer1_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
 void Timer2_IRQhandler(uintptr_t uptrModule, uint32_t u32IntSource);
@@ -61,39 +62,7 @@ int main(void)
     SYSCTL__vSetOutputClockConfig(SYSCTL_enOUTCLK_SRC_SYSCLK, SYSCTL_enOUTCLK_DIV_DIV4);
     MAIN_vTimerInit();
     MAIN_vExternalInterruptInit();
-
-    MCU__vEnaWriteProtectedRegisters();
-
-    GPIOA_CONTROL->CTRL_bits.QUALPRD0 = 0U;
-    GPIOA_CONTROL_QSEL_LOW_R = 0U;
-    GPIOA_CONTROL_MUX_LOW_R = 0U;
-    GPIOA_CONTROL_MUX_HIGH->PIN18 = GPIOA_CONTROL_MUX_HIGH_PIN18_XCLKOUT;
-
-    GPIOA_CONTROL_PUD->PIN0 = GPIO_CONTROL_PUD_PIN0_NONE;
-    GPIOA_CONTROL_PUD->PIN1 = GPIO_CONTROL_PUD_PIN1_NONE;
-    GPIOA_CONTROL_PUD->PIN2 = GPIO_CONTROL_PUD_PIN2_NONE;
-    GPIOA_CONTROL_PUD->PIN3 = GPIO_CONTROL_PUD_PIN3_NONE;
-    GPIOA_CONTROL_PUD->PIN18 = GPIO_CONTROL_PUD_PIN18_NONE;
-
-    GPIOA_DATA_SET_R = 0xFU;
-
-    GPIOA_CONTROL_CTRL->QUALPRD1 = 0xFFU;
-    GPIOA_CONTROL_QSEL_LOW->PIN12 = GPIO_CONTROL_QSEL_LOW_PIN12_5SAMPLES;
-    GPIOA_CONTROL_MUX_LOW->PIN12 = GPIO_CONTROL_MUX_LOW_PIN12_GPIO;
-    GPIOA_CONTROL_PUD->PIN12 = GPIO_CONTROL_PUD_PIN12_NONE;
-
-    MCU__vDisWriteProtectedRegisters();
-
-    GPIO__vSetDirection(GPIO_enPORT_A,
-                        (uint32_t)(GPIO_enPIN_0 | GPIO_enPIN_1 | GPIO_enPIN_2 | GPIO_enPIN_3 | GPIO_enPIN_18),
-                        GPIO_enDIR_OUTPUT);
-
-
-    GPIO__vSetDirection(GPIO_enPORT_A,
-                        (uint32_t)(GPIO_enPIN_12),
-                        GPIO_enDIR_INPUT);
-
-
+    MAIN_vGpioInit();
 
     MCU__vEnaGlobalInterrupt_Debug();
 	while(1U)
@@ -116,6 +85,22 @@ void MAIN_vStartup(void)
     SYSCTL__u32InitSystemClock(50000000UL);
     MAIN_vCopyFunctionsFlash2Ram();
     FLASH__vInit();
+}
+
+void MAIN_vGpioInit(void)
+{
+
+    GPIO__vSetConfigByFunction(GPIO_enXCLK_OUT_PA18, GPIO_enCONFIG_OUTPUT_NOPULL);
+    GPIO__vSetConfigByFunction(GPIO_enGPIOA0, GPIO_enCONFIG_OUTPUT_NOPULL);
+    GPIO__vSetConfigByFunction(GPIO_enGPIOA1, GPIO_enCONFIG_OUTPUT_NOPULL);
+    GPIO__vSetConfigByFunction(GPIO_enGPIOA2, GPIO_enCONFIG_OUTPUT_NOPULL);
+    GPIO__vSetConfigByFunction(GPIO_enGPIOA3, GPIO_enCONFIG_OUTPUT_NOPULL);
+
+    GPIOA_DATA_SET_R = 0xFU;
+
+    GPIO__enSetInputSampleCyclesByFunction(GPIO_enGPIOA12, 510U);
+    GPIO__vSetConfigByFunction(GPIO_enGPIOA12, GPIO_enCONFIG_INPUT_NOPULL_5SAMPLES);
+
 }
 
 void MAIN_vExternalInterruptInit(void)

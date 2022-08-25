@@ -32,6 +32,7 @@ typedef enum
     GPIO_enERROR_OK = 0UL,
     GPIO_enERROR_POINTER = 1U,
     GPIO_enERROR_VALUE = 2U,
+    GPIO_enERROR_ARG = 3U,
     GPIO_enERROR_UNDEFINED = 0xFFFFUL,
 }GPIO_nERROR;
 
@@ -282,6 +283,44 @@ typedef enum
 
     GPIO_enGPIO_UNDEF = 0xFFFFFFFFUL,
 }GPIO_nDIGITAL_FUNCTION;
+
+
+typedef enum
+{
+    GPIO_enCONFIG_INPUT_NOPULL_SYSCLK = ((uint32_t) GPIO_enSYNC_SYSCLK << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_NONE << 0UL),
+    GPIO_enCONFIG_INPUT_NOPULL_2SAMPLES = ((uint32_t) GPIO_enSYNC_2SAMPLES << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_NONE << 0UL),
+    GPIO_enCONFIG_INPUT_NOPULL_5SAMPLES = ((uint32_t) GPIO_enSYNC_5SAMPLES << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_NONE << 0UL),
+    GPIO_enCONFIG_INPUT_NOPULL_ASYNC = ((uint32_t) GPIO_enSYNC_ASYNC << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_NONE << 0UL),
+    GPIO_enCONFIG_INPUT_PULLUP_SYSCLK = ((uint32_t) GPIO_enSYNC_SYSCLK << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_PULLUP << 0UL),
+    GPIO_enCONFIG_INPUT_PULLUP_2SAMPLES = ((uint32_t) GPIO_enSYNC_2SAMPLES << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_PULLUP << 0UL),
+    GPIO_enCONFIG_INPUT_PULLUP_5SAMPLES  = ((uint32_t) GPIO_enSYNC_5SAMPLES << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_PULLUP << 0UL),
+    GPIO_enCONFIG_INPUT_PULLUP_ASYNC = ((uint32_t) GPIO_enSYNC_ASYNC << 16UL)
+                            | ((uint32_t) GPIO_enDIR_INPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_PULLUP << 0UL),
+    GPIO_enCONFIG_OUTPUT_NOPULL = ((uint32_t) GPIO_enSYNC_SYSCLK << 16UL)
+                            | ((uint32_t) GPIO_enDIR_OUTPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_NONE << 0UL),
+    GPIO_enCONFIG_OUTPUT_PULLUP = ((uint32_t) GPIO_enSYNC_2SAMPLES << 16UL)
+                            | ((uint32_t) GPIO_enDIR_OUTPUT << 8UL)
+                            | ((uint32_t) GPIO_enRESISTOR_PULLUP << 0UL),
+
+    GPIO_enCONFIG_UNDEF = 0xFFFFFFFFUL,
+}GPIO_nCONFIG;
+
 
 typedef MCU_Register32Bits_t GPIO_Register_t;
 

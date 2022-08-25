@@ -77,7 +77,7 @@ PAGE 0:    /* Program Memory */
    OTP         : origin = 0x3D7800, length = 0x000400     /* on-chip OTP */
    FLASHD      : origin = 0x3F0000, length = 0x002000     /* on-chip FLASH */
    FLASHC      : origin = 0x3F2000, length = 0x002000     /* on-chip FLASH */
-   FLASHA      : origin = 0x3F6000, length = 0x001F80     /* on-chip FLASH */
+   FLASHA      : origin = 0x3F6000, length = 0x001F78     /* on-chip FLASH */
    CSM_RSVD    : origin = 0x3F7F80, length = 0x000076     /* Part of FLASHA.  Program with all 0x0000 when CSM is in use. */
    BEGIN       : origin = 0x3F7FF6, length = 0x000002     /* Part of FLASHA.  Used for "boot to Flash" bootloader mode. */
    CSM_PWL_P0  : origin = 0x3F7FF8, length = 0x000008     /* Part of FLASHA.  CSM password locations in FLASHA */

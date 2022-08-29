@@ -66,6 +66,7 @@ GPIO_nERROR GPIO__enSetInputSyncronizationByNumber(GPIO_nPORT enModuleArg, GPIO_
         u16OffsetReg = (uint16_t) enPinNumberArg;
         u16OffsetReg >>= 4U;
         u16OffsetReg &= 0x1U;
+        u16OffsetReg <<= 1U;
         u16OffsetReg += GPIO_CONTROL_QSEL_LOW_OFFSET;
 
         u16ShiftReg = (uint16_t) enPinNumberArg;
@@ -99,6 +100,7 @@ GPIO_nSYNC GPIO__enGetInputSyncronizationByNumber(GPIO_nPORT enModuleArg, GPIO_n
         u16OffsetReg = (uint16_t) enPinNumberArg;
         u16OffsetReg >>= 4U;
         u16OffsetReg &= 0x1U;
+        u16OffsetReg <<= 1U;
         u16OffsetReg += GPIO_CONTROL_QSEL_LOW_OFFSET;
 
         u16ShiftReg = (uint16_t) enPinNumberArg;;

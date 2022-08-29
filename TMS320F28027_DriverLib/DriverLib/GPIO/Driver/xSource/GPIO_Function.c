@@ -57,6 +57,7 @@ void GPIO__vSetFunctionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUMBER enPinNu
     u16OffsetReg = (uint16_t) enPinNumberArg;
     u16OffsetReg >>= 4U;
     u16OffsetReg &= 0x1U;
+    u16OffsetReg <<= 1U;
     u16OffsetReg += GPIO_CONTROL_MUX_LOW_OFFSET;
 
     u16ShiftReg = (uint16_t) enPinNumberArg;;
@@ -80,6 +81,7 @@ GPIO_nFUNCTION GPIO__enGetFunctionByNumber(GPIO_nPORT enModuleArg, GPIO_nPIN_NUM
     u16OffsetReg = (uint16_t) enPinNumberArg;
     u16OffsetReg >>= 4U;
     u16OffsetReg &= 0x1U;
+    u16OffsetReg <<= 1U;
     u16OffsetReg += GPIO_CONTROL_MUX_LOW_OFFSET;
 
     u16ShiftReg = (uint16_t) enPinNumberArg;;

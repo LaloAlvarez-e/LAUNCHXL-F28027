@@ -43,8 +43,7 @@ typedef volatile struct
     volatile unsigned short TSS: 1;
     volatile unsigned short TRB: 1;
     const unsigned short reserved2: 4;
-    volatile unsigned short SOFT: 1;
-    volatile unsigned short FREE: 1;
+    volatile unsigned short EMUMODE: 2;
     const unsigned short reserved3: 2;
     volatile unsigned short TIE: 1;
     volatile unsigned short TIF: 1;

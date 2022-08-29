@@ -75,8 +75,8 @@ PAGE 0:    /* Program Memory */
 
    PRAML0      : origin = 0x008000, length = 0x000800     /* on-chip RAM block L0 */
    OTP         : origin = 0x3D7800, length = 0x000400     /* on-chip OTP */
-   FLASHD      : origin = 0x3F0000, length = 0x002000     /* on-chip FLASH */
    FLASHC      : origin = 0x3F2000, length = 0x002000     /* on-chip FLASH */
+   FLASHB      : origin = 0x3F4000, length = 0x002000     /* on-chip FLASH */
    FLASHA      : origin = 0x3F6000, length = 0x001F78     /* on-chip FLASH */
    CSM_RSVD    : origin = 0x3F7F80, length = 0x000076     /* Part of FLASHA.  Program with all 0x0000 when CSM is in use. */
    BEGIN       : origin = 0x3F7FF6, length = 0x000002     /* Part of FLASHA.  Used for "boot to Flash" bootloader mode. */
@@ -98,7 +98,7 @@ PAGE 1 :   /* Data Memory */
    RAMM0       : origin = 0x000050, length = 0x0003B0     /* on-chip RAM block M0 */
    RAMM1       : origin = 0x000400, length = 0x000400     /* on-chip RAM block M1 */
    DRAML0      : origin = 0x008800, length = 0x000800     /* on-chip RAM block L0 */
-   FLASHB      : origin = 0x3F4000, length = 0x002000     /* on-chip FLASH */
+   FLASHD      : origin = 0x3F0000, length = 0x002000     /* on-chip FLASH */
 }
 
 /* Allocate sections to memory blocks.
@@ -112,22 +112,22 @@ SECTIONS
 {
 
    /* Allocate program areas: */
-   .cinit              : > FLASHA       PAGE = 0
-   .pinit              : > FLASHA,      PAGE = 0
-   .binit              : > FLASHA,      PAGE = 0
-   .text               : > FLASHA       PAGE = 0
+   .cinit              : > FLASHA | FLASHB | FLASHC      PAGE = 0
+   .pinit              : > FLASHA | FLASHB | FLASHC,      PAGE = 0
+   .binit              : > FLASHA | FLASHB | FLASHC,      PAGE = 0
+   .text               : > FLASHA | FLASHB | FLASHC       PAGE = 0
    codestart           : > BEGIN        PAGE = 0
 
 #ifdef __TI_COMPILER_VERSION__
    #if __TI_COMPILER_VERSION__ >= 15009000
-    .TI.ramfunc : {} LOAD = FLASHA,
+    .TI.ramfunc : {} LOAD = FLASHA | FLASHB | FLASHC,
                          RUN = PRAML0,
                          LOAD_START(_RamfuncsLoadStart),
                          LOAD_END(_RamfuncsLoadEnd),
                          RUN_START(_RamfuncsRunStart),
                          PAGE = 0
    #else
-   ramfuncs            : LOAD = FLASHA,
+   ramfuncs            : LOAD = FLASHA | FLASHB | FLASHC,
                          RUN = PRAML0,
                          LOAD_START(_RamfuncsLoadStart),
                          LOAD_END(_RamfuncsLoadEnd),
@@ -152,12 +152,12 @@ SECTIONS
 
    /* Initalized sections go in Flash */
    /* For SDFlash to program these, they must be allocated to page 0 */
-   .econst             : > FLASHB       PAGE = 1
-   .const              : > FLASHB       PAGE = 1
-   .switch             : > FLASHB       PAGE = 1
+   .econst             : > FLASHD       PAGE = 1
+   .const              : > FLASHD       PAGE = 1
+   .switch             : > FLASHD       PAGE = 1
 
    /* Allocate IQ math areas: */
-   IQmath              : > FLASHA       PAGE = 0            /* Math Code */
+   IQmath              : > FLASHA | FLASHB | FLASHC       PAGE = 0            /* Math Code */
    IQmathTables        : > IQTABLES,    PAGE = 0, TYPE = NOLOAD
 
    /* Uncomment the section below if calling the IQNexp() or IQexp()
